@@ -1,0 +1,132 @@
+  /* Fixed hit targets, adaptive banks; window dimensions belong to the host. */
+  .preset-chrome { display: grid; grid-template-columns: var(--target) minmax(0, 1fr) var(--target); }
+  .preset-name { width: 100%; }
+  .command-button { padding: 0; }
+  .command-button span { display: none; }
+  .command-button::before { margin: 0; }
+  .control-cell.is-stepper { grid-column: span 2; }
+  .control-cell.has-number-editor {
+    grid-template-columns: minmax(48px, 1fr) minmax(max-content, 1fr);
+    grid-template-rows: minmax(calc(2.3 * var(--text-12)), max-content) minmax(48px, 1fr);
+    align-content: center; gap: 0 4px;
+  }
+  .control-cell.has-number-editor > .control-label { grid-column: 1 / -1; }
+  .control-cell.has-number-editor > div:nth-child(2) { grid-column: 1; grid-row: 2; }
+  .control-cell.has-number-editor .knob-hit { width: 48px; height: 48px; }
+  .control-cell.has-number-editor > .control-value {
+    grid-column: 2; grid-row: 2; width: 100%; max-width: none; min-width: 44px; min-height: 44px;
+    display: flex; align-items: center; justify-content: center; padding: 0 2px;
+  }
+  .control-cell.has-number-editor .knob-ring { width: 44px; height: 44px; }
+  .control-cell.has-number-editor .knob-face { width: 34px; height: 34px; }
+  .control-cell.has-number-editor .knob-indicator { height: 10px; transform-origin: 1px 13px; }
+  .control-grid, .control-grid.is-dense { grid-auto-rows: minmax(var(--control-row), max-content); }
+  .library-search { font-size: max(16px, var(--text-15)); }
+  .library-filter-row button, .library-filter-row select { min-width: 44px; }
+  .frame-body, .preset-list, .route-list, .fx-slot-list { overscroll-behavior: contain; }
+  @media (min-width: 1200px) {
+    .commands { grid-auto-columns: minmax(var(--target), max-content); }
+    .command-button { padding: 0 12px; gap: 8px; }
+    .command-button span { display: inline; }
+  }
+  @media (min-width: 901px) and (max-width: 1359px) and (min-height: 421px) {
+    .sound-source:not(.compare-oscillators) .visual-strip { height: 80px; }
+    .sound-source:not(.compare-oscillators) { --control-row: 80px; }
+    .sound-source:not(.compare-oscillators) .control-cell { grid-template-rows: minmax(calc(2.3 * var(--text-12)), max-content) 48px minmax(16px, max-content); }
+    .sound-source:not(.compare-oscillators) .control-cell.has-number-editor { grid-template-rows: minmax(calc(2.3 * var(--text-12)), max-content) 48px; }
+    .sound-source:not(.compare-oscillators) .knob-hit { height: 48px; }
+    .sound-source:not(.compare-oscillators) .knob-ring { width: 44px; height: 44px; }
+    .sound-source:not(.compare-oscillators) .knob-face { width: 34px; height: 34px; }
+    .sound-source:not(.compare-oscillators) .knob-indicator { height: 10px; transform-origin: 1px 13px; }
+  }
+  @media (min-width: 1360px) and (min-height: 421px) {
+    .sound-source.compare-oscillators .osc-pane .control-grid,
+    .sound-source.compare-oscillators .osc-pane .control-grid.is-dense { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 2px; }
+    .sound-source.compare-oscillators .osc-pane .control-cell.has-number-editor {
+      grid-template-columns: minmax(48px, 1fr) minmax(max-content, 1fr);
+      grid-template-rows: minmax(calc(2.3 * var(--text-12)), max-content) 48px; column-gap: 2px; padding-inline: 0;
+    }
+    .sound-source.compare-oscillators .osc-pane .control-cell.has-number-editor .knob-hit { width: 48px; }
+    .sound-source.compare-oscillators .osc-pane .control-value[data-number-param] { min-width: 44px; }
+    .sound-source.compare-oscillators .osc-pane .stepper {
+      grid-template-columns: var(--target) minmax(var(--target), 1fr) var(--target);
+    }
+  }
+  @media (max-width: 900px) and (min-height: 701px) {
+    .brand-name { font-size: 15px; }
+    .sound-source { --control-row: 88px; }
+    .control-grid, .control-grid.is-dense { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+    .control-cell.is-select { grid-column: span 2; }
+    .sound-source .control-cell { grid-template-rows: minmax(calc(2.3 * var(--text-12)), max-content) 48px minmax(20px, max-content); }
+    .sound-source .control-cell.has-number-editor { grid-template-rows: minmax(calc(2.3 * var(--text-12)), max-content) 48px; }
+    .sound-source .visual-strip { height: 80px; }
+  }
+  @media (min-width: 601px) and (max-width: 900px) and (min-height: 701px) {
+    .mod-grid > .frame:first-child .lfo-control-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  }
+  @media (max-width: 600px) and (min-height: 701px) {
+    .control-grid, .control-grid.is-dense { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (min-width: 901px) and (min-height: 421px), (min-height: 701px) {
+    .sound-source { position: relative; --frame-header: 48px; }
+    .sound-source > .frame-header { padding-right: 72px; }
+    .sound-source .noise-source-actions { position: absolute; top: 1px; right: 1px; z-index: 2; }
+    .sound-source .noise-source-actions button { height: 48px; min-width: 64px; border: 0; border-left: 1px solid var(--ink); }
+  }
+  @media (min-width: 1360px) and (min-height: 421px) and (max-height: 739px) {
+    .sound-source.compare-oscillators {
+      --target: 48px; --compare-control-row: 64px; --compare-label-track: 16px;
+      --compare-display-height: calc(56px + var(--target) + 8px + 1px); --compare-bank-heading: 14px;
+      --compare-bank-padding: 1px; --compare-bank-rows: 5;
+      height: 100%; max-height: 100%;
+    }
+    .sound-source.compare-oscillators .osc-pane .control-grid,
+    .sound-source.compare-oscillators .osc-pane .control-grid.is-dense {
+      grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2px;
+    }
+    .sound-source.compare-oscillators .osc-pane .control-cell { grid-template-rows: minmax(calc(2.3 * var(--text-12)), max-content) 48px minmax(0, max-content); }
+    .sound-source.compare-oscillators .osc-pane .control-cell.has-number-editor { grid-template-columns: minmax(48px, 1fr) minmax(max-content, 1fr); grid-template-rows: minmax(calc(2.3 * var(--text-12)), max-content) 48px; column-gap: 2px; }
+    .sound-source.compare-oscillators .osc-pane .control-cell.has-number-editor .knob-hit { width: 48px; height: 48px; }
+  }
+  @media (max-height: 420px), (max-width: 900px) and (max-height: 700px) {
+    .control-cell.has-number-editor { grid-template-columns: minmax(44px, 1fr) minmax(max-content, 1fr); grid-template-rows: minmax(calc(2.3 * var(--text-12)), max-content) 44px; padding-inline: 0; }
+    .control-cell.has-number-editor .knob-hit { width: 44px; height: 44px; }
+    .lfo-control-grid .control-cell.has-number-editor { grid-template-columns: 44px minmax(72px, 1fr); }
+    .control-grid, .control-grid.is-dense { column-gap: 2px; padding-inline: 2px; }
+    .control-cell.is-stepper { padding-inline: 0; }
+    .sound-source { --compact-control-row: 64px; }
+    .sound-source .control-grid { grid-auto-rows: minmax(64px, max-content); gap: 2px; padding-block: 2px; }
+    .sound-source .control-cell { grid-template-rows: minmax(calc(2.3 * var(--text-12)), max-content) 44px minmax(0, max-content); }
+    .sound-source .control-cell.has-number-editor { grid-template-rows: minmax(calc(2.3 * var(--text-12)), max-content) 44px; }
+    body[data-container="standalone"]:not([data-commerce="visible"]):not([data-preview="true"]) .shell { --status: var(--status-message-height); }
+  }
+  @media (min-width: 480px) and (max-width: 600px) and (max-height: 420px) {
+    :root { --chrome-height: 44px; }
+    .topbar { grid-template-columns: 44px minmax(0, 1fr) max-content; grid-template-rows: 44px; }
+    .brand, .preset-chrome, .commands { grid-column: auto; grid-row: 1; }
+    .commands { grid-auto-columns: 44px; }
+  }
+
+  /* The optional selector must not shift the plot into an intrinsic auto row.
+     Keep the LFO drawing entry visible in the compact instrument as well. */
+  .mod-grid > .frame:first-child:not(.has-lfo-comparison) .frame-body {
+    grid-template-rows: auto 176px 24px minmax(min-content, 1fr);
+  }
+  .mod-grid > .frame:first-child:not(.has-lfo-comparison) .frame-body > .curve-toolbar {
+    display: grid; grid-row: 2; height: 176px; max-height: 176px; min-height: 0;
+  }
+  .mod-grid > .frame:first-child:not(.has-lfo-comparison) .lfo-bank > .section-label { grid-row: 3; }
+  .mod-grid > .frame:first-child:not(.has-lfo-comparison) .lfo-control-grid { grid-row: 4; }
+  .mod-grid > .frame.has-lfo-comparison .lfo-compare-unit { grid-template-rows: 176px 24px max-content; }
+  .mod-grid > .frame.has-lfo-comparison .curve-toolbar { height: 176px; min-height: 0; }
+  .mod-grid > .frame.has-lfo-comparison .lfo-control-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .mod-grid > .frame.has-lfo-comparison .control-cell.has-number-editor { grid-template-columns: 48px minmax(72px, 1fr); }
+  .control-label { white-space: normal; overflow-wrap: anywhere; text-overflow: clip; line-height: 1.15; }
+  .sound-shaping .control-cell:not(.has-number-editor), .sound-dynamics .control-cell:not(.has-number-editor) {
+    grid-template-rows: minmax(calc(2.3 * var(--text-12)),max-content) minmax(var(--target),max-content) minmax(var(--text-12),max-content);
+  }
+  /* Curve controls keep their label, knob and value in the same horizontal row. */
+  .envelope-curve-bank .control-cell.has-number-editor { grid-template-columns: minmax(44px,64px) minmax(44px,1fr) minmax(max-content,1fr); grid-template-rows: minmax(44px,max-content); }
+  .envelope-curve-bank .control-cell.has-number-editor > .control-label { grid-column: 1; grid-row: 1; }
+  .envelope-curve-bank .control-cell.has-number-editor > div:nth-child(2) { grid-column: 2; grid-row: 1; }
+  .envelope-curve-bank .control-cell.has-number-editor > .control-value { grid-column: 3; grid-row: 1; }

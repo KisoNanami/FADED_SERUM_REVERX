@@ -1,0 +1,33 @@
+    .import-result-overlay {
+      position: fixed; inset: 0; z-index: 120; display: grid; place-items: center; padding: 28px;
+      background: rgba(232, 229, 219, 0.88);
+      transition: opacity 140ms var(--ease-out), visibility 0s linear 140ms;
+    }
+    .import-result-overlay[hidden] { display: grid; visibility: hidden; opacity: 0; pointer-events: none; }
+    .import-result-overlay:not([hidden]) { visibility: visible; opacity: 1; transition-delay: 0s; }
+    .import-result-window {
+      width: min(700px, calc(100vw - 56px)); max-height: calc(100vh - 56px); overflow: hidden;
+      border: 1.5px solid var(--ink); background: var(--paper-lift);
+      box-shadow: 8px 8px 0 rgba(28, 27, 20, 0.20);
+    }
+    .import-result-titlebar {
+      min-height: 32px; display: grid; grid-template-columns: 12px 34px minmax(0, 1fr) 34px;
+      align-items: center; gap: 8px; padding: 0 8px; border-bottom: 1.5px solid var(--ink);
+      background: repeating-linear-gradient(0deg, transparent 0 2px, rgba(28,27,20,.16) 2px 3px), var(--paper-lift);
+    }
+    .import-result-titlebar::before { content: ""; width: 8px; height: 8px; background: var(--pine); }
+    .import-result-overlay[data-warning="true"] .import-result-titlebar::before { background: var(--rust); }
+    .import-result-titlebar strong { overflow: hidden; font: var(--fs-px)/1 "FAD Pixel", "FAD Mono", monospace; text-overflow: ellipsis; white-space: nowrap; }
+    .import-result-close { min-width: 34px; min-height: 30px; border: 0; background: transparent; color: var(--ink); cursor: pointer; font: var(--fs-mono-xl)/1 "FAD Mono", "FAD Pixel", monospace; }
+    .import-result-close:hover, .import-result-close:focus-visible { color: var(--paper-lift); background: var(--indigo); outline: none; }
+    .import-result-content { padding: 24px 28px 20px; }
+    .import-result-kicker { margin-bottom: 8px; color: var(--indigo); font: var(--fs-mono-m)/1.2 "FAD Mono", "FAD Pixel", monospace; letter-spacing: .08em; text-transform: uppercase; }
+    .import-result-content h1 { margin: 0 0 16px; font: var(--fs-px-lg)/1.2 "FAD Pixel", "FAD Mono", monospace; }
+    .import-result-message { overflow-wrap: anywhere; max-height: min(42vh, 330px); overflow: auto; margin: 0; white-space: pre-wrap; color: var(--ink); font: var(--fs-mono-l)/1.55 "FAD Mono", "FAD Pixel", monospace; }
+    .import-result-actions { display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap; padding-top: 22px; }
+    .import-result-actions button { min-width: 112px; min-height: 44px; border: 1.5px solid var(--indigo); background: var(--indigo); color: var(--paper-lift); cursor: pointer; font: var(--fs-px)/1 "FAD Pixel", "FAD Mono", monospace; box-shadow: 3px 3px 0 rgba(28,27,20,.18); }
+    .import-result-actions button { background: var(--paper-lift); color: var(--ink); border-color: var(--line-strong); }
+    .import-result-actions button:hover, .import-result-actions button:focus-visible { background: var(--ink); border-color: var(--ink); outline: 3px solid rgba(61,74,120,.28); outline-offset: 2px; }
+    @media (max-width: 620px) { .import-result-overlay { padding: 14px; } .import-result-window { width: calc(100vw - 28px); } .import-result-content { padding: 20px 18px 16px; } }
+    @media (prefers-reduced-motion: reduce) { .import-result-overlay { transition: none; } }
+  

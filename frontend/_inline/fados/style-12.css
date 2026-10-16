@@ -1,0 +1,14 @@
+    .compact-glyph, .compact-count { display:none; }
+    .has-large-font .compact-parameter .compact-label { display:none; }
+    .has-large-font .compact-parameter .compact-glyph { display:inline-flex;align-items:center;justify-content:center; }
+    .compact-parameter .px-icon { width:18px;height:18px; }
+    @media(max-width:900px), (max-height:680px) {
+      .compact-action .compact-label, .compact-parameter .compact-label, .nav-button .label, .osc-mode-full { display:none; }
+      .compact-action .compact-glyph, .compact-parameter .compact-glyph, .nav-button .compact-glyph, .osc-mode-short { display:inline-flex;align-items:center;justify-content:center; }
+      .compact-glyph .px-icon, .osc-mode-short .px-icon { width:18px;height:18px; }
+      .mod-source-strip > .compact-action { width:32px;padding:0;flex:none; }
+      .mod-source-strip > [data-mod-connections] { width:44px; }
+      [data-mod-connections] .compact-count { display:inline;margin-left:4px;font-size:var(--fs-mono-s); }
+      .nav-button { gap:8px; }
+    }
+  

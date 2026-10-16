@@ -1,0 +1,6 @@
+.instrument-effective-control { min-width:0; }
+.instrument-control-state { display:block;min-width:0;margin-top:3px;color:var(--ink-soft);font:var(--fs-mono-s)/1.3 "FAD Mono", "FAD Pixel",monospace;overflow-wrap:anywhere; }
+.instrument-control-state[hidden] { display:none; }
+@media (pointer:coarse) {
+  .instrument-effective-control .toggle-button,.instrument-effective-control .reset-button { min-width:44px;min-height:44px; }
+}

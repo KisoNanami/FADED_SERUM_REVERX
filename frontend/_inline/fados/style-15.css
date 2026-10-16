@@ -1,0 +1,19 @@
+  .mod-macro-editor { display:grid;grid-template-rows:max-content minmax(0,1fr);flex:1;min-width:0;min-height:0;gap:8px;padding:8px;align-items:stretch;justify-content:stretch; }
+  .mod-macro-bank { display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:4px; }
+  .mod-macro-bank button { min-width:0;min-height:26px;padding:2px 3px;font-size:var(--fs-px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap; }
+  .mod-macro-bank button[aria-pressed="true"] { background:var(--indigo);color:var(--paper-lift);border-color:var(--indigo); }
+  .mod-macro-body { display:grid;grid-template-columns:max(88px,calc(var(--fs-px) * 5.5)) minmax(0,1fr);gap:10px;min-width:0;min-height:0;overflow:auto;align-items:start; }
+  .mod-macro-control { width:auto;min-width:0;display:grid;align-content:start;gap:6px; }
+  .mod-macro-name { width:100%;min-width:0;min-height:26px;padding:3px 5px;font-size:var(--fs-px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap; }
+  .mod-macro-control .knob-control { --knob-size:40px;min-width:0;margin:0 auto; }
+  .mod-macro-targets { min-width:0;border-left:1px solid var(--line-soft);padding-left:10px; }
+  .mod-macro-targets-head { display:grid;grid-template-columns:minmax(0,1fr) max-content;gap:6px;min-height:26px;align-items:center;font-size:var(--fs-px);color:var(--ink-soft); }
+  .mod-macro-route { display:grid;grid-template-columns:minmax(0,1fr) max(48px,calc(var(--fs-mono-s) * 5.5));gap:6px;width:100%;min-width:0;min-height:30px;padding:3px 0;border:0;border-bottom:1px solid var(--line-soft);box-shadow:none;background:transparent;text-align:left;font-size:var(--fs-px); }
+  .mod-macro-route > span { min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap; }
+  .mod-macro-route > button { min-width:0;min-height:28px;padding:0;border:0;box-shadow:none;background:transparent;text-align:left; }
+  .mod-macro-route > .mod-macro-depth { font:var(--fs-mono-s) "FAD Mono", "FAD Pixel",monospace;text-align:right;color:var(--indigo); }
+  .mod-macro-route.is-bypassed { color:var(--ink-faint); }
+  .mod-macro-route.is-bypassed > .mod-macro-depth { color:var(--ink-faint); }
+  .mod-macro-empty { min-height:30px;padding:5px 0;color:var(--ink-faint);font-size:var(--fs-px); }
+  .mod-editor[data-mod-editor-source^="macro"] > .mod-editor-summary { display:none; }
+  @media(pointer:coarse) { .mod-macro-bank { grid-template-columns:repeat(4,minmax(0,1fr)); } .mod-macro-bank button,.mod-macro-name,.mod-macro-route { min-height:44px; } }

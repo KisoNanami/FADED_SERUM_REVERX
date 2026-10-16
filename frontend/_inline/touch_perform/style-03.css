@@ -1,0 +1,7 @@
+.control-cell.instrument-effective-cell { grid-template-rows:18px var(--target) minmax(18px,max-content); }
+.control-grid:has(> .instrument-effective-cell) { grid-auto-rows:minmax(var(--control-row),max-content); }
+.sound-source.compare-oscillators .osc-pane .control-cell.instrument-effective-cell { grid-template-rows:minmax(calc(2 * var(--compare-label-track)),max-content) minmax(var(--target),max-content) minmax(var(--compare-label-track),max-content); }
+.sound-source.compare-oscillators .osc-pane .control-grid:has(> .instrument-effective-cell) { grid-auto-rows:minmax(var(--compare-control-row),max-content); }
+.instrument-state-slot { width:100%;min-width:0;align-self:start; }
+.instrument-control-state { display:block;min-width:0;color:var(--ink-soft,var(--ink));font-size:calc(11px * var(--fad-font-scale,1));line-height:1.25;overflow-wrap:anywhere; }
+.instrument-control-state[hidden] { display:none; }

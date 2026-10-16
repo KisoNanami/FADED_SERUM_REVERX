@@ -1,0 +1,22 @@
+  .touch-glide-control { position:relative;min-width:0;min-height:132px;grid-column:span 2;grid-row:span 2;padding:4px 8px; }
+  .touch-glide-control > .control-cell { height:calc(100% - 44px); }
+  .glide-time { display:grid;grid-template-rows:minmax(calc(1.15 * var(--text-12)),max-content) minmax(44px,1fr) 44px;gap:4px;min-width:0;height:100%; }
+  .glide-time .control-label { text-align:center; }
+  .glide-time input[type="range"] { width:100%;min-width:0;min-height:44px;accent-color:var(--indigo); }
+  .glide-value { min-width:44px;min-height:44px;cursor:text;font:var(--text-12) var(--mono); }
+  .glide-time .glide-value { width:50%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap; }
+  .touch-glide-control > .glide-advanced { position:absolute;bottom:4px;right:8px;width:calc(50% - 8px); }
+  .glide-advanced > summary { min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);background:var(--paper);cursor:pointer;overflow:hidden;text-overflow:ellipsis;font:var(--text-12) "Fusion Pixel ZH",monospace;color:var(--ink); }
+  .glide-advanced.is-unavailable > summary { color:var(--ink-faint); }
+  .glide-advanced-body { position:fixed;z-index:82;width:300px;max-width:calc(100vw - 24px);display:grid;gap:8px;padding:12px;overflow:auto;background:var(--paper-high);color:var(--ink);border:1px solid var(--ink);box-shadow:2px 2px 0 var(--ink); }
+  .glide-advanced:not([open]) > .glide-advanced-body { display:none; }
+  .glide-switch,.glide-label { min-height:44px;min-width:44px;font:var(--text-12) "Fusion Pixel ZH",monospace; }
+  .glide-switch { display:flex;justify-content:space-between;gap:8px;align-items:center; }
+  .glide-switch[aria-checked="true"] { background:var(--indigo);color:var(--accent-ink);border-color:var(--indigo); }
+  .glide-curve { display:grid;grid-template-columns:minmax(0,1fr) minmax(72px,auto);gap:4px 8px;align-items:center;min-width:0; }
+  .glide-curve .glide-label { grid-column:1/-1;text-align:left; }
+  .glide-curve input { width:100%;min-width:0;min-height:44px;accent-color:var(--indigo); }
+  .glide-model-limit,.glide-status { margin:0;color:var(--ink-soft);font:var(--text-12)/1.4 var(--mono);overflow-wrap:anywhere; }
+  .glide-status { color:var(--rust); }
+  .glide-model-limit[hidden],.glide-status[hidden] { display:none; }
+  .touch-glide-control :disabled { opacity:.4;cursor:not-allowed; }

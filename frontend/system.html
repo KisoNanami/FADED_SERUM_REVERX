@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="fad-ui-design-constitution" content="1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'">
+<title data-i18n="common.fad_synth_settings_and_account"></title>
+<style>
+@font-face{font-family:"FAD Pixel";src:url('/fonts/system-pixel-latin.woff2') format('woff2');font-display:swap}
+@font-face{font-family:"FAD Pixel";src:url('/fonts/system-pixel-zh.woff2') format('woff2');font-display:swap}
+@font-face{font-family:"FAD Mono";src:url('/fonts/system-mono.ttf') format('truetype');font-display:swap}
+:root{color-scheme:light;--paper:#e8e5db;--chrome:#f6f4ec;--paper-deep:#d7d3c5;--ink:#1c1b14;--ink-soft:#4c4a40;--ink-faint:#777467;--line:#a5a18f;--indigo:#3d4a78;--pine:#50604e;--brass:#63558d;--rust:#ac4b2c;--accent-ink:#f6f4ec;--screen:#1c1b14;--screen-ink:#e4e1d4}
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:var(--paper);color:var(--ink);font:calc(13px * var(--fad-font-scale,1.15))/1.5 "FAD Pixel",sans-serif;-webkit-user-select:none;user-select:none;overscroll-behavior:none}
+button,input,select{font:inherit;color:inherit}button,select,input{border-radius:0}button{min-height:34px;padding:5px 13px;border:1px solid var(--line);background:var(--chrome);cursor:pointer;white-space:nowrap}button:hover:not(:disabled){border-color:var(--ink);background:var(--paper-deep)}button:active:not(:disabled){transform:translateY(1px)}button:disabled{opacity:.42;cursor:default}button.primary{background:var(--indigo);border-color:var(--indigo);color:var(--accent-ink)}button.quiet{background:transparent;border-color:transparent}button.danger{color:var(--rust)}button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--indigo);outline-offset:2px}input[type=number]{height:36px;width:100px;padding:5px 10px;border:1px solid var(--line);background:var(--chrome)}select{height:36px;min-width:180px;padding:5px 30px 5px 10px;border:1px solid var(--line);background:var(--chrome)}input[type=checkbox]{accent-color:var(--indigo);width:17px;height:17px;margin:0;flex:none}input,pre,.selectable{user-select:text;-webkit-user-select:text}a{color:inherit}h1,h2,h3,p{margin:0}h1{font-size:calc(28px * var(--fad-font-scale, 1.15));font-weight:500;line-height:1.2}h2{font-size:calc(16px * var(--fad-font-scale, 1.15));font-weight:500}h3{font-size:calc(13px * var(--fad-font-scale, 1.15))}small,.muted{color:var(--ink-soft)}.mono{font-family:"FAD Mono",monospace;font-variant-numeric:tabular-nums}.kicker{font:calc(10px * var(--fad-font-scale,1.15))/1.4 "FAD Mono",monospace;letter-spacing:.08em;color:var(--ink-soft)}[hidden]{display:none!important}
+.app{height:100%;display:grid;grid-template-rows:minmax(34px,max-content) minmax(0,1fr) auto 40px;isolation:isolate}
+.global{grid-row:1;display:flex;align-items:center;gap:0;border-bottom:1px solid var(--ink);background:var(--chrome);min-width:0}.brand-mark{display:flex;align-items:center;gap:8px;padding:0 12px;height:100%;border-right:1px solid var(--line);font-size:calc(12px * var(--fad-font-scale, 1.15))}.brand-mark{margin:0;background:transparent;border:0;border-right:1px solid var(--line)}.brand-mark img{filter:brightness(0);width:18px;height:18px;object-fit:contain}.global-title{padding:0 12px;font-size:calc(11px * var(--fad-font-scale, 1.15));white-space:nowrap}.global-version{margin-left:auto;color:var(--ink-soft);font:calc(10px * var(--fad-font-scale,1.15)) "FAD Mono",monospace}.global button:not(.brand-mark){height:33px;min-height:33px;border-top:0;border-bottom:0;border-right:0;margin-left:12px;padding:0 14px}
+.body{grid-row:2;display:grid;grid-template-columns:184px minmax(0,1fr);min-height:0;overflow:hidden}.sidebar{min-height:0;overflow:auto;display:flex;flex-direction:column;border-right:1px solid var(--line);background:var(--paper-deep);padding:20px 10px 12px;gap:20px}.identity{padding:0 10px;min-width:0}.identity strong{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:calc(14px * var(--fad-font-scale, 1.15));font-weight:500}.identity small{display:block;margin-top:4px;font-size:calc(11px * var(--fad-font-scale, 1.15))}.identity .lamp{display:inline-block;width:6px;height:6px;margin-right:5px;background:var(--ink-faint)}.identity .lamp.active{background:var(--pine)}.mobile-nav{display:none}.nav{display:flex;flex-direction:column;gap:4px}.nav button{text-align:left;background:transparent;border-color:transparent;display:flex;align-items:baseline;gap:10px;min-height:40px;font-size:calc(12px * var(--fad-font-scale, 1.15));padding:7px 10px}.nav button > span:first-child{color:var(--ink-soft);font:calc(10px * var(--fad-font-scale,1.15)) "FAD Mono",monospace;width:18px}.nav button[aria-selected=true]{background:var(--ink);color:var(--chrome)}.nav button[aria-selected=true] > span:first-child{color:inherit;opacity:.65}.side-meta{margin-top:auto;padding:12px 10px 0;border-top:1px solid var(--line);font-size:calc(10px * var(--fad-font-scale, 1.15));line-height:1.8;color:var(--ink-soft)}
+.main{overflow:auto;min-width:0;padding:26px 30px 30px;scrollbar-color:var(--ink-faint) var(--paper);scrollbar-width:thin}.page{max-width:900px;margin:0 auto;outline:none}.heading{display:flex;align-items:center;gap:16px;justify-content:space-between;margin-bottom:24px}.heading .kicker{margin-bottom:6px}.heading p{margin-top:8px;color:var(--ink-soft);font-size:calc(12px * var(--fad-font-scale, 1.15));max-width:560px}.actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.actions.end{justify-content:flex-end}.sheet{border:1px solid var(--line);background:var(--chrome)}.sheet+.sheet,.sheet+.section,.section+.sheet,.section+.section{margin-top:20px}.sheet-head{padding:12px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--paper)}.sheet-head .kicker{font-size:calc(10px * var(--fad-font-scale, 1.15))}.row{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:12px 16px}.row+.row{border-top:1px solid var(--line)}.row-copy{min-width:0;max-width:430px}.row-copy strong{font-size:calc(13px * var(--fad-font-scale, 1.15));font-weight:500;display:block}.row-copy small{display:block;margin-top:4px;line-height:1.5;font-size:calc(11px * var(--fad-font-scale, 1.15))}.row-control{flex:none;display:flex;align-items:center;gap:10px;min-height:36px}.segmented{display:flex;border:1px solid var(--line);padding:2px;gap:2px;background:var(--paper)}.segmented button{min-height:30px;min-width:58px;background:transparent;border-color:transparent;font-size:calc(11px * var(--fad-font-scale, 1.15));padding:4px 10px}.segmented button[aria-pressed=true]{background:var(--indigo);color:var(--accent-ink)}.toggle{display:flex;align-items:center;gap:9px;cursor:pointer;min-height:36px;font-size:calc(12px * var(--fad-font-scale, 1.15))}.toggle input{appearance:none;-webkit-appearance:none;width:36px;height:20px;position:relative;background:var(--paper-deep);border:1px solid var(--line)}.toggle input::after{content:"";position:absolute;top:3px;left:3px;width:12px;height:12px;background:var(--ink-soft)}.toggle input:checked{background:var(--pine);border-color:var(--pine)}.toggle input:checked::after{left:19px;background:var(--chrome)}.toggle input:disabled{opacity:.4}.note{font-size:calc(11px * var(--fad-font-scale, 1.15));color:var(--ink-soft);line-height:1.6;margin-top:12px}.notice{min-height:64px;display:flex;align-items:center;padding:12px 16px;border-left:3px solid var(--brass);background:var(--paper-deep);font-size:calc(12px * var(--fad-font-scale, 1.15));line-height:1.6;margin-bottom:20px}.notice.error{border-color:var(--rust)}.badge{font:calc(10px * var(--fad-font-scale,1.15)) "FAD Mono",monospace;padding:4px 7px;display:inline-block;border:1px solid var(--line);white-space:nowrap}.badge.active{color:var(--pine);border-color:var(--pine)}
+.feedback-actions{justify-content:flex-start;flex-wrap:wrap;gap:8px}.feedback-actions button{max-width:100%;white-space:normal;overflow-wrap:anywhere}
+.profile{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;padding:22px 20px}.profile-name{font-size:calc(24px * var(--fad-font-scale, 1.15));line-height:1.2;margin-top:7px;overflow-wrap:anywhere}.profile-email{font:calc(12px * var(--fad-font-scale,1.15)) "FAD Mono",monospace;margin-top:8px;color:var(--ink-soft);overflow-wrap:anywhere}.facts{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}.fact{padding:14px 20px;min-width:0}.fact:nth-child(even){border-left:1px solid var(--line)}.fact:nth-child(n+3){border-top:1px solid var(--line)}.fact dt{font-size:calc(11px * var(--fad-font-scale, 1.15));color:var(--ink-soft);margin-bottom:4px}.fact dd{margin:0;font-size:calc(14px * var(--fad-font-scale, 1.15));overflow-wrap:anywhere}.facts dl{margin:0}.plan-row{padding:20px;display:flex;justify-content:space-between;gap:20px;align-items:flex-start;border-top:1px solid var(--line)}.plan-row strong{font-size:calc(20px * var(--fad-font-scale, 1.15));display:block;font-weight:500}.plan-row p{font-size:calc(11px * var(--fad-font-scale, 1.15));color:var(--ink-soft);margin-top:5px}.quota{padding:16px 20px;border-top:1px solid var(--line)}.quota-line{display:flex;justify-content:space-between;align-items:center;font-size:calc(12px * var(--fad-font-scale, 1.15))}.meter{height:5px;background:var(--paper-deep);margin-top:10px;overflow:hidden}.meter span{height:100%;display:block;background:var(--indigo);width:0}
+.update-display{padding:22px 20px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:20px}.update-title{overflow-wrap:anywhere;font-size:calc(21px * var(--fad-font-scale, 1.15));line-height:1.35}.update-meta{margin-top:7px;font-size:calc(11px * var(--fad-font-scale, 1.15));color:var(--ink-soft)}.update-symbol{width:52px;height:52px;display:grid;place-items:center;border:1px solid var(--line);font:calc(26px * var(--fad-font-scale,1.15)) "FAD Mono",monospace;color:var(--indigo)}.update-actions{padding:0 20px 20px;display:flex;gap:8px;flex-wrap:wrap}.release-notes{white-space:pre-wrap;user-select:text;font:calc(12px * var(--fad-font-scale,1.15))/1.7 "FAD Pixel",sans-serif;max-height:220px;overflow:auto;margin:0;padding:16px 20px;border-top:1px solid var(--line)}.progress-area{padding:16px 20px;border-top:1px solid var(--line)}progress{width:100%;height:8px;accent-color:var(--indigo)}.install-area{padding:16px 20px;border-top:1px solid var(--line)}.install-area .toggle{margin-bottom:12px}.install-area label{display:flex;gap:10px;align-items:flex-start;font-size:calc(12px * var(--fad-font-scale, 1.15));margin-bottom:12px}.install-area input{margin-top:2px}.install-area p{margin-bottom:12px}
+.recovery-toolbar{padding:12px 16px;display:flex;justify-content:space-between;gap:12px;align-items:center;border-bottom:1px solid var(--line)}.recovery-list{list-style:none;padding:0;margin:0;max-height:220px;overflow:auto}.recovery-list li+li{border-top:1px solid var(--line)}.checkpoint{display:flex;width:100%;border:0;text-align:left;justify-content:space-between;align-items:center;padding:12px 16px;min-height:50px;gap:12px}.checkpoint[aria-pressed=true]{box-shadow:inset 3px 0 0 var(--indigo);background:var(--paper-deep)}.checkpoint small{font-size:calc(10px * var(--fad-font-scale, 1.15));display:block}.empty{padding:24px 16px;color:var(--ink-soft);font-size:calc(12px * var(--fad-font-scale, 1.15))}.asset-row{display:grid;grid-template-columns:72px minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 16px;border-top:1px solid var(--line)}.asset-row small{display:block;font-size:calc(11px * var(--fad-font-scale, 1.15))}.about-identity{display:grid;grid-template-columns:152px minmax(0,1fr);border:1px solid var(--line);background:var(--chrome);margin-bottom:20px}.about-art{min-height:168px;display:grid;place-items:center;border-right:1px solid var(--line);background:var(--paper-deep);position:relative}.about-art canvas{width:116px;height:116px}.about-copy{padding:24px}.about-copy h2{font-size:calc(30px * var(--fad-font-scale, 1.15));margin:6px 0}.about-copy p{font-size:calc(12px * var(--fad-font-scale, 1.15));color:var(--ink-soft);max-width:380px}.diagnostic{margin:0;max-height:220px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;background:var(--screen);color:var(--screen-ink);padding:16px;font:calc(11px * var(--fad-font-scale,1.15))/1.7 "FAD Mono",monospace}details summary{cursor:pointer;min-height:42px;padding:10px 16px;font-size:calc(12px * var(--fad-font-scale, 1.15))}details[open] summary{border-bottom:1px solid var(--line)}.support-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.recovery-bar{grid-row:3;padding:10px 20px;border-top:1px solid var(--rust);background:var(--chrome);display:flex;align-items:center;justify-content:space-between;gap:16px}.recovery-bar strong{font-weight:500;font-size:calc(12px * var(--fad-font-scale, 1.15));color:var(--rust)}.recovery-bar small{display:block;font-size:calc(11px * var(--fad-font-scale, 1.15))}.status{grid-row:4;border-top:1px solid var(--line);background:var(--chrome);display:flex;align-items:center;gap:10px;padding:0 14px;min-width:0;font-size:calc(11px * var(--fad-font-scale, 1.15))}.status-lamp{width:6px;height:6px;background:var(--pine);flex:none}.status span#status-message{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.status button{margin-left:auto;min-height:28px;padding:2px 8px;font-size:calc(10px * var(--fad-font-scale, 1.15))}.status .connection{flex:none;font:calc(10px * var(--fad-font-scale,1.15)) "FAD Mono",monospace;color:var(--ink-soft)}
+@media(max-width:760px){.body{grid-template-columns:150px minmax(0,1fr)}.main{padding:20px 18px}.sidebar{padding:16px 6px}.nav button{gap:6px;padding:7px 8px}.row{gap:12px;flex-wrap:wrap}.row-copy{max-width:none}.row-control{margin-left:auto}.heading{align-items:flex-start;gap:12px;margin-bottom:18px}h1{font-size:calc(25px * var(--fad-font-scale, 1.15))}.heading>.actions{margin-top:4px}.profile{padding:16px}.fact{padding:12px 16px}.about-identity{grid-template-columns:116px minmax(0,1fr)}.about-art canvas{width:94px;height:94px}.about-copy{padding:18px}.about-copy h2{font-size:calc(25px * var(--fad-font-scale, 1.15))}}
+@media(max-width:540px){.app{grid-template-rows:minmax(44px,max-content) minmax(0,1fr) auto 48px}.body{display:flex;flex-direction:column}.sidebar{display:block;flex:0 0 auto;padding:0;border-right:0;border-bottom:1px solid var(--line)}.identity,.side-meta{display:none}.nav{display:none}.mobile-nav{display:block;width:100%;min-width:0;height:48px;border:0;border-radius:0;background:var(--paper-deep);padding:8px 16px}.nav button{flex:0 0 auto;min-height:44px;padding:8px 12px;font-size:calc(12px * var(--fad-font-scale, 1.15))}.nav button > span:first-child{display:none}.main{flex:1;min-height:0;padding:18px 14px}.notice{min-height:84px}.global-title{font-size:calc(10px * var(--fad-font-scale, 1.15));padding:0 8px}.global-version{display:none}.global button{margin-left:auto;min-width:44px;min-height:44px;height:44px}.heading{flex-wrap:wrap}.heading h1{font-size:calc(24px * var(--fad-font-scale, 1.15))}.row{padding:12px;align-items:flex-start}.row-control{width:100%;justify-content:flex-start;margin:0}.segmented{width:100%}.segmented button{flex:1;min-height:44px}select{width:100%;min-height:44px}.toggle{min-height:44px}button{min-height:44px}.row-copy small{font-size:calc(12px * var(--fad-font-scale, 1.15))}.facts{grid-template-columns:1fr}.fact:nth-child(even){border-left:0}.fact+.fact{border-top:1px solid var(--line)}.profile{grid-template-columns:1fr;gap:12px}.plan-row{flex-wrap:wrap;padding:16px}.update-display{padding:18px 16px}.update-actions{padding:0 16px 16px}.update-title{font-size:calc(19px * var(--fad-font-scale, 1.15))}.asset-row{grid-template-columns:54px minmax(0,1fr)}.asset-row button{grid-column:2;justify-self:start}.recovery-toolbar{flex-wrap:wrap}.recovery-bar{padding:10px 12px;flex-wrap:wrap;gap:8px}.recovery-bar .actions{width:100%}.recovery-bar button{flex:1}.status{font-size:calc(10px * var(--fad-font-scale, 1.15));padding:0 10px}.about-identity{grid-template-columns:92px minmax(0,1fr)}.about-art{min-height:140px}.about-art canvas{width:76px;height:100px}.about-copy{padding:16px 12px}.about-copy h2{font-size:calc(22px * var(--fad-font-scale, 1.15))}.checkpoint{min-height:56px}.status .connection{display:none}.status button{min-height:44px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+.panic-report-prompt{position:fixed;right:14px;bottom:48px;z-index:20;width:min(330px,calc(100vw - 28px));padding:14px;border:1.5px solid var(--ink);background:var(--chrome);box-shadow:4px 4px 0 rgba(28,27,20,.2)}.panic-report-prompt strong{display:block;font-size:calc(13px * var(--fad-font-scale, 1.15));font-weight:500}.panic-report-prompt p{margin:8px 0 14px;font-size:calc(11px * var(--fad-font-scale, 1.15));color:var(--ink-soft)}.panic-report-prompt .actions{justify-content:flex-end}.panic-report-prompt button{min-height:44px}
+
+/* Locale-independent chrome and equal option tracks. */
+.global{display:grid;grid-template-columns:144px minmax(0,1fr) 64px calc(6.5em + 16px) calc(9em + 16px);align-items:stretch}
+.global>*{min-width:0;margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.global .brand-mark{min-height:0;max-width:none;justify-content:flex-start}
+.global .brand-mark img{flex:none}
+.global .brand-mark span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.global-title,.global-version{align-self:center;margin:0}
+.global button:not(.brand-mark){min-width:0;height:100%;min-height:0;margin:0;padding:0 8px;white-space:normal}
+.nav button{min-width:0;width:100%}
+.nav button > span:first-child{flex:none}
+.nav button > span:last-child{flex:1;min-width:0;white-space:normal;overflow-wrap:break-word}
+.segmented{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);width:280px;max-width:100%;min-width:0;align-items:stretch}
+.segmented button{min-width:0;white-space:normal;padding:4px 6px}
+@media(max-width:540px){.global{grid-template-columns:112px minmax(0,1fr) 80px 100px}.global-version{display:none}.global .brand-mark{padding:0 8px;gap:6px}.global button:not(.brand-mark){min-height:44px}.segmented{width:100%}}
+.side-meta{width:100%;text-align:left;white-space:normal;border-right:0;border-left:0;border-bottom:0;background:transparent}.side-meta:hover:not(:disabled){background:transparent}.debug-facts .fact dd{white-space:normal;overflow-wrap:anywhere}.debug-status{min-width:0;overflow-wrap:anywhere}.debug-status.error{color:var(--rust)}
+#account-renewal-notice button.primary,#point-balance[data-points-empty="true"] #point-recharge{background:#e02020;border-color:#e02020;color:#fff}
+@media(hover:hover){#account-renewal-notice button.primary:hover:not(:disabled),#point-balance[data-points-empty="true"] #point-recharge:hover:not(:disabled){background:#bf171d;border-color:#bf171d;color:#fff}}
+</style>
+</head>
+<body>
+<div class="app" role="dialog" aria-modal="true" aria-labelledby="workspace-title">
+<header class="global"><button class="brand-mark" data-action="close" aria-label="" data-i18n-aria-label="common.back_to_home" title="" data-i18n-title="common.back_to_home"><img src="/images/fad-logo-ink.png" alt=""><span data-i18n="common.fad_synth"></span></button><span class="global-title" id="workspace-title"><span data-i18n="common.settings_and_account"></span></span><span class="global-version mono" data-bind="version">—</span><button data-action="debug-report"><span data-i18n="common.report_bug"></span></button><button data-action="close" aria-label="" data-i18n-aria-label="common.back_to_synthesizer"><span data-i18n="common.close_settings_2"></span></button></header>
+<div class="body">
+<aside class="sidebar"><div class="identity"><strong id="identity-name" data-localization="literal" data-i18n="common.fad_synth"></strong><small><span class="lamp" id="account-lamp"></span><span id="identity-status"><span data-i18n="common.read_account_status"></span></span></small></div>
+<select class="mobile-nav" id="mobile-page" aria-label="" data-i18n-aria-label="common.settings_page"><option value="account"><span data-i18n="common.account_and_subscription"></span></option><option value="preferences" selected><span data-i18n="common.preferences"></span></option><option value="audio" data-i18n="common.audio_and_midi"></option><option value="updates"><span data-i18n="common.updates"></span></option><option value="recovery"><span data-i18n="common.sound_and_recovery"></span></option><option value="about"><span data-i18n="common.about_and_support"></span></option><option value="debug" id="debug-option" hidden disabled><span data-i18n="common.07_debug_settings"></span></option></select>
+<nav class="nav" aria-label="" data-i18n-aria-label="common.settings_page" role="tablist" aria-orientation="vertical">
+<button role="tab" data-page="account" aria-selected="false"><span>01</span><span><span data-i18n="common.account_and_subscription"></span></span></button>
+<button role="tab" data-page="preferences" aria-selected="true"><span>02</span><span><span data-i18n="common.preferences"></span></span></button>
+<button role="tab" data-page="audio" aria-selected="false"><span>03</span><span data-i18n="common.audio_and_midi"></span></button>
+<button role="tab" data-page="updates" aria-selected="false"><span>04</span><span><span data-i18n="common.updates"></span></span></button>
+<button role="tab" data-page="recovery" aria-selected="false"><span>05</span><span><span data-i18n="common.sound_and_recovery"></span></span></button>
+<button role="tab" data-page="about" aria-selected="false"><span>06</span><span><span data-i18n="common.about_and_support"></span></span></button>
+<button role="tab" data-page="debug" id="debug-tab" aria-selected="false" hidden><span>07</span><span><span data-i18n="common.debug_settings"></span></span></button>
+</nav><button class="side-meta" id="debug-unlock" data-action="debug-tap" aria-label="" data-i18n-aria-label="common.version_information">FAD Synth <span data-bind="version">—</span><br><span id="channel-label"><span data-i18n="common.device_workspace"></span></span></button></aside>
+<main class="main" id="main">
+<section class="page" id="page-account" role="tabpanel" tabindex="-1" hidden>
+<div class="heading"><div><div class="kicker" data-i18n="common.your_fad"></div><h1><span data-i18n="common.account_and_subscription"></span></h1></div><button data-action="refresh-account" id="refresh-account"><span data-i18n="common.refresh_status"></span></button></div>
+<div class="notice" id="account-notice"><span data-i18n="common.reading_device_access_status"></span></div>
+<div class="notice" id="account-renewal-notice" role="status" aria-live="polite" hidden><strong id="account-renewal-title"></strong><p id="account-renewal-copy"></p><div class="actions"><button class="primary" data-action="renew-plan" id="renew-plan"></button></div></div>
+<div class="sheet" id="mas-storefront" hidden>
+<div class="sheet-head"><h2 data-i18n="common.get_fad_synth"></h2><span class="kicker" data-i18n="common.app_store_3"></span></div>
+<div class="row"><div class="row-copy"><strong><span id="mas-product-heading" data-i18n="common.choose_your_edition"></span></strong><small id="mas-product-scope" data-i18n="common.the_app_store_provides_product_details_and_pricing_check_the"></small></div></div>
+<div id="mas-products"></div>
+<div class="row"><p class="note" id="mas-message" role="status" aria-live="polite"></p><button data-action="mas-reload" id="mas-reload"><span data-i18n="common.reload_product"></span></button></div>
+<div class="row"><div class="row-copy"><small data-i18n="common.complete_the_purchase_in_apple_s_confirmation_window_restore_does"></small></div><button data-action="restore-purchases" id="mas-restore"><span data-i18n="common.restore"></span></button></div>
+<div class="support-links"><button class="quiet" data-action="mas-manage" id="mas-manage"><span data-i18n="common.manage_subscription"></span></button><button class="quiet" data-action="privacy-policy"><span data-i18n="common.privacy_policy_2"></span></button><button class="quiet" data-action="terms"><span data-i18n="common.terms_of_use"></span></button></div>
+</div>
+<div class="sheet"><div class="profile"><div><div class="kicker" data-i18n="common.account_2"></div><div class="profile-name selectable" id="account-name" data-localization="literal">—</div><div class="profile-email selectable" id="account-email" data-localization="literal">—</div><p class="note" id="account-profile-note" hidden></p></div><div><span class="badge" id="account-badge"><span data-i18n="common.unverified"></span></span></div></div>
+<div class="facts"><dl class="fact"><dt><span data-i18n="common.this_device"></span></dt><dd class="mono selectable" id="account-device" data-localization="literal">—</dd></dl><dl class="fact"><dt><span data-i18n="common.distribution_channel"></span></dt><dd id="account-channel">—</dd></dl></div>
+<div class="plan-row"><div><div class="kicker" data-i18n="common.license_plan"></div><strong id="account-plan" data-localization="literal">—</strong><p id="account-expiry">—</p></div><div class="actions"><button class="primary" data-action="subscription" id="manage-plan"><span data-i18n="common.manage_access"></span></button><button data-action="restore-purchases" id="restore-purchases" hidden><span data-i18n="common.restore"></span></button><button class="primary" data-action="purchase" id="purchase" hidden><span data-i18n="common.unlock_full_version"></span></button></div></div>
+<div class="quota" id="quota" hidden><div class="quota-line"><span data-i18n="common.alt_available_quota"></span><span class="mono" id="quota-value">—</span></div><div class="meter"><span id="quota-meter"></span></div></div></div>
+<div class="sheet" id="point-balance" hidden><div class="sheet-head"><h2 data-i18n="common.fad_ai_points"></h2><button class="primary" data-action="recharge" id="point-recharge" data-i18n="common.ai_recharge"></button></div><div class="facts"><dl class="fact"><dt data-i18n="common.weekly_points_available"></dt><dd class="mono" id="weekly-points">—</dd></dl><dl class="fact"><dt data-i18n="common.prepaid_points_available"></dt><dd class="mono" id="prepaid-points">—</dd></dl><dl class="fact"><dt data-i18n="common.prepaid_points_spent"></dt><dd class="mono" id="prepaid-spent">—</dd></dl><dl class="fact"><dt data-i18n="common.prepaid_points_held"></dt><dd class="mono" id="prepaid-held">—</dd></dl></div><p class="note" id="point-balance-status" data-i18n="common.point_balance_unavailable"></p><p class="notice" id="point-empty-notice" role="status" data-i18n="common.access_points_empty_copy" hidden></p></div>
+<div class="support-links" id="direct-account-actions"><button data-action="account-manage"><span data-i18n="common.open_account_panel"></span></button><button data-action="account-connect"><span data-i18n="common.connect_account_2"></span></button><button data-action="cdk" data-i18n="common.redeem_cdk"></button></div>
+<p class="note" id="account-store-note" hidden data-i18n="common.the_app_store_standalone_app_manages_purchases_and_restores_auv3"></p>
+</section>
+<section class="page" id="page-preferences" role="tabpanel" tabindex="-1">
+<div class="heading"><div><div class="kicker" data-i18n="common.make_it_yours"></div><h1><span data-i18n="common.preferences"></span></h1><p><span data-i18n="common.adapt_the_workspace_to_your_screen_and_working_preferences"></span></p></div></div>
+<div class="sheet" id="ai-consent-sheet" hidden>
+<div class="sheet-head"><h2 data-i18n="common.ai_cloud_processing"></h2><span class="kicker" data-i18n="common.alt_fad_lab"></span></div>
+<div class="row"><div class="row-copy"><strong><span data-i18n="common.you_decide_before_sending"></span></strong><small data-i18n="common.when_enabled_the_text_you_send_to_alt_fad_lab"></small></div></div>
+<div class="row"><div class="row-copy"><strong><span data-i18n="common.local_playing_does_not_require_this_permission"></span></strong><small data-i18n="common.declining_preserves_authorized_local_synthesis_presets_and_auv3_this_choice"></small></div></div>
+<div class="row"><div class="row-copy"><small data-i18n="common.withdraw_here_at_any_time_to_block_future_ai_requests"></small><span id="ai-consent-state" role="status" aria-live="polite"></span></div></div>
+<div class="row"><button class="quiet" data-action="privacy-policy"><span data-i18n="common.privacy_policy_2"></span></button><div class="actions"><button data-action="ai-decline" id="ai-decline"><span data-i18n="common.not_now_2"></span></button><button class="primary" data-action="ai-allow" id="ai-allow"><span data-i18n="common.agree_and_enable"></span></button></div></div>
+</div>
+
+<div class="sheet"><div class="sheet-head"><h2><span data-i18n="common.appearance_and_interaction"></span></h2><span class="kicker" data-i18n="common.this_device_2"></span></div>
+<div class="row"><div class="row-copy"><strong><span data-i18n="common.appearance"></span></strong><small><span data-i18n="common.follow_the_system_or_use_a_fixed_appearance"></span></small></div><div class="row-control segmented" aria-label="" data-i18n-aria-label="common.appearance"><button data-pref="appearance" data-value="system" aria-pressed="true"><span data-i18n="common.follow_system"></span></button><button data-pref="appearance" data-value="light" aria-pressed="false"><span data-i18n="common.light"></span></button><button data-pref="appearance" data-value="dark" aria-pressed="false"><span data-i18n="common.dark"></span></button></div></div>
+<div class="row"><div class="row-copy"><strong><span data-i18n="common.interface_language"></span></strong><small><span data-i18n="common.save_as_a_device_preference"></span></small></div><div class="row-control"><select data-preference="language" aria-label="" data-i18n-aria-label="common.interface_language"><option value="system"><span data-i18n="common.follow_system"></span></option><option value="zh"><span data-i18n="common.simplified_chinese"></span></option><option value="en" data-i18n="common.english"></option></select></div></div>
+<div class="row"><div class="row-copy"><strong data-i18n="common.text_size"></strong><small data-i18n="common.independent_of_window_size"></small></div><div class="row-control"><select data-preference="fontScale" aria-label="" data-i18n-aria-label="common.text_size"><option value="100">100%</option><option value="115">115%</option><option value="130">130%</option><option value="150">150%</option></select></div></div>
+<div class="row"><div class="row-copy"><strong><span data-i18n="common.reduce_motion"></span></strong><small><span data-i18n="common.retain_essential_sound_readouts_and_stop_decorative_animation"></span></small></div><label class="toggle"><input type="checkbox" data-preference="motion" aria-label="" data-i18n-aria-label="common.reduce_motion"><span><span data-i18n="common.on"></span></span></label></div>
+<div class="row" id="size-row"><div class="row-copy"><strong><span data-i18n="common.window_size"></span></strong></div><div class="row-control"><select id="window-size-select" aria-label="" data-i18n-aria-label="common.window_size"><option value="100">100%</option><option value="125">125%</option><option value="150">150%</option><option value="175">175%</option><option value="200">200%</option><option value="250">250%</option></select></div></div></div>
+<div class="sheet" id="privacy-sheet"><div class="sheet-head"><h2><span data-i18n="common.privacy_data"></span></h2><button class="quiet" data-action="privacy-policy"><span data-i18n="common.privacy_details"></span></button></div>
+<div class="row"><div class="row-copy"><strong><span data-i18n="common.diagnostic_analytics"></span></strong><small><span data-i18n="common.help_diagnose_problems_encountered_while_using_the_app"></span></small></div><label class="toggle"><input type="checkbox" data-privacy="telemetry" aria-label="" data-i18n-aria-label="common.diagnostic_analytics"><span><span data-i18n="common.allow"></span></span></label></div>
+<div class="row"><div class="row-copy"><strong><span data-i18n="common.local_taste_history"></span></strong><small><span data-i18n="common.record_sound_preferences_turning_this_off_clears_local_records"></span></small></div><label class="toggle"><input type="checkbox" data-privacy="taste" aria-label="" data-i18n-aria-label="common.local_taste_history"><span><span data-i18n="common.on"></span></span></label></div>
+<div class="row"><div class="row-copy"><strong><span data-i18n="common.taste_cloud_sync"></span></strong><small><span data-i18n="common.local_taste_recording_must_be_enabled_first"></span></small></div><label class="toggle"><input type="checkbox" data-privacy="tasteUpload" aria-label="" data-i18n-aria-label="common.taste_cloud_sync"><span><span data-i18n="common.allow"></span></span></label></div></div>
+<p class="note" id="privacy-unavailable" hidden><span data-i18n="common.this_version_does_not_enable_diagnostics_analytics_or_taste_cloud"></span></p>
+<p class="note"><span data-i18n="common.these_preferences_do_not_enter_presets_or_change_the_project"></span></p>
+</section>
+<section class="page" id="page-audio" role="tabpanel" tabindex="-1" hidden>
+<div class="heading"><div><div class="kicker" data-i18n="common.signal_control"></div><h1 data-i18n="common.audio_and_midi"></h1><p><span data-i18n="common.connection_status_audio_devices_and_immediate_controls"></span></p></div></div>
+<div class="sheet" id="audio-connection" hidden><div class="sheet-head"><h2><span data-i18n="common.audio_connection"></span></h2><span class="badge" id="audio-owner">—</span></div><div class="row"><div class="row-copy"><strong id="audio-status"><span data-i18n="common.waiting_for_device_status"></span></strong><small id="audio-description">—</small></div></div><div class="facts"><dl class="fact"><dt><span data-i18n="common.sample_rate"></span></dt><dd class="mono" id="sample-rate">—</dd></dl><dl class="fact"><dt><span data-i18n="common.buffer_size"></span></dt><dd class="mono" id="block-size">—</dd></dl></div><div class="row"><div class="actions"><button class="primary" data-action="audio-settings" id="audio-settings" data-i18n="common.audio_midi_settings"></button><button data-action="retry-audio" id="retry-audio"><span data-i18n="common.reconnect_devices"></span></button></div></div></div>
+<div class="sheet"><div class="sheet-head"><h2 data-i18n="common.mpe"></h2></div><div class="row"><div class="row-copy"><strong data-i18n="common.mpe_lower_zone"></strong></div><label class="toggle"><input id="mpe-enabled" type="checkbox" data-midi="global.mpeEnabled" aria-label="" data-i18n-aria-label="common.mpe_lower_zone"><span><span data-i18n="common.on"></span></span></label></div><div class="row"><div class="row-copy"><strong><span data-i18n="common.per_note_pitch_bend_range"></span></strong></div><div class="row-control"><input id="mpe-bend-range" type="number" min="1" max="96" step="1" data-midi="global.mpePitchBendRange" aria-label="" data-i18n-aria-label="common.per_note_pitch_bend_range"><span class="mono" data-i18n="common.st"></span></div></div></div>
+<div class="sheet"><div class="sheet-head"><h2><span data-i18n="common.immediate_controls"></span></h2></div><div class="row"><div class="row-copy"><strong><span data-i18n="common.stop_all_sound"></span></strong><small data-i18n="common.release_all_midi_channels_and_smoothly_end_tails"></small></div><button class="danger" data-action="panic" data-i18n="common.panic_stop_sound"></button></div><div class="row"><div class="row-copy"><strong><span data-i18n="common.undo_and_redo"></span></strong><small><span data-i18n="common.use_keep_or_discard_while_a_recovery_preview_is_active"></span></small></div><div class="actions"><button data-action="undo" id="undo"><span data-i18n="common.undo"></span></button><button data-action="redo" id="redo"><span data-i18n="common.redo"></span></button></div></div></div>
+</section>
+<section class="page" id="page-updates" role="tabpanel" tabindex="-1" hidden>
+<div class="heading"><div><div class="kicker" data-i18n="common.keep_creating"></div><h1><span data-i18n="common.updates"></span></h1></div><span class="badge mono" id="current-version">—</span></div>
+<div class="sheet"><div class="update-display"><div><div class="update-title" id="update-title"><span data-i18n="common.updates_have_not_been_checked"></span></div><div class="update-meta" id="update-meta">—</div></div><div class="update-symbol" aria-hidden="true">↗</div></div>
+<div class="update-actions"><button class="primary" data-action="check-updates" id="check-updates"><span data-i18n="common.check_for_updates"></span></button></div>
+</div>
+<p class="note" id="store-update-note" hidden data-i18n="common.this_edition_updates_through_the_app_store_system_settings_manage"></p>
+</section>
+<section class="page" id="page-recovery" role="tabpanel" tabindex="-1" hidden>
+<div class="heading"><div><div class="kicker" data-i18n="common.your_sounds_safe"></div><h1><span data-i18n="common.sound_and_recovery"></span></h1><p><span data-i18n="common.move_the_full_sound_state_or_return_to_a_checkpoint"></span></p></div></div>
+<div class="notice" id="recovery-notice"><span data-i18n="common.restore_first_opens_an_undoable_preview_keep_commits_it_to"></span></div>
+<div class="sheet"><div class="recovery-toolbar"><h2><span data-i18n="common.restore_checkpoint"></span></h2><div class="actions"><button data-action="checkpoint"><span data-i18n="common.save_checkpoint_2"></span></button><button data-action="refresh-recovery"><span data-i18n="common.refresh"></span></button></div></div><ul class="recovery-list" id="recovery-list" aria-label="" data-i18n-aria-label="common.restore_checkpoint"></ul><div class="empty" id="recovery-empty"><span data-i18n="common.no_checkpoints_yet_save_one_manually_or_wait_for_an"></span></div><div class="row"><label class="toggle"><input type="checkbox" data-preference="recovery" aria-label="" data-i18n-aria-label="common.automatically_save_checkpoints"><span><span data-i18n="common.save_changes_automatically_each_minute"></span></span></label><button class="primary" data-action="preview-recovery" id="preview-recovery"><span data-i18n="common.preview_selected_checkpoint"></span></button></div></div>
+<p class="note" data-i18n="common.automatic_saves_retain_up_to_3_per_instance_plus_1"></p>
+<div class="sheet" style="margin-top:20px"><div class="sheet-head"><h2><span data-i18n="common.sound_files_and_material"></span></h2><span class="kicker" data-i18n="common.fadsession"></span></div><div class="row"><div class="row-copy"><strong><span data-i18n="common.full_sound_state_file"></span></strong><small><span data-i18n="common.includes_parameters_and_loaded_user_wavetables_for_migration_and_backup"></span></small></div><div class="actions"><button data-action="export-sound" id="export-sound"><span data-i18n="common.export"></span></button><button data-action="import-sound" id="import-sound"><span data-i18n="common.import_3"></span></button></div></div><div class="row" id="directory-grant-row" hidden><div class="row-copy"><strong><span data-i18n="common.additional_preset_folders"></span></strong></div><button id="grant-preset-directory" data-action="grant-preset-directory"><span data-i18n="common.authorize_folder"></span></button></div><div class="row"><div class="row-copy"><strong data-i18n="ui.user_directories"></strong><small id="preset-directory-paths" class="mono" style="white-space:pre-wrap;overflow-wrap:anywhere"></small></div></div><div id="asset-list"></div></div>
+</section>
+<section class="page" id="page-about" role="tabpanel" tabindex="-1" hidden>
+<div class="heading"><div><div class="kicker" data-i18n="common.future_audio_definition"></div><h1><span data-i18n="common.about_and_support"></span></h1></div></div>
+<div class="about-identity"><div class="about-art"><canvas id="about-dither" aria-label="" data-i18n-aria-label="common.fad_mark"></canvas><img id="dither-source" src="/images/fad-logo.png" alt="" hidden></div><div class="about-copy"><div class="kicker" data-i18n="common.altay_est_2016"></div><h2 data-i18n="common.fad_synth"></h2><p><span data-i18n="common.an_instrument_for_exploring_shaping_and_saving_sound"></span></p><p class="mono" style="margin-top:12px">VERSION <span data-bind="version">—</span></p></div></div>
+<div class="sheet"><div class="facts" style="border-top:0"><dl class="fact"><dt><span data-i18n="common.platform"></span></dt><dd id="about-platform">—</dd></dl><dl class="fact"><dt><span data-i18n="common.runtime"></span></dt><dd class="mono" id="about-format">—</dd></dl></div><div class="row"><div class="row-copy"><strong><span data-i18n="common.need_help"></span></strong><small><span data-i18n="common.include_diagnostics_with_a_problem_report_to_help_identify_its"></span></small></div><button data-action="support"><span data-i18n="common.open_support_center"></span></button></div></div>
+
+<div class="sheet"><div class="sheet-head"><h2 data-i18n="ui.wavetable_credits"></h2></div><div class="row"><div class="row-copy" data-localization="literal"><strong>Adventure Kid Waveforms / AKWF-FREE</strong><small>Kristoffer Karl Axel Ekstrand (Adventure Kid) · CC0 1.0</small></div></div><div class="row"><div class="row-copy" data-localization="literal"><strong>wavedit-online</strong><small>smpldsnds / WaveEdit community · CC0 1.0</small></div></div></div>
+<div class="support-links"><button class="quiet" data-action="privacy-policy"><span data-i18n="common.privacy_policy_2"></span></button><button class="quiet" data-page="updates"><span data-i18n="common.view_updates"></span></button></div><p class="note" data-i18n="common.2016_2026_fad_records_proprietary_software"></p>
+</section>
+<section class="page" id="page-debug" role="tabpanel" tabindex="-1" hidden>
+<div class="heading"><div><div class="kicker" data-i18n="common.debug_mode"></div><h1><span data-i18n="common.debug_settings"></span></h1></div><button data-action="debug-disable"><span data-i18n="common.exit_debug_mode"></span></button></div>
+<div class="sheet"><div class="sheet-head"><h2><span data-i18n="common.diagnostics_status"></span></h2><span class="badge mono" id="debug-recording"><span data-i18n="common.not_recorded"></span></span></div><div class="facts debug-facts" style="border-top:0"><dl class="fact"><dt><span data-i18n="common.recent_logs"></span></dt><dd id="debug-history-state"><span data-i18n="common.off_2"></span></dd></dl><dl class="fact"><dt><span data-i18n="common.permission_to_send_diagnostics"></span></dt><dd id="debug-send-state"><span data-i18n="common.not_allowed"></span></dd></dl><dl class="fact"><dt><span data-i18n="common.feedback_id"></span></dt><dd class="mono" id="debug-report-id">—</dd></dl><dl class="fact"><dt><span data-i18n="common.local_diagnostics"></span></dt><dd id="debug-local-state"><span data-i18n="common.none_2"></span></dd></dl></div><div class="row"><span class="debug-status" id="debug-report-status" role="status" aria-live="polite"><span data-i18n="common.no_feedback_yet"></span></span></div></div>
+<div class="sheet"><div class="sheet-head"><h2><span data-i18n="common.problem_feedback"></span></h2></div><div class="row feedback-actions"><button data-action="debug-report" id="debug-send"><span data-i18n="common.report_bug"></span></button><button data-action="bug-anonymous" id="bug-anonymous"><span data-i18n="common.anonymous_feedback"></span></button><button data-action="bug-history-enable" id="bug-history-enable"><span data-i18n="common.allow_recording_recent_diagnostics_from_now"></span></button><button data-action="bug-history-disable" id="bug-history-disable"><span data-i18n="common.stop_recording_recent_diagnostics"></span></button><button data-action="bug-revoke" id="bug-revoke"><span data-i18n="common.revoke_diagnostic_permission"></span></button><button data-action="bug-retry" id="bug-retry"><span data-i18n="common.retry_reopen_page"></span></button><button data-action="bug-form" id="bug-form"><span data-i18n="common.submit_text_only"></span></button><button data-action="bug-local-open" id="bug-local-open"><span data-i18n="common.open_latest_local_diagnostics"></span></button><button class="danger" data-action="bug-clear-local" id="bug-clear-local"><span data-i18n="common.clear_local_feedback_cannot_be_undone"></span></button></div></div>
+<div class="sheet"><details><summary><span data-i18n="common.preview_device_diagnostics"></span></summary><pre class="diagnostic" id="diagnostic" data-localization="literal"></pre><div class="row"><small><span data-i18n="common.export_only_the_content_shown_here"></span></small><button data-action="export-diagnostic"><span data-i18n="common.export_diagnostics"></span></button></div></details><div class="row"><span><span data-i18n="common.logs_and_parameters"></span></span><button data-action="export-debug-bundle" id="export-debug-bundle" data-i18n="common.export_complete_diagnostics_json"></button></div></div>
+</section>
+</main></div>
+<div class="recovery-bar" id="recovery-bar" hidden><div><strong><span data-i18n="common.previewing_restored_sound"></span></strong><small><span data-i18n="common.keep_commits_it_discard_returns_to_the_previous_sound"></span></small></div><div class="actions"><button data-action="discard-recovery"><span data-i18n="common.discard_restoration"></span></button><button class="primary" data-action="keep-recovery"><span data-i18n="common.keep_restoration"></span></button></div></div>
+<footer class="status"><span class="status-lamp" id="connection-lamp"></span><span id="status-message" role="status" aria-live="polite"><span data-i18n="common.connecting_to_device_state"></span></span><span class="connection" id="connection-label" data-i18n="common.connecting_3"></span><button class="quiet danger" data-action="panic" data-i18n="common.panic"></button></footer>
+<section class="panic-report-prompt" id="panic-report-prompt" role="dialog" aria-modal="false" aria-labelledby="panic-report-title" hidden><strong id="panic-report-title"><span data-i18n="common.sounds_stopped"></span></strong><p><span data-i18n="common.submit_the_current_diagnostics_to_help_investigate"></span></p><div class="actions"><button data-panic-report="dismiss"><span data-i18n="common.not_now"></span></button><button class="primary" data-panic-report="send"><span data-i18n="common.submit_diagnostics"></span></button></div></section>
+</div>
+<script src="/scripts/fad-dither.js"></script>
+<script>
+(function(){
+'use strict';
+function tr(key,parameters){return window.FADI18n.text(key,null,parameters);}
+
+
+
+function translateSystem(value){return window.FADI18n.value(value);}
+var token='__FAD_SYSTEM_TOKEN__',sequence=0,pending=0,pendingTimer=0,connected=false;
+var currentPage='__FAD_SYSTEM_PAGE__',selectedCheckpoint='',entriesKey='',assetsKey='',lastInstallVersion='',dither=null,ditherActive=false,ditherTimer=0,panicReportPreviousFocus=null;
+
+
+var debugClickCount=0,debugClickAt=0;
+var state={preferences:{},account:{},updates:{},recovery:{entries:[],assets:[]},audio:{},visible:true};
+function el(id){return document.getElementById(id);}function text(id,value){var node=el(id),next=String(value==null?'—':value);if(node&&node.textContent!==next)node.textContent=next;if(node&&id==='status-message')node.title=next;}
+function show(id,visible){el(id).hidden=!visible;}function can(id,enabled){el(id).disabled=!enabled;}
+function date(value){if(!value)return '—';var d=new Date(Number(value));return isNaN(d.getTime())?'—':d.toLocaleString(document.documentElement.lang||'zh-CN',{year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'});}
+function bytes(value){return value>=1048576?(value/1048576).toFixed(1)+' MB':Math.ceil(value/1024)+' KB';}
+function bridgeAvailable(){var j=window.__JUCE__,f=j&&j.initialisationData&&j.initialisationData.__juce__registeredGlobalEventIds;return !!(j&&j.backend&&j.backend.emitEvent&&f&&f.indexOf('fadNativeCommand')>=0);}
+function request(action,extra){
+ if(!bridgeAvailable()){if(action!=='ready'&&action!=='ui-diagnostic')text('status-message',tr("common.native_connection_unavailable_the_action_did_not_run"));return false;}
+ if(action!=='ready'&&!connected)return false;
+ var payload=Object.assign({action:action,token:token,id:++sequence},extra||{});
+ if(action!=='ui-diagnostic'){pending=payload.id;
+ if(pendingTimer)clearTimeout(pendingTimer);
+ pendingTimer=setTimeout(function(){if(pending===payload.id){pending=0;text('status-message',tr("common.the_device_has_not_confirmed_the_action_try_again"));}},10000);}
+ window.__JUCE__.backend.emitEvent('fadNativeCommand',JSON.stringify(payload));return true;
+}
+function setPage(page,notify){
+ if(['account','preferences','audio','updates','recovery','about','debug'].indexOf(page)<0)return;
+ if(page==='debug'&&!(state.debug&&state.debug.enabled))return;
+ var changed=page!==currentPage;currentPage=page;el('mobile-page').value=page;
+ document.querySelectorAll('.page').forEach(function(node){node.hidden=node.id!=='page-'+page;});
+ document.querySelectorAll('.nav [data-page]').forEach(function(button){var active=button.dataset.page===page;button.setAttribute('aria-selected',active?'true':'false');button.tabIndex=active?0:-1;});
+ if(changed)el('main').scrollTop=0;
+ syncDither();if(notify)request('page',{page:page});
+}
+function tapDebugVersion(now){
+ if(!connected){debugClickCount=0;return false;}
+ if(debugClickCount===0||now-debugClickAt>1200||now<debugClickAt)debugClickCount=0;
+ debugClickAt=now;
+ if(++debugClickCount<3)return false;
+ debugClickCount=0;return request('debug-enable');
+}
+function renderDebug(){
+ var debug=state.debug||{},enabled=!!debug.enabled;
+ show('debug-tab',enabled);show('debug-option',enabled);el('debug-option').disabled=!enabled;
+ if(!enabled&&currentPage==='debug')setPage('preferences',false);
+ text('debug-recording',debug.historyEnabled?tr("common.recording"):tr("common.not_recorded"));
+ text('debug-history-state',debug.historyEnabled?tr("common.recorded")+Math.floor(Number(debug.observedMs||0)/1000)+tr("common.seconds_last_5_minutes"):tr("common.off_2"));
+ text('debug-send-state',debug.sendAllowed?tr("common.allowed"):tr("common.not_allowed"));text('debug-report-id',debug.reportId||'—');
+ text('debug-local-state',debug.hasLocalBundle?tr("common.saved"):tr("common.none_2"));text('debug-report-status',debug.message||tr("common.no_feedback_yet"));
+ el('debug-report-status').classList.toggle('error',!!debug.error);
+ can('debug-send',connected&&!debug.busy);can('bug-anonymous',connected&&!debug.busy);
+ can('bug-history-enable',connected&&!debug.historyEnabled);can('bug-history-disable',connected&&!!debug.historyEnabled);
+ can('bug-revoke',connected&&!!debug.sendAllowed);can('bug-retry',connected&&!!debug.sendAllowed&&!debug.busy);
+ can('bug-local-open',connected&&!!debug.hasLocalBundle);can('bug-clear-local',connected&&!debug.busy);
+ can('export-debug-bundle',connected&&!state.fileDialog);
+}
+function diagnosticErrorKind(error){
+ var kind=error&&error.name;
+ return ['Error','TypeError','ReferenceError','SyntaxError','RangeError','URIError','EvalError'].indexOf(kind)>=0?kind:'UnhandledRejection';
+}
+function syncDither(){
+ var active=currentPage==='about'&&state.visible&&!state.fileDialog&&!document.hidden;
+ if(active&&!dither&&window.FADDitherEngine)dither=window.FADDitherEngine.mount(el('about-dither'),el('dither-source'),{columns:40,maxDpr:1});
+ if(dither&&active!==ditherActive){ditherActive=active;if(ditherTimer)clearTimeout(ditherTimer);ditherTimer=0;if(active){dither.setActive(true);ditherTimer=setTimeout(function(){ditherTimer=0;dither.freeze();},1400);}else dither.suspend();}
+}
+function renderWindowScale(){
+ var select=el('window-size-select'),percent=Math.round(Number(state.windowScale||100)),value=String(percent);
+ var custom=select.querySelector('[data-current-scale]');if(custom)custom.remove();
+ if(!Array.from(select.options).some(function(option){return option.value===value;})){var option=document.createElement('option');option.value=value;option.textContent=value+'%';option.dataset.currentScale='1';option.disabled=true;select.append(option);}
+ select.value=value;select.disabled=!connected;
+}
+function renderMidi(){
+ var midi=state.midi||{},enabled=el('mpe-enabled'),range=el('mpe-bend-range');
+ enabled.checked=!!midi.mpeEnabled;enabled.disabled=!connected;
+ if(document.activeElement!==range)range.value=String(midi.mpePitchBendRange||48);
+ range.disabled=!connected||!midi.mpeEnabled;
+}
+function midiChange(input){
+ var value=input.type==='checkbox'?(input.checked?1:0):Number(input.value);
+ if(input.dataset.midi==='global.mpePitchBendRange'&&(!Number.isInteger(value)||value<1||value>96)){renderMidi();return false;}
+ return request('midi-parameter',{parameter:input.dataset.midi,value:value});
+}
+function renderRecovery(){
+ var recovery=state.recovery||{},entries=recovery.entries||[],key=JSON.stringify(entries);
+ if(key!==entriesKey){entriesKey=key;var list=el('recovery-list');list.replaceChildren();
+ if(!entries.some(function(item){return item.id===selectedCheckpoint;}))selectedCheckpoint=entries.length?entries[0].id:'';
+ entries.forEach(function(item){var li=document.createElement('li'),b=document.createElement('button'),copy=document.createElement('span'),label=document.createElement('span'),sub=document.createElement('small'),size=document.createElement('span');
+ b.className='checkpoint';b.type='button';b.dataset.checkpoint=item.id;label.textContent=date(item.time);label.className='mono';sub.textContent=tr("common.instance")+item.id.split('/')[0].slice(0,8);size.textContent=bytes(item.size);size.className='mono muted';copy.append(label,sub);b.append(copy,size);li.append(b);list.append(li);});}
+ document.querySelectorAll('[data-checkpoint]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.checkpoint===selectedCheckpoint?'true':'false');});
+ show('recovery-empty',entries.length===0);can('preview-recovery',connected&&!!selectedCheckpoint&&!recovery.preview&&!recovery.otherPreview&&!state.fileDialog);
+ var assets=recovery.assets||[],assetKey=JSON.stringify(assets);
+ if(assetKey!==assetsKey){assetsKey=assetKey;var area=el('asset-list');area.replaceChildren();assets.forEach(function(item){var row=document.createElement('div'),name=document.createElement('strong'),copy=document.createElement('div'),label=document.createElement('span'),note=document.createElement('small'),button=document.createElement('button');row.className='asset-row';name.textContent=item.oscillator===0?'OSC A':'OSC B';label.textContent=item.slot===0?tr("common.built_in_wavetable"):tr("common.user_slot_2")+item.slot;note.textContent=item.slot===0?tr("common.included_with_the_software"):item.loaded?tr("common.material_loaded_it_can_move_with_the_full_sound_state"):tr("common.material_missing_relink_it");if(!item.loaded)note.style.color='var(--rust)';button.textContent=tr("common.relink");button.dataset.relink=String(item.oscillator);button.dataset.slot=String(item.slot);copy.append(label,note);row.append(name,copy,button);area.append(row);});}
+ document.querySelectorAll('[data-relink]').forEach(function(b){b.disabled=!connected||Number(b.dataset.slot)===0||recovery.preview||recovery.otherPreview||state.fileDialog;});
+ ['export-sound','import-sound'].forEach(function(id){can(id,connected&&!recovery.preview&&!recovery.otherPreview&&!state.fileDialog);});
+ show('recovery-bar',!!recovery.preview);text('recovery-notice',recovery.error|| (recovery.otherPreview?tr("common.another_sound_preview_is_active_keep_or_discard_it_before"):tr("common.restore_first_opens_an_undoable_preview_keep_commits_it_to")));el('recovery-notice').classList.toggle('error',!!recovery.error);
+}
+function renderMacStore(){
+ var catalog=state.macStore||state.iosStore,iosPending=!!state.iosStore&&['loadingProduct','purchasing','restoring','deferred'].indexOf(String(state.account&&state.account.commerceOperation))>=0,visible=!!catalog&&!!state.standalone,english=document.documentElement.dataset.fadLanguage==='en';
+ show('mas-storefront',visible);if(!visible)return;
+ var heading=state.iosStore?'mobile.store.full_unlock':'common.choose_your_edition',scope=state.iosStore?'mobile.store.unlock_scope':'common.the_app_store_provides_product_details_and_pricing_check_the';
+ el('mas-product-heading').dataset.i18n=heading;text('mas-product-heading',tr(heading));el('mas-product-scope').dataset.i18n=scope;text('mas-product-scope',tr(scope));show('mas-manage',!state.iosStore);
+ var signature=JSON.stringify([catalog,state.account&&state.account.active,state.account&&state.account.plans,iosPending,connected,document.documentElement.dataset.fadLanguage]);
+ var container=el('mas-products');
+ if(container.dataset.signature!==signature){
+ container.dataset.signature=signature;container.replaceChildren();
+ (catalog.products||[]).forEach(function(product){
+ var row=document.createElement('div');row.className='row';
+ var copy=document.createElement('div');copy.className='row-copy';
+ var name=document.createElement('strong');name.dataset.localization='literal';name.textContent=product.name;
+ var description=document.createElement('small');description.dataset.localization='literal';description.textContent=product.description;
+ var price=document.createElement('span');price.className='mono';price.dataset.localization='literal';
+ var units=(document.documentElement.dataset.fadLanguage==='en'?['day(s)','week(s)','month(s)','year(s)']:[tr("common.days"),tr("common.weeks"),tr("common.months"),tr("common.years")]);
+ price.textContent=product.price+(product.subscription?' / '+product.periodCount+' '+units[product.periodUnit]:'');
+ copy.append(name,description,price);
+ if(product.id.endsWith('.cid.monthly')){var credits=document.createElement('small');credits.textContent=tr("common.1_000_shared_credits_month_sol_per_1m_tokens_input");copy.append(credits);}
+ if(product.subscription){var renewal=document.createElement('small');renewal.textContent=tr("common.renews_automatically_manage_or_cancel_in_your_app_store_account");copy.append(renewal);}
+ var button=document.createElement('button');button.className='primary';button.dataset.product=product.id;
+ var plans=String(state.account&&state.account.plans||'').replace(/^plans:/,'').split(',');var owned=!!(state.account&&state.account.active)&&(state.iosStore?true:product.id.endsWith('.full')?plans.indexOf('synth_buyout')>=0:product.id.endsWith('.cid.monthly')?plans.indexOf('fadlab_arena')>=0:plans.indexOf('synth_monthly')>=0);
+ button.textContent=owned?(tr("common.current_plan")):(tr("common.purchase"));button.disabled=!connected||!!catalog.loading||!!catalog.busy||iosPending||owned;
+ row.append(copy,button);container.append(row);
+ });}
+ text('mas-message',window.FADI18n.value((state.iosStore&&(state.account||{}).commerceError)||(state.iosStore&&(state.account||{}).commerceOperation==='deferred'?tr('mobile.store.awaiting_approval'):'')||(catalog.loading?tr('mobile.store.loading'):'')||(state.account&&state.account.active?tr("common.this_device_s_access_is_verified_continue_creating"):catalog.message)||(catalog.products&&catalog.products.length?tr("common.review_the_product_details_before_continuing"):tr("common.product_unavailable_try_again"))));
+ can('mas-reload',connected&&!catalog.loading&&!catalog.busy&&!iosPending);can('mas-restore',connected&&!catalog.busy&&!iosPending);
+}
+function render(){
+ var account=state.account||{},prefs=state.preferences||{},updates=state.updates||{},audio=state.audio||{},store=!!state.storeManaged;
+ var accountName=account.name&&!account.email?translateSystem(account.name):account.name;
+ renderMacStore();renderDebug();
+ document.querySelectorAll('[data-action="close"]').forEach(function(button){button.disabled=!connected;});
+ show('ai-consent-sheet',!!state.aiConsentRequired);text('ai-consent-state',state.aiConsent?tr("common.ai_cloud_processing_allowed"):tr("common.not_allowed_no_ai_requests_are_sent"));text('ai-decline',state.aiConsent?tr("common.withdraw_consent"):tr("common.not_now_2"));can('ai-allow',connected&&!state.aiConsent);can('ai-decline',connected);
+ show('directory-grant-row',!!state.directoryGrantsAvailable);
+ text('preset-directory-paths',(state.presetDirectories||[]).join('\n'));
+ can('grant-preset-directory',connected&&!!state.directoryGrantsAvailable&&!state.fileDialog);
+ document.querySelectorAll('[data-bind="version"]').forEach(function(n){n.textContent=state.version||'—';});
+ text('identity-name',accountName||'FAD Synth');text('identity-status',!account.loaded?tr("common.read_account_status"):account.entitlementStatus==='refund_pending'?tr("common.refund_in_progress"):account.trial?tr("common.term_license"):account.verified?tr("common.access_valid"):tr("common.verification_required"));el('account-lamp').classList.toggle('active',!!account.verified);
+ text('channel-label',store?'APP STORE':'DIRECT EDITION');
+ text('account-name',accountName||tr("common.this_device"));text('account-email',account.email||'');show('account-email',!!account.email);show('account-profile-note',!account.email);text('account-profile-note',store?tr("common.apple_manages_purchases_and_access"):account.verified?tr("common.no_email_provided_open_the_account_panel_for_details"):tr("common.connect_an_account_to_view_user_details"));text('account-device',account.deviceCode|| (store?tr("common.shared_app_store_access"):tr("common.no_connections")));
+ text('account-channel',store?'App Store':tr("common.app_store"));text('account-badge',!account.loaded?tr("common.loading_3"):account.entitlementStatus==='refund_pending'?tr("common.refund_in_progress"):account.trial?tr("common.term_license"):account.verified?tr("common.verified"):tr("common.unverified"));el('account-badge').classList.toggle('active',!!account.verified);
+ text('account-plan',account.plan||'—');text('account-expiry',!account.loaded?tr("common.load_access_status_to_view_its_expiry"):account.entitlementStatus==='refund_pending'?tr("common.refund_in_progress"):account.synthPermanent&&account.expiresAt?tr('common.access_permanent_with_alt_expiry',{date:date(account.expiresAt)}):account.permanent||account.synthPermanent?tr("common.permanent_access"):account.expiresAt?tr("common.valid_until")+date(account.expiresAt):tr("common.no_expiry_specified"));
+ text('account-notice',!account.loaded?tr("common.reading_device_access_status"):account.error?account.error+(account.errorCode?' ['+account.errorCode+']':''):account.verified?'':tr("common.access_verification_is_incomplete"));
+ show('account-notice',!account.loaded||!!account.error||!account.verified);
+ el('account-notice').classList.toggle('error',!!account.loaded&&!!account.hasError);
+ var paidExpiry=['FAD-CHK-SUBSCRIPTION-EXPIRED','FAD-AUTH-SUBSCRIPTION-EXPIRED'].indexOf(account.errorCode||'')>=0;
+ var accessExpired=paidExpiry&&account.subscriptionExpiryVerifiedThisProcess===true
+   || ['FAD-CHK-TRIAL-EXPIRED','FAD-AUTH-TRIAL-EXPIRED','FAD-MAS-TRANSACTION-EXPIRED'].indexOf(account.errorCode||'')>=0;
+ var expiresAt=Number(account.expiresAt)||0,graceUntil=Number(account.graceUntil)||0,now=Date.now();
+ var accessGrace=account.verified&&expiresAt>0&&expiresAt<=now&&graceUntil>now;
+ var accessExpiring=account.verified&&expiresAt>now&&expiresAt-now<=7*86400000&&!account.permanent;
+ var renewalKind=accessExpired?'expired':accessGrace?(account.synthPermanent?'alt_grace':'grace'):accessExpiring?(account.synthPermanent?'alt_expiring':'expiring'):'';
+ show('account-renewal-notice',!!renewalKind);
+ if(renewalKind){text('account-renewal-title',tr('common.access_'+renewalKind+'_title'));text('account-renewal-copy',tr('common.access_'+renewalKind+'_copy',{date:new Date(expiresAt).toLocaleDateString(document.documentElement.lang)}));}
+ show('renew-plan',!!renewalKind&&!store);can('renew-plan',connected&&!store);
+ el('renew-plan').dataset.action=account.synthPermanent?'recharge':'renew-plan';
+ text('renew-plan',tr(account.synthPermanent?'common.access_recharge_cta':'common.access_plan_cta'));
+ can('refresh-account',connected&&account.loaded&&!account.refreshing);text('refresh-account',account.refreshing?tr("common.refreshing"):tr("common.refresh_status"));show('direct-account-actions',!store);show('manage-plan',!store);show('account-store-note',store);show('purchase',!state.macStore&&!state.iosStore&&!!account.purchaseAvailable&&!account.active);show('restore-purchases',!state.macStore&&!state.iosStore&&!!account.restoreAvailable);
+ el('direct-account-actions').querySelectorAll('button').forEach(function(b){b.disabled=!connected||!account.loaded;});
+ show('quota',!!account.quotaAvailable);text('quota-value',account.remaining+' / '+account.quota);el('quota-meter').style.width=Math.max(0,Math.min(100,Number(account.remaining||0)/Math.max(1,Number(account.quota||0))*100))+'%';
+ can('point-recharge',connected&&account.loaded&&!store);show('point-balance',!store&&!!account.verified);show('point-balance-status',!account.fadPoints);var points=account.fadPoints||{},weekly=points.weekly,prepaid=points.prepaid;
+ ['weekly-points','prepaid-points','prepaid-spent','prepaid-held'].forEach(function(id,index){var balance=index===0?weekly:prepaid,key=index===2?'spentUnits':index===3?'reservedUnits':'remainingUnits',units=balance&&balance[key];text(id,Number.isSafeInteger(units)&&units>=0?(units/30000).toFixed(4).replace(/\.?0+$/,''):'—');});
+ var weeklyUnits=weekly&&weekly.remainingUnits,prepaidUnits=prepaid&&prepaid.remainingUnits;
+ var pointKnown=Number.isSafeInteger(weeklyUnits)&&weeklyUnits>=0||Number.isSafeInteger(prepaidUnits)&&prepaidUnits>=0;
+ var pointEmpty=!!account.verified&&pointKnown&&(Number(weeklyUnits)||0)+(Number(prepaidUnits)||0)===0;
+ show('point-empty-notice',pointEmpty);el('point-balance').dataset.pointsEmpty=pointEmpty?'true':'false';
+ document.querySelectorAll('[data-pref="appearance"]').forEach(function(b){b.setAttribute('aria-pressed',prefs.appearance===b.dataset.value?'true':'false');b.disabled=!connected;});
+ document.querySelectorAll('[data-preference]').forEach(function(input){var value=prefs[input.dataset.preference];if(input.type==='checkbox')input.checked=!!value;else if(document.activeElement!==input)input.value=value||'system';input.disabled=!connected;});
+ document.querySelectorAll('[data-privacy]').forEach(function(input){input.checked=!!prefs[input.dataset.privacy];input.disabled=!connected||(input.dataset.privacy==='tasteUpload'&&!prefs.taste);});
+ show('privacy-sheet',state.analyticsAvailable!==false);show('privacy-unavailable',state.analyticsAvailable===false);
+ show('size-row',!!state.windowSizing);renderWindowScale();
+ show('audio-connection',!!state.standalone);renderMidi();
+ text('audio-owner',state.standalone?tr("common.standalone_app"):tr("common.managed_by_host"));text('audio-status',audio.status||tr("common.read_device_status"));text('audio-description',state.standalone?tr("common.reconnect_after_device_changes_or_open_audio_settings"):tr("common.set_audio_midi_and_buffer_options_in_your_daw_host"));text('sample-rate',audio.sampleRate?Number(audio.sampleRate).toLocaleString()+' Hz':tr("common.not_started"));text('block-size',audio.blockSize?audio.blockSize+' samples':'—');can('audio-settings',connected&&state.standalone);can('retry-audio',connected&&state.standalone);can('undo',connected&&audio.canUndo);can('redo',connected&&audio.canRedo);
+ text('current-version','v'+(state.version||'—'));text('update-title',store?tr("common.update_through_the_app_store"):updates.busy?updates.message:updates.available?tr('common.update_to_version',{version:updates.version}):updates.fresh?tr('common.update_current'):updates.message||tr("common.updates_have_not_been_checked"));text('update-meta',store?tr("common.apple_s_distribution_channel_provides_updates"):tr("common.current_version")+(state.version||'—')+' · '+(updates.fresh?tr('common.update_metadata_verified'):updates.lastCheck?tr("common.last_checked")+date(updates.lastCheck):tr("common.no_check_history")));
+ show('check-updates',!store);can('check-updates',connected&&updates.downloadSupported!==false&&!updates.busy);show('store-update-note',store);
+
+ text('about-platform',state.platform||'—');text('about-format',state.format||'—');text('diagnostic',state.diagnostic||tr("common.waiting_for_device_state"));
+ text('status-message',translateSystem(state.message)|| (state.fileDialog?tr("common.complete_the_action_in_the_system_file_window"):connected?'':tr("common.connecting_to_device_state")));text('connection-label',connected?'LOCAL':'CONNECTING');el('connection-lamp').style.background=connected?'var(--pine)':'var(--brass)';
+ renderRecovery();syncDither();
+}
+
+function receive(next){
+ if(!next||next.schemaVersion!==1)return;
+ if(connected&&pending&&Number(next.ack)<pending)return;
+ var returnDebugFocus=!!(state.debug&&state.debug.enabled&&next.debug&&!next.debug.enabled&&el('page-debug').contains(document.activeElement));
+ connected=next.connected===true;state=next;
+ var prefs=next.preferences||{},root=document.documentElement;
+ if(prefs.appearanceResolved&&root.dataset.fadAppearance!==prefs.appearanceResolved){root.dataset.fadAppearance=prefs.appearanceResolved;window.dispatchEvent(new Event('fadappearancechange'));}
+ if(prefs.languageResolved&&root.dataset.fadLanguage!==prefs.languageResolved&&window.FADApplyLanguage)window.FADApplyLanguage(prefs.languageResolved);
+ if(Number(next.ack)>=pending){pending=0;if(pendingTimer)clearTimeout(pendingTimer);}
+ if(next.page)setPage(next.page,false);render();
+ if(returnDebugFocus&&el('debug-unlock').offsetParent!==null)el('debug-unlock').focus();
+}
+document.addEventListener('click',function(event){var b=event.target.closest('button');if(!b||b.disabled)return;
+ var panicReportAction=b.dataset.panicReport;
+ if(panicReportAction){el('panic-report-prompt').hidden=true;if(panicReportPreviousFocus&&panicReportPreviousFocus.isConnected)panicReportPreviousFocus.focus();if(panicReportAction==='send')request('debug-report-panic');return;}
+ if(b.dataset.page){setPage(b.dataset.page,true);return;}
+ if(b.dataset.pref){request('preference',{key:b.dataset.pref,value:b.dataset.value});return;}
+ if(b.dataset.checkpoint){selectedCheckpoint=b.dataset.checkpoint;renderRecovery();return;}
+ if(b.dataset.relink){request('relink',{oscillator:Number(b.dataset.relink)});return;}
+ if(b.dataset.product){if(state.iosStore)request('purchase');else request('mas-purchase',{productId:b.dataset.product});return;}
+ var action=b.dataset.action;if(!action)return;
+ if(action==='debug-tap'){tapDebugVersion(Date.now());return;}
+ if(action==='ai-allow'||action==='ai-decline'){request('ai-consent',{value:action==='ai-allow'});return;}
+ if(action==='panic'){panicReportPreviousFocus=b;if(request('panic')){el('panic-report-prompt').hidden=false;el('panic-report-prompt').querySelector('[data-panic-report="dismiss"]').focus();}return;}
+ var extra={};if(action==='preview-recovery')extra.checkpoint=selectedCheckpoint;
+ request(action,extra);
+});
+document.addEventListener('change',function(event){var input=event.target;
+ if(input.id==='mobile-page'){setPage(input.value,true);return;}
+ if(input.dataset.preference)request('preference',{key:input.dataset.preference,value:input.type==='checkbox'?(input.checked?'1':'0'):input.value});
+ else if(input.dataset.privacy)request('privacy',{key:input.dataset.privacy,value:input.checked});
+ else if(input.dataset.midi)midiChange(input);
+ else if(input.id==='window-size-select'&&input.value)request('window-size',{size:input.value});
+});
+document.addEventListener('keydown',function(event){
+ if(event.key==='Escape'&&!el('panic-report-prompt').hidden){el('panic-report-prompt').hidden=true;if(panicReportPreviousFocus&&panicReportPreviousFocus.isConnected)panicReportPreviousFocus.focus();event.preventDefault();return;}
+ if(event.key==='Escape'&&event.target.tagName!=='SELECT'){event.preventDefault();request('close');return;}
+ if(event.target.matches('.nav [data-page]')&&['ArrowDown','ArrowUp','ArrowRight','ArrowLeft','Home','End'].indexOf(event.key)>=0){event.preventDefault();var tabs=Array.from(document.querySelectorAll('.nav [data-page]')).filter(function(tab){return !tab.hidden;}),i=tabs.indexOf(event.target);i=event.key==='Home'?0:event.key==='End'?tabs.length-1:(i+(['ArrowDown','ArrowRight'].indexOf(event.key)>=0?1:tabs.length-1))%tabs.length;tabs[i].focus();setPage(tabs[i].dataset.page,true);}
+ if(event.key==='Tab'){var focusable=Array.from(document.querySelectorAll('button:not(:disabled),input:not(:disabled),select:not(:disabled),summary')).filter(function(n){return n.offsetParent!==null&&n.tabIndex>=0;});var first=focusable[0],last=focusable[focusable.length-1];if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}}
+});
+document.addEventListener('contextmenu',function(event){if(!event.target.closest('input,pre,.selectable'))event.preventDefault();});
+document.addEventListener('dragstart',function(event){event.preventDefault();});document.addEventListener('visibilitychange',syncDither);window.addEventListener('fadappearancechange',syncDither);
+window.addEventListener('error',function(event){request('ui-diagnostic',{code:'FAD-WEB-SCRIPT-ERROR',line:Math.max(0,Math.min(1000000,Number(event.lineno)||0)),column:Math.max(0,Math.min(1000000,Number(event.colno)||0)),errorKind:diagnosticErrorKind(event.error)});});
+window.addEventListener('unhandledrejection',function(event){request('ui-diagnostic',{code:'FAD-WEB-UNHANDLED-REJECTION',errorKind:diagnosticErrorKind(event.reason)});});
+window.FADSystem={translate:translateSystem,receive:receive,setRuntimeActive:function(active){state.visible=!!active;if(!active){debugClickCount=0;el('panic-report-prompt').hidden=true;}if(!active&&pendingTimer){clearTimeout(pendingTimer);pending=0;}syncDither();},setPage:function(page){setPage(page,false);}};
+function refreshSystemLanguage(next){render();}
+var unsubscribeLanguage=window.FADI18n.onChange(refreshSystemLanguage,"system");
+window.addEventListener("pagehide",function(){unsubscribeLanguage();});
+window.addEventListener("pageshow",function(event){if(event.persisted)unsubscribeLanguage=window.FADI18n.onChange(refreshSystemLanguage,"system");});
+setPage(currentPage,false);render();
+(function connect(attempt){if(bridgeAvailable()){window.__JUCE__.backend.addEventListener('__juce__complete',function(result){if(result.promiseId===pending&&result.result===false){pending=0;render();text('status-message',tr("common.action_did_not_run_retry_or_check_the_current_state"));}});request('ready');return;}if(attempt<100)setTimeout(function(){connect(attempt+1);},100);}(0));
+}());
+</script>
+</body>
+</html>

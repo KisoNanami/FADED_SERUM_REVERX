@@ -1,0 +1,23 @@
+  .touch-number-overlay { position:fixed;inset:0;left:var(--native-safe-left,env(safe-area-inset-left,0px));right:var(--native-safe-right,env(safe-area-inset-right,0px));top:var(--native-dialog-top,0px);bottom:var(--native-dialog-bottom,var(--native-keyboard-bottom,0px));z-index:120;display:flex;align-items:center;justify-content:center;padding:12px;background:rgba(0,0,0,.42); }
+  .touch-number-window { width:min(440px,100%);max-height:calc(100dvh - var(--native-dialog-top,0px) - var(--native-dialog-bottom,var(--native-keyboard-bottom,0px)) - 24px);overflow:auto;background:var(--paper-high);color:var(--ink);border:1px solid var(--ink);box-shadow:3px 3px 0 var(--ink);padding:16px;display:grid;gap:12px; }
+  .touch-number-window h2 { margin:0;font:inherit; }
+  .touch-number-value { display:grid;grid-template-columns:minmax(0,1fr) max-content;gap:10px;align-items:center; }
+  .touch-number-value input { width:100%;min-width:0;min-height:44px;border:1px solid var(--ink);background:var(--paper);color:var(--ink);font:16px var(--mono);padding:8px; }
+  .touch-number-range,.touch-number-error { margin:0;font:var(--text-12) var(--mono); }
+  .touch-number-error { min-height:18px;color:var(--rust); }
+  .touch-number-actions { display:flex;justify-content:flex-end;gap:10px; }
+  .touch-number-actions button { min-width:72px;min-height:44px; }
+  .control-value[data-number-param],.stepper output[data-number-param] { cursor:text; }
+  .envelope-curve-controls { padding:6px 8px;min-width:0; }
+  .envelope-curve-tabs { display:grid;grid-template-columns:repeat(3,minmax(44px,1fr));gap:4px; }
+  .envelope-curve-tabs button { height:44px;min-height:44px;border:1px solid var(--line);background:var(--paper);color:var(--ink);font:var(--text-12) "Fusion Pixel ZH",monospace; }
+  .envelope-curve-tabs button[aria-pressed="true"] { background:var(--indigo);color:var(--paper-lift); }
+  .envelope-curve-bank .control-cell { display:grid;grid-template-columns:minmax(44px,64px) minmax(44px,1fr) minmax(64px,76px);grid-template-rows:minmax(44px,auto);align-items:center;gap:6px;min-height:56px; }
+  .envelope-curve-bank .control-label { min-height:44px;display:flex;align-items:center;white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:anywhere;line-height:1.25;text-align:left; }
+  .envelope-curve-bank .knob-hit { width:44px;height:44px;min-height:44px;margin:auto; }
+  .envelope-curve-bank .knob-ring { width:36px;height:36px; }
+  .envelope-curve-bank .control-value { min-height:44px;display:flex;align-items:center;justify-content:center;padding-inline:2px; }
+  .envelope-curve-visual { min-height:88px; }
+  .macro-body.has-envelope-curves { grid-template-rows:minmax(88px,144px) max-content 24px max-content 24px minmax(0,1fr);height:auto;align-content:start; }
+  .control-cell.is-inapplicable .knob-hit,.control-cell.is-inapplicable .stepper,.control-cell.is-inapplicable .control-value { opacity:.35;filter:grayscale(1); }
+  .control-cell.is-inapplicable,.control-cell.is-inapplicable .knob-hit,.control-cell.is-inapplicable .control-value { cursor:not-allowed; }

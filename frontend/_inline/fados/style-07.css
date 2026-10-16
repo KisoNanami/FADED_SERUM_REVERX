@@ -1,0 +1,14 @@
+    /* Preserve a usable instrument canvas when host/DPI scaling leaves less
+       logical space. The workspace owns overflow; control banks use explicit
+       pages so normal operation does not depend on a wheel inside modules. */
+    html { overflow: hidden; }
+    body { min-width: 0; min-height: 340px; overflow: hidden; }
+    .app { min-width: 0; min-height: 340px; }
+    .signal-chain { min-height: 0; }
+    .matrix-wrap, .macro-list, .preset-detail { overflow: auto; }
+    .rack-cell > .module-band > *, .lfo-card > * { flex-shrink: 0; }
+    .system-sheet { max-width: calc(100vw - 16px); max-height: calc(100vh - 46px); overflow: auto; }
+    .cid-quick { max-height: calc(100vh - 46px); overflow: auto; }
+    .cid-workspace { grid-template-rows: 31px auto auto minmax(0, 1fr); overflow: hidden; }
+    .cid-conversation { grid-template-rows: minmax(120px, 1fr) auto auto auto auto; }
+  

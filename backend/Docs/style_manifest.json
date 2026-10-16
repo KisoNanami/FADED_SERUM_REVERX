@@ -1,0 +1,1764 @@
+{
+  "version": 2,
+  "names": {
+    "JuceString_ConstructFromUtf8Span": "juceStringConstructFromUtf8Span",
+    "OnboardingUiState_Initialize": "onboardingUiStateInitialize",
+    "Editor_OnOnboardingError": "editorOnOnboardingError",
+    "AudioGate_UpdateRenderDeadline": "audioGateUpdateRenderDeadline",
+    "WebView_BuildPathDiagnostics": "webViewBuildPathDiagnostics",
+    "Editor_InvokeOnboardingExitTick": "editorInvokeOnboardingExitTick",
+    "JuceString_Assign": "juceStringAssign",
+    "JuceWindowPeer_AcquireModalDismissHook": "juceWindowPeerAcquireModalDismissHook",
+    "Updater_Launch": "updaterLaunch",
+    "Editor_ScheduleOnboardingExit": "editorScheduleOnboardingExit",
+    "AuthManager_CompleteInitialVerification": "authManagerCompleteInitialVerification",
+    "Cli_DispatchCommand": "cliDispatchCommand",
+    "Editor_InvokeExitScheduler": "editorInvokeExitScheduler",
+    "Cli_RenderPreview": "cliRenderPreview",
+    "JuceLogger_WriteDefaultLog": "juceLoggerWriteDefaultLog",
+    "Utf8_CompareStrings": "utf8CompareStrings",
+    "AuthNetwork_RegisterDevice": "authNetworkRegisterDevice",
+    "OnboardingPanel_PushAuthStateToJavaScript": "onboardingPanelPushAuthStateToJavaScript",
+    "Onboarding_IsBundledHtmlCompatible": "onboardingIsBundledHtmlCompatible",
+    "AuthStorage_ReadSecureRecord": "authStorageReadSecureRecord",
+    "Onboarding_CheckStartupRequirements": "onboardingCheckStartupRequirements",
+    "WinSystem_QueryOsVersion": "winSystemQueryOsVersion",
+    "OnboardingUiState_Destroy": "onboardingUiStateDestroy",
+    "Clock_GetUnixTimeMilliseconds": "clockGetUnixTimeMilliseconds",
+    "AudioProcessor_ProcessBlockAlternatePath": "audioProcessorProcessBlockAlternatePath",
+    "JuceComponent_BringToFront": "juceComponentBringToFront",
+    "Mutex_Lock": "mutexLock",
+    "WideString_Initialize": "wideStringInitialize",
+    "JuceString_AppendString": "juceStringAppendString",
+    "JuceString_ConstructFromUtf16Span": "juceStringConstructFromUtf16Span",
+    "WebView2_HasPolicyRegistryKey": "webView2HasPolicyRegistryKey",
+    "StandaloneCloud_RequireProjectSession": "standaloneCloudRequireProjectSession",
+    "AudioGate_OnAuthStateChanged": "audioGateOnAuthStateChanged",
+    "WinIpc_CreateDawTransport": "winIpcCreateDawTransport",
+    "AuthDiagnostics_BuildProcessorStatus": "authDiagnosticsBuildProcessorStatus",
+    "CppRuntime_ThrowSystemError": "cppRuntimeThrowSystemError",
+    "Onboarding_ValidateAcceptanceNonce": "onboardingValidateAcceptanceNonce",
+    "StandaloneAudio_OpenDevice": "standaloneAudioOpenDevice",
+    "AudioEngine_RequestWorkerWakeup": "audioEngineRequestWorkerWakeup",
+    "Onboarding_HandleNativeCommand": "onboardingHandleNativeCommand",
+    "JuceString_TrimWhitespace": "juceStringTrimWhitespace",
+    "Editor_CompleteOnboardingFromFallback": "editorCompleteOnboardingFromFallback",
+    "AuthState_BuildWebViewJson": "authStateBuildWebViewJson",
+    "Onboarding_HandleAcceptanceRequest": "onboardingHandleAcceptanceRequest",
+    "OnboardingPanel_PaintRecoverySurface": "onboardingPanelPaintRecoverySurface",
+    "Onboarding_FilterBrowserNavigation": "onboardingFilterBrowserNavigation",
+    "Memory_AllocateBuffer": "memoryAllocateBuffer",
+    "AuthStorage_SerializeState": "authStorageSerializeState",
+    "AssetWorker_ResolveExecutablePath": "assetWorkerResolveExecutablePath",
+    "Mutex_Unlock": "mutexUnlock",
+    "Memory_Free": "memoryFree",
+    "WideString_GetCharacters": "wideStringGetCharacters",
+    "AuthStorage_OpenCredentialStore": "authStorageOpenCredentialStore",
+    "Memory_FreeBuffer": "memoryFreeBuffer",
+    "JuceMessageLoop_InstallGetMessageHook": "juceMessageLoopInstallGetMessageHook",
+    "WideString_GetLength": "wideStringGetLength",
+    "WideString_Append": "wideStringAppend",
+    "WinProcess_LaunchChildProcess": "winProcessLaunchChildProcess",
+    "Diagnostics_ReportUiWarning": "diagnosticsReportUiWarning",
+    "OnboardingPanel_LoadBundledHtml": "onboardingPanelLoadBundledHtml",
+    "AuthManager_LoadPersistentState": "authManagerLoadPersistentState",
+    "OnboardingPanel_ResetForReview": "onboardingPanelResetForReview",
+    "StandaloneCloud_SubmitTask": "standaloneCloudSubmitTask",
+    "WinProcess_ReadCreationTimeString": "winProcessReadCreationTimeString",
+    "g_emptyJuceStringCharacters": "emptyJuceStringCharacters",
+    "AssetWorker_RunProcessingJob": "assetWorkerRunProcessingJob",
+    "StandaloneAudio_RevalidatePermission": "standaloneAudioRevalidatePermission",
+    "Memory_FillBytes": "memoryFillBytes",
+    "g_emptyJuceStringStorage": "emptyJuceStringStorage",
+    "WebView2_ReadRuntimeLocation": "webView2ReadRuntimeLocation",
+    "WebView_FormatBackendDiagnostics": "webViewFormatBackendDiagnostics",
+    "Editor_SynchronizeAiSurfaceAuthState": "editorSynchronizeAiSurfaceAuthState",
+    "Editor_OnAuthStateChanged": "editorOnAuthStateChanged",
+    "JuceComponent_SetVisible": "juceComponentSetVisible",
+    "JuceString_JoinUtf8Prefix": "juceStringJoinUtf8Prefix",
+    "Onboarding_CommitAcceptance": "onboardingCommitAcceptance",
+    "Entitlement_IsTimeValid": "entitlementIsTimeValid",
+    "AudioGate_FadeOutOver64Samples": "audioGateFadeOutOver64Samples",
+    "WebView2_LoadRuntime": "webView2LoadRuntime",
+    "WebView2_ReadApplicationPolicy": "webView2ReadApplicationPolicy",
+    "Onboarding_DispatchDeepLink": "onboardingDispatchDeepLink",
+    "JuceString_ConstructFromUtf8": "juceStringConstructFromUtf8",
+    "AudioMidi_DrainPendingNotes": "audioMidiDrainPendingNotes",
+    "Clock_GetPerformanceCounterFrequency": "clockGetPerformanceCounterFrequency",
+    "StandaloneAudio_CloseDevice": "standaloneAudioCloseDevice",
+    "ConditionVariable_WaitTimed": "conditionVariableWaitTimed",
+    "AudioProcessor_ProcessBlock": "audioProcessorProcessBlock",
+    "Editor_OpenAccountHandoff": "editorOpenAccountHandoff",
+    "AuthStorage_DeserializeState": "authStorageDeserializeState",
+    "OnboardingPanel_ResetSurfaceCallbacks": "onboardingPanelResetSurfaceCallbacks",
+    "OnboardingPanel_EnsureSurfaceLoaded": "onboardingPanelEnsureSurfaceLoaded",
+    "JuceString_GetUtf16View": "juceStringGetUtf16View",
+    "OnboardingPanel_UpdateAuthState": "onboardingPanelUpdateAuthState",
+    "Onboarding_ShowNativeRecoverySurface": "onboardingShowNativeRecoverySurface",
+    "AuthManager_CopyStateSnapshot": "authManagerCopyStateSnapshot",
+    "Onboarding_PersistAcceptanceCallback": "onboardingPersistAcceptanceCallback",
+    "WideString_Destroy": "wideStringDestroy",
+    "AuthManager_WaitForInitialVerification": "authManagerWaitForInitialVerification",
+    "JuceString_Clear": "juceStringClear",
+    "JuceWindowPeer_InitializeServices": "juceWindowPeerInitializeServices",
+    "WideString_FindLastCharacter": "wideStringFindLastCharacter",
+    "JuceString_ToLowerCase": "juceStringToLowerCase",
+    "WinShell_OpenUrlOrEmail": "winShellOpenUrlOrEmail",
+    "Editor_SynchronizeWebViewAuthState": "editorSynchronizeWebViewAuthState",
+    "Onboarding_BuildAccountHandoffUrl": "onboardingBuildAccountHandoffUrl",
+    "Clock_ReadSteadyNanoseconds": "clockReadSteadyNanoseconds",
+    "CppRtti_DynamicCast": "cppRttiDynamicCast",
+    "AudioGate_IsRenderAuthorized": "audioGateIsRenderAuthorized",
+    "JuceString_CompareUtf8": "juceStringCompareUtf8",
+    "AuthManager_IsInitialVerificationComplete": "authManagerIsInitialVerificationComplete",
+    "Editor_SynchronizeOnboardingVisibility": "editorSynchronizeOnboardingVisibility",
+    "Editor_ConfigureOnboardingCallbacks": "editorConfigureOnboardingCallbacks",
+    "WinShell_Execute": "winShellExecute",
+    "Editor_InvokeFallbackCompletion": "editorInvokeFallbackCompletion",
+    "JuceString_StartsWithUtf8": "juceStringStartsWithUtf8",
+    "AuthDiagnostics_BuildJson": "authDiagnosticsBuildJson",
+    "Clock_GetPerformanceCounterTicks": "clockGetPerformanceCounterTicks",
+    "Memory_AllocateObject": "memoryAllocateObject",
+    "WebView2_HasRegistryValue": "webView2HasRegistryValue",
+    "WinSecurity_CanWriteFile": "winSecurityCanWriteFile",
+    "Editor_OnOnboardingAcceptRequest": "editorOnOnboardingAcceptRequest",
+    "StandaloneCloud_CreateProjectSession": "standaloneCloudCreateProjectSession",
+    "OnboardingPanel_InitializeSurface": "onboardingPanelInitializeSurface",
+    "g_focusedJuceComponent": "focusedJuceComponent",
+    "AudioProcessor_Initialize": "audioProcessorInitialize",
+    "JuceString_AppendUtf8Range": "juceStringAppendUtf8Range",
+    "Onboarding_ShowSetupError": "onboardingShowSetupError",
+    "Editor_ConfigureSharedAiSurfaces": "editorConfigureSharedAiSurfaces",
+    "AudioProcessor_PrepareToPlay": "audioProcessorPrepareToPlay",
+    "Editor_ApplyAuthStateToSharedAiSurfaces": "editorApplyAuthStateToSharedAiSurfaces",
+    "WebView_BuildInstrumentViewModel": "webViewBuildInstrumentViewModel",
+    "WebView2_ReadPolicyValue": "webView2ReadPolicyValue",
+    "WinTrust_VerifyPublisherSignature": "winTrustVerifyPublisherSignature",
+    "Entitlement_IsStatusAllowed": "entitlementIsStatusAllowed",
+    "Clock_ReadUnixTimeParts": "clockReadUnixTimeParts",
+    "WinShell_LaunchExistingFile": "winShellLaunchExistingFile",
+    "g_activeJuceLogger": "activeJuceLogger",
+    "AudioGate_IsRenderAllowedOnAudioThread": "audioGateIsRenderAllowedOnAudioThread",
+    "WideString_Assign": "wideStringAssign",
+    "CliHost_GetProcessor": "cliHostGetProcessor",
+    "AuthManager_SnapshotState": "authManagerSnapshotState",
+    "LABEL_11": "label11",
+    "LABEL_7": "label7",
+    "LABEL_8": "label8",
+    "AuthCleanup_LegacyMasFile": "authCleanupLegacyMasFile",
+    "LABEL_189": "label189",
+    "LABEL_126": "label126",
+    "LABEL_127": "label127",
+    "LABEL_135": "label135",
+    "LABEL_177": "label177",
+    "LABEL_183": "label183",
+    "AuthEvents_PersistAndDispatch": "authEventsPersistAndDispatch",
+    "LABEL_186": "label186",
+    "AuthManager_NotifyStateChangedAsync": "authManagerNotifyStateChangedAsync",
+    "LABEL_78": "label78",
+    "LABEL_82": "label82",
+    "LABEL_73": "label73",
+    "LABEL_88": "label88",
+    "LABEL_68": "label68",
+    "LABEL_72": "label72",
+    "LABEL_74": "label74",
+    "LABEL_20": "label20",
+    "LABEL_32": "label32",
+    "LABEL_420": "label420",
+    "LABEL_42": "label42",
+    "LABEL_13": "label13",
+    "LABEL_26": "label26",
+    "LABEL_59": "label59",
+    "LABEL_49": "label49",
+    "LABEL_57": "label57",
+    "LABEL_64": "label64",
+    "LABEL_85": "label85",
+    "LABEL_97": "label97",
+    "LABEL_109": "label109",
+    "LABEL_121": "label121",
+    "LABEL_133": "label133",
+    "LABEL_145": "label145",
+    "LABEL_157": "label157",
+    "LABEL_169": "label169",
+    "LABEL_181": "label181",
+    "LABEL_193": "label193",
+    "LABEL_205": "label205",
+    "LABEL_215": "label215",
+    "LABEL_227": "label227",
+    "LABEL_237": "label237",
+    "LABEL_247": "label247",
+    "LABEL_259": "label259",
+    "LABEL_267": "label267",
+    "LABEL_286": "label286",
+    "LABEL_289": "label289",
+    "LABEL_296": "label296",
+    "LABEL_308": "label308",
+    "LABEL_316": "label316",
+    "LABEL_328": "label328",
+    "LABEL_336": "label336",
+    "LABEL_355": "label355",
+    "LABEL_358": "label358",
+    "LABEL_370": "label370",
+    "LABEL_382": "label382",
+    "LABEL_394": "label394",
+    "LABEL_403": "label403",
+    "LABEL_412": "label412",
+    "LABEL_110": "label110",
+    "LABEL_111": "label111",
+    "LABEL_112": "label112",
+    "IsAuthorized_readonly": "isAuthorizedReadonly",
+    "LABEL_595": "label595",
+    "LABEL_16": "label16",
+    "LABEL_123": "label123",
+    "LABEL_510": "label510",
+    "LABEL_100": "label100",
+    "LABEL_122": "label122",
+    "LABEL_458": "label458",
+    "LABEL_212": "label212",
+    "LABEL_197": "label197",
+    "LABEL_179": "label179",
+    "LABEL_524": "label524",
+    "LABEL_531": "label531",
+    "LABEL_38": "label38",
+    "LABEL_45": "label45",
+    "LABEL_84": "label84",
+    "LABEL_86": "label86",
+    "LABEL_98": "label98",
+    "LABEL_99": "label99",
+    "LABEL_150": "label150",
+    "LABEL_149": "label149",
+    "LABEL_194": "label194",
+    "FadModel1AudioProcessor_releaseResources": "fadModel1AudioProcessorReleaseResources",
+    "LABEL_50": "label50",
+    "LABEL_46": "label46",
+    "LABEL_47": "label47",
+    "LABEL_54": "label54",
+    "Processor_DispatchAuthEvent_impl": "processorDispatchAuthEventImpl",
+    "LABEL_36": "label36",
+    "LABEL_43": "label43",
+    "LABEL_19": "label19",
+    "LABEL_28": "label28",
+    "LABEL_12": "label12",
+    "LABEL_9": "label9",
+    "LABEL_27": "label27",
+    "LABEL_25": "label25",
+    "LABEL_40": "label40",
+    "LABEL_41": "label41",
+    "AuthManager_SetStateChangedCallback": "authManagerSetStateChangedCallback",
+    "AuthManager_SetEventCallback": "authManagerSetEventCallback",
+    "LABEL_79": "label79",
+    "LABEL_80": "label80",
+    "LABEL_18": "label18",
+    "LABEL_690": "label690",
+    "LABEL_691": "label691",
+    "LABEL_37": "label37",
+    "AuthState_NextEventSeq": "authStateNextEventSeq",
+    "LABEL_679": "label679",
+    "LABEL_192": "label192",
+    "LABEL_191": "label191",
+    "LABEL_61": "label61",
+    "LABEL_190": "label190",
+    "LABEL_81": "label81",
+    "LABEL_137": "label137",
+    "LABEL_106": "label106",
+    "LABEL_105": "label105",
+    "LABEL_107": "label107",
+    "LABEL_119": "label119",
+    "LABEL_118": "label118",
+    "LABEL_134": "label134",
+    "LABEL_171": "label171",
+    "AuthRecheck_MaybeDispatch": "authRecheckMaybeDispatch",
+    "LABEL_204": "label204",
+    "LABEL_213": "label213",
+    "LABEL_216": "label216",
+    "LABEL_222": "label222",
+    "LABEL_223": "label223",
+    "LABEL_238": "label238",
+    "AuthStore_PersistState": "authStorePersistState",
+    "LABEL_678": "label678",
+    "LABEL_288": "label288",
+    "LABEL_287": "label287",
+    "LABEL_368": "label368",
+    "LABEL_685": "label685",
+    "LABEL_367": "label367",
+    "LABEL_366": "label366",
+    "LABEL_365": "label365",
+    "LABEL_387": "label387",
+    "LABEL_688": "label688",
+    "LABEL_479": "label479",
+    "LABEL_658": "label658",
+    "LABEL_508": "label508",
+    "LABEL_506": "label506",
+    "LABEL_505": "label505",
+    "LABEL_657": "label657",
+    "LABEL_656": "label656",
+    "LABEL_654": "label654",
+    "LABEL_24": "label24",
+    "LABEL_35": "label35",
+    "LABEL_62": "label62",
+    "LABEL_65": "label65",
+    "LABEL_67": "label67",
+    "LABEL_115": "label115",
+    "LABEL_153": "label153",
+    "LABEL_53": "label53",
+    "LABEL_10": "label10",
+    "LABEL_182": "label182",
+    "LABEL_185": "label185",
+    "LABEL_17": "label17",
+    "LABEL_56": "label56",
+    "LABEL_52": "label52",
+    "LABEL_3": "label3",
+    "LABEL_23": "label23",
+    "LABEL_22": "label22",
+    "LABEL_48": "label48",
+    "LABEL_44": "label44",
+    "LABEL_459": "label459",
+    "LABEL_214": "label214",
+    "LABEL_476": "label476",
+    "LABEL_144": "label144",
+    "LABEL_391": "label391",
+    "LABEL_143": "label143",
+    "LABEL_195": "label195",
+    "LABEL_199": "label199",
+    "LABEL_200": "label200",
+    "LABEL_129": "label129",
+    "LABEL_477": "label477",
+    "LABEL_175": "label175",
+    "LABEL_158": "label158",
+    "LABEL_167": "label167",
+    "LABEL_148": "label148",
+    "LABEL_263": "label263",
+    "LABEL_264": "label264",
+    "LABEL_330": "label330",
+    "LABEL_310": "label310",
+    "LABEL_347": "label347",
+    "LABEL_239": "label239",
+    "LABEL_250": "label250",
+    "LABEL_407": "label407"
+  },
+  "fragments": [
+    {
+      "original_file": "AuthDiagnostics_BuildJson.c",
+      "previous_path": "auth/diagnostics/build_auth_diagnostics.cpp",
+      "path": "Source/Authentication/AuthDiagnostics.cpp",
+      "span": [
+        20,
+        12642
+      ],
+      "function": "authDiagnosticsBuildJson",
+      "address": "0x180808C70",
+      "original_sha256": "571d9bef631494ed251109095a9c7c75b2d59cfdee45633683e2807bb7e74f21",
+      "semantic_sha256": "75216cf96fdc4cd4b204900cdc69dd5dfedaa3af3e076896c5bd4eb9f0fd7287",
+      "evidence": "JSON keys and AUTH_NOT_READY"
+    },
+    {
+      "original_file": "AuthEntitlement_IsTimeValid.c",
+      "previous_path": "auth/entitlement/is_entitlement_time_valid.cpp",
+      "path": "Source/Authentication/Entitlement.cpp",
+      "span": [
+        20,
+        2816
+      ],
+      "function": "entitlementIsTimeValid",
+      "address": "0x180359D40",
+      "original_sha256": "5d3bb5c189344ea39f5e3b6db90855395a509ac257773dec04df61902e06742e",
+      "semantic_sha256": "db65b7297c193e47d4062258735051303eaa63317f9033d97bdb9225fb43bf46",
+      "evidence": "expiry, grace and MAS revocation comparisons"
+    },
+    {
+      "original_file": "AuthEntitlement_StatusNonEmpty.c",
+      "previous_path": "auth/entitlement/is_entitlement_status_allowed.cpp",
+      "path": "Source/Authentication/Entitlement.cpp",
+      "span": [
+        2817,
+        4764
+      ],
+      "function": "entitlementIsStatusAllowed",
+      "address": "0x180351990",
+      "original_sha256": "2f48e3360acbb3f674d81be4219e731fdb28c003796b45e16089b00f413cab82",
+      "semantic_sha256": "35e46f1e27011eadbc8b9401b02e5b8994367c2870208ffb0dc041c46ae04842",
+      "evidence": "compares active, refund_pending, permanent and grandfathered"
+    },
+    {
+      "original_file": "AuthManager_ApplyVerifiedState.c",
+      "previous_path": "auth/manager/load_persistent_auth_state.cpp",
+      "path": "Source/Authentication/AuthManager.cpp",
+      "span": [
+        20,
+        26500
+      ],
+      "function": "authManagerLoadPersistentState",
+      "address": "0x1803635D0",
+      "original_sha256": "a04f4de8cc34bf6788a2f04b7d05a26f5ef4d9324cc70c4b206eec42b2cdd6ff",
+      "semantic_sha256": "a4e4678508d5e638da6496d6f2020914b4ef3c40c67d1366c39ec4b205c039c5",
+      "evidence": "secure-store read, schema validation and disabled-storage deletion"
+    },
+    {
+      "original_file": "AuthManager_IsTaskBusy.c",
+      "previous_path": "auth/manager/is_initial_verification_complete.cpp",
+      "path": "Source/Authentication/AuthManager.cpp",
+      "span": [
+        26501,
+        27125
+      ],
+      "function": "authManagerIsInitialVerificationComplete",
+      "address": "0x180360510",
+      "original_sha256": "53a863d41ce73a58c22b5f5a5e6cff9902aea2c0343d11aa0779980eedff7e21",
+      "semantic_sha256": "44ecc06e874d3875b2a565092e64b6ef86f9b901eeefd099e73e2b96dbfdea7c",
+      "evidence": "reads ready byte at inner+1728 under the state lock"
+    },
+    {
+      "original_file": "AuthManager_MarkVerified.c",
+      "previous_path": "auth/manager/complete_initial_verification.cpp",
+      "path": "Source/Authentication/AuthManager.cpp",
+      "span": [
+        27126,
+        28398
+      ],
+      "function": "authManagerCompleteInitialVerification",
+      "address": "0x1803719F0",
+      "original_sha256": "2137f6c4fbb4598bd347a5383e054be2fa185f0395dc6e3fc4eda7f739463aca",
+      "semantic_sha256": "07bece782d2a15c8096ccc3d88d357a3b46ecb24bb3c98375d0ef5fba28cd981",
+      "evidence": "sets inner+1728 and notifies listeners"
+    },
+    {
+      "original_file": "AuthManager_SnapshotForUi.c",
+      "previous_path": "auth/manager/copy_state_snapshot.cpp",
+      "path": "Source/Authentication/AuthManager.cpp",
+      "span": [
+        28399,
+        28876
+      ],
+      "function": "authManagerCopyStateSnapshot",
+      "address": "0x180360270",
+      "original_sha256": "e4424fa7c3478d14c92d75b41808c5d48d3ae57ddc6135aa892063183be17656",
+      "semantic_sha256": "c58ee463746b46aaac4cf39843298edff0ac15f19df57ef81d621d898dc60665",
+      "evidence": "locked AuthManager_SnapshotState call"
+    },
+    {
+      "original_file": "AuthManager_WaitReadyBlocking.c",
+      "previous_path": "auth/manager/wait_for_initial_verification.cpp",
+      "path": "Source/Authentication/AuthManager.cpp",
+      "span": [
+        28877,
+        32952
+      ],
+      "function": "authManagerWaitForInitialVerification",
+      "address": "0x180360560",
+      "original_sha256": "e05b5fbd0d3127c90d4023e43305dc900f0b0b53a511de31115926afce935614",
+      "semantic_sha256": "a678c971afa32381fc9cef629ac166c86583e36cbae01019519c0375f2f51601",
+      "evidence": "15-second task wait followed by entitlement validation"
+    },
+    {
+      "original_file": "AuthMod_CreateProcess_caller.c",
+      "previous_path": "platform/windows/launch_child_process.cpp",
+      "path": "Source/Platform/WindowsProcess.cpp",
+      "span": [
+        20,
+        16582
+      ],
+      "function": "winProcessLaunchChildProcess",
+      "address": "0x1807F4A00",
+      "original_sha256": "74d22d0fd15b2c92b8f186bb7b180d93b90845df00d074904d4acbb72b53577b",
+      "semantic_sha256": "745b2264e1dd0a88e1e4a3870328b269d984c2e5e48950bb79cd67d02ce45d22",
+      "evidence": "CreateProcess, redirected handles and environment block"
+    },
+    {
+      "original_file": "AuthMod_OpenProcessToken_caller.c",
+      "previous_path": "auth/storage/open_credential_store.cpp",
+      "path": "Source/Authentication/AuthStateStorage.cpp",
+      "span": [
+        20,
+        12907
+      ],
+      "function": "authStorageOpenCredentialStore",
+      "address": "0x1807EF590",
+      "original_sha256": "afb0414de2c9268fe7fb822400b0b851bb2ab620322edfe2b9d417bdd11992fb",
+      "semantic_sha256": "b48fcce475e652f4316e757e2eb621ce8240b71718605e0215b6579853f5d9d2",
+      "evidence": "cred3 credential names and named mutexes"
+    },
+    {
+      "original_file": "AuthState_SerializeForWebView.c",
+      "previous_path": "auth/serialization/build_webview_auth_json.cpp",
+      "path": "Source/Authentication/AuthViewModel.cpp",
+      "span": [
+        20,
+        28080
+      ],
+      "function": "authStateBuildWebViewJson",
+      "address": "0x1806CCF20",
+      "original_sha256": "fd3c79f84634fe13a57490157b804f95c444eafbb9b9021cb985a0ef3d5673fc",
+      "semantic_sha256": "c3bdeefda8651223695147de89e59ca99dd41f8c2dc8b29ec60413cef6aedb8c",
+      "evidence": "reads panel fields at 712..792 and serializes UI JSON"
+    },
+    {
+      "original_file": "AuthState_SetUiFlags.c",
+      "previous_path": "ui/onboarding/update_panel_auth_state.cpp",
+      "path": "Source/UI/OnboardingState.cpp",
+      "span": [
+        20,
+        6793
+      ],
+      "function": "onboardingPanelUpdateAuthState",
+      "address": "0x1806CCCB0",
+      "original_sha256": "6e437805b9ec91cb0ae8da43fefe3b5b5acb8428dfe78e6b98c04acf3903a51d",
+      "semantic_sha256": "530c40ea59e6cc330ed6c86bf276a22bad96eca0859df03f498efb11597f1940",
+      "evidence": "compares and swaps panel auth fields, pushes JS state"
+    },
+    {
+      "original_file": "AuthStatus_AggregateForUi.c",
+      "previous_path": "auth/diagnostics/build_processor_status.cpp",
+      "path": "Source/Authentication/AuthDiagnostics.cpp",
+      "span": [
+        12643,
+        54164
+      ],
+      "function": "authDiagnosticsBuildProcessorStatus",
+      "address": "0x18005CDF0",
+      "original_sha256": "ba4723b3ff8629b5e717ce2a81e20ab76e58cf0c9c040e006d756462bc397522",
+      "semantic_sha256": "449968d768107e4b5e3c5110f308817fc0d739e2a2993f79f49b5a760286f3e8",
+      "evidence": "audio, auth and ALT status JSON keys"
+    },
+    {
+      "original_file": "AuthStore_ReadOnboardingCompleted.c",
+      "previous_path": "auth/storage/serialize_auth_state.cpp",
+      "path": "Source/Authentication/AuthStateWriter.cpp",
+      "span": [
+        20,
+        41923
+      ],
+      "function": "authStorageSerializeState",
+      "address": "0x18035E0B0",
+      "original_sha256": "021b4dd85899483ff27f4a7c45a938ff04b19f6261d30318c8470868fa9fd6fa",
+      "semantic_sha256": "0996842c89aff1fc28f7fa07961db980055a8530fcee3afd09c3b52b9df82ff9",
+      "evidence": "constructs JSON properties including onboarding fields"
+    },
+    {
+      "original_file": "AuthStore_WriteOnboardingCompleted.c",
+      "previous_path": "auth/storage/deserialize_auth_state.cpp",
+      "path": "Source/Authentication/AuthStateReader.cpp",
+      "span": [
+        20,
+        75530
+      ],
+      "function": "authStorageDeserializeState",
+      "address": "0x18035B130",
+      "original_sha256": "eac0cd3a12ed2f8cf86dc5ded897268b193f11392f1060ea86a113b9dba5447a",
+      "semantic_sha256": "89fb2c65d696c2582bc983dcc354ccadd340c4902b0580228ea4891fa0c071da",
+      "evidence": "parses JSON and assigns state fields"
+    },
+    {
+      "original_file": "AuthStore_WriteOnboardingCompletedWrapper.c",
+      "previous_path": "auth/storage/read_secure_auth_record.cpp",
+      "path": "Source/Authentication/AuthStateStorage.cpp",
+      "span": [
+        12908,
+        15427
+      ],
+      "function": "authStorageReadSecureRecord",
+      "address": "0x18035CEF0",
+      "original_sha256": "114ce89ae9d240e4ca8ba0d3bc6f4a87846de488e5a8e35eca7568acbc86d8ec",
+      "semantic_sha256": "d5090c2afc9dfd43428e16d4906e5fd4826ed9a79adf9b84dc5faf498f5addd9",
+      "evidence": "initializes result and reads auth_state from secure store"
+    },
+    {
+      "original_file": "BrowserHandoff_BuildUrl.c",
+      "previous_path": "ui/onboarding/build_account_handoff_url.cpp",
+      "path": "Source/UI/OnboardingNavigation.cpp",
+      "span": [
+        20,
+        20191
+      ],
+      "function": "onboardingBuildAccountHandoffUrl",
+      "address": "0x18021ED70",
+      "original_sha256": "f82c704f228fee38e6135af7d9ab5d9a18e17ef3a6340149e70797a92e5103c1",
+      "semantic_sha256": "fb8002e2c387138cf3b72ba457abc16586c513fe73971836e0bb4cf04469ccd5",
+      "evidence": "login, redemption and account-help URL construction"
+    },
+    {
+      "original_file": "Cli_CommandDispatcher.c",
+      "previous_path": "standalone/cli/dispatch_command.cpp",
+      "path": "Source/Standalone/CommandDispatcher.cpp",
+      "span": [
+        20,
+        198248
+      ],
+      "function": "cliDispatchCommand",
+      "address": "0x180814720",
+      "original_sha256": "456d508853428205c95c1c496af04e0bbdab4212741349a8f6c5b822af8f614a",
+      "semantic_sha256": "c400e31b8bde7afa74872f9c4357ffe544128adfdc51c1f52a07e86998691a0f",
+      "evidence": "command-name dispatch and command-specific JSON responses"
+    },
+    {
+      "original_file": "Cli_RenderProbe.c",
+      "previous_path": "standalone/cli/render_preview.cpp",
+      "path": "Source/Standalone/PreviewRenderer.cpp",
+      "span": [
+        20,
+        75212
+      ],
+      "function": "cliRenderPreview",
+      "address": "0x1808227A0",
+      "original_sha256": "f93bb208d3990755bbaaf67376eda3e9962f1f9c032bc771135ffa10369ee5ae",
+      "semantic_sha256": "aa0409f81072705b638bad75cfac9051727d5730d8e76635aae72a02e27435f1",
+      "evidence": "preview rendering, host-state restore and WAV output"
+    },
+    {
+      "original_file": "DynLoad_caller_A.c",
+      "previous_path": "reference/duplicate_exports/verify_publisher_signature.cpp",
+      "path": "Reference/DuplicateExports/VerifyPublisherSignature.cpp",
+      "span": [
+        20,
+        8860
+      ],
+      "function": "winTrustVerifyPublisherSignature",
+      "address": "0x180909120",
+      "original_sha256": "658de783252ed0298ed545406499fa757744a3b53afafb953566c5f0b1d1f5b3",
+      "semantic_sha256": "2fe73b020ef572278ede57ac998371a0aaa7411219f2e89485d59b6fcae07eb0",
+      "evidence": "same address as WinTrust_DynamicLoader"
+    },
+    {
+      "original_file": "Editor_CompleteOnboardingFromFallback.c",
+      "previous_path": "ui/editor/complete_onboarding_from_fallback.cpp",
+      "path": "Source/UI/EditorOnboarding.cpp",
+      "span": [
+        20,
+        3643
+      ],
+      "function": "editorCompleteOnboardingFromFallback",
+      "address": "0x1802261C0",
+      "original_sha256": "3b9ba424ffe0f2a75017223ad71cd5dbf109eb63413d123ac29411223818604a",
+      "semantic_sha256": "0aca1e29f92c685235243608912d806007448a1490b495c18fbda1930ab5c9de",
+      "evidence": "accept-state changes and onboarding completion calls"
+    },
+    {
+      "original_file": "Editor_CompleteOnboardingFromFallbackThunk.c",
+      "previous_path": "ui/editor/invoke_fallback_completion.cpp",
+      "path": "Source/UI/EditorOnboarding.cpp",
+      "span": [
+        3644,
+        4242
+      ],
+      "function": "editorInvokeFallbackCompletion",
+      "address": "0x18023BB80",
+      "original_sha256": "c31473246e58021e62540d4f042a6e3d0803495fccca48eb9554d4d5ec57ea26",
+      "semantic_sha256": "522ff5598c1f22747cfddb9f2b762849e4067ac9269da09d41bab97dbab446bf",
+      "evidence": "callback adapter for fallback completion"
+    },
+    {
+      "original_file": "Editor_ConfigureOnboardingCallbacks.c",
+      "previous_path": "ui/editor/configure_onboarding_callbacks.cpp",
+      "path": "Source/UI/EditorCallbacks.cpp",
+      "span": [
+        20,
+        10745
+      ],
+      "function": "editorConfigureOnboardingCallbacks",
+      "address": "0x180225A90",
+      "original_sha256": "96e75de8e146f27dbfc36137dd7a88cf8c3a8a6e5013082c121a7efe47930d7d",
+      "semantic_sha256": "e6d5e56715790debdb8ee280b982f7fda60ca698015703f220375de9ac4d6eab",
+      "evidence": "installs panel callbacks and weak editor references"
+    },
+    {
+      "original_file": "Editor_Method_A.c",
+      "previous_path": "ui/editor/apply_auth_state_to_shared_ai_surfaces.cpp",
+      "path": "Source/UI/SharedAiSurfaces.cpp",
+      "span": [
+        20,
+        14474
+      ],
+      "function": "editorApplyAuthStateToSharedAiSurfaces",
+      "address": "0x180224400",
+      "original_sha256": "02ff2134e5945ce15ab0aac937ce5e2c7aa5aa0cded789e04b3fcbe1f847f830",
+      "semantic_sha256": "8f2c079467b4b3499cd17af7fd92a3e009028df4efd66c3e4f666c710a241e7d",
+      "evidence": "casts weak editor and updates device-code/visibility state"
+    },
+    {
+      "original_file": "Editor_Method_B.c",
+      "previous_path": "ui/editor/configure_shared_ai_surfaces.cpp",
+      "path": "Source/UI/SharedAiSurfaces.cpp",
+      "span": [
+        14475,
+        21980
+      ],
+      "function": "editorConfigureSharedAiSurfaces",
+      "address": "0x1802264E0",
+      "original_sha256": "2ddf3eb10ae7ee3df6aeac27a894cf391c461d469cf31ea40af3666cad945a09",
+      "semantic_sha256": "a50b60e05784eea58bfbe1d239d0ff3d24a8c5174a1ccc75c0314d229f6d7a52",
+      "evidence": "configureSharedAiSurfaces appears in lambda vtable names"
+    },
+    {
+      "original_file": "Editor_Method_C.c",
+      "previous_path": "ui/editor/synchronize_ai_surface_auth_state.cpp",
+      "path": "Source/UI/SharedAiSurfaces.cpp",
+      "span": [
+        21981,
+        36817
+      ],
+      "function": "editorSynchronizeAiSurfaceAuthState",
+      "address": "0x1802268C0",
+      "original_sha256": "be102fdd246e5c11d0a66057ca9a162f6468ef5021d9b2cf320e195dceb81adf",
+      "semantic_sha256": "89493fda0dfa0036d32bee3ce90da80e131167e89adb011c523b23468845d9fc",
+      "evidence": "weak editor resolution and UI/auth-state synchronization"
+    },
+    {
+      "original_file": "Editor_OnAuthStateChanged.c",
+      "previous_path": "ui/editor/on_auth_state_changed.cpp",
+      "path": "Source/UI/EditorAuthState.cpp",
+      "span": [
+        20,
+        3417
+      ],
+      "function": "editorOnAuthStateChanged",
+      "address": "0x180225660",
+      "original_sha256": "f4ec4989a20cd99b6eba2991da30facdb6f1fc94324c05e1a4690d901b4e6e96",
+      "semantic_sha256": "20a29242b155dee7a57795ee8dee7e4daf58e7242ac4c86b2484f391d2195e3c",
+      "evidence": "refreshes panel visibility and state"
+    },
+    {
+      "original_file": "Editor_OnboardingAcceptCallback.c",
+      "previous_path": "ui/editor/on_onboarding_accept_request.cpp",
+      "path": "Source/UI/EditorOnboarding.cpp",
+      "span": [
+        4243,
+        11119
+      ],
+      "function": "editorOnOnboardingAcceptRequest",
+      "address": "0x180225F70",
+      "original_sha256": "6a2771d9af90f29a7dc7bb51253c2db2375a2c82aec0eca66138ecb407a24ec5",
+      "semantic_sha256": "cc3e39596ec8ea3ae79a8f24f2309e7d82a9806a1205c4595efbe46febc21a42",
+      "evidence": "weak editor callback receiving acceptance result"
+    },
+    {
+      "original_file": "Editor_OnboardingExitTick.c",
+      "previous_path": "ui/editor/invoke_onboarding_exit_tick.cpp",
+      "path": "Source/UI/EditorOnboarding.cpp",
+      "span": [
+        11120,
+        11365
+      ],
+      "function": "editorInvokeOnboardingExitTick",
+      "address": "0x18023BB70",
+      "original_sha256": "f6155c95fe44c618f4ab4375cda1bd49795592ade4abb3a0c7781af19c533d3d",
+      "semantic_sha256": "2ff02ec0a4ef1d72485bc5104986402c3db804179429a1ef3857cabd0db436cc",
+      "evidence": "forwards to scheduled onboarding exit"
+    },
+    {
+      "original_file": "Editor_OnOnboardingAccepted.c",
+      "previous_path": "ui/editor/open_account_handoff.cpp",
+      "path": "Source/UI/EditorOnboarding.cpp",
+      "span": [
+        11366,
+        13145
+      ],
+      "function": "editorOpenAccountHandoff",
+      "address": "0x180225520",
+      "original_sha256": "590b4308a418ad34120ada40792a0e0559d8ed323b2d59dd750623f1fffd545c",
+      "semantic_sha256": "d3d0794b54c7ff82cdee8419b41ddf6ccda04664714d7907d3868085b28b7ee5",
+      "evidence": "opens account URL or defers until device code exists"
+    },
+    {
+      "original_file": "Editor_OnOnboardingError.c",
+      "previous_path": "ui/editor/on_onboarding_error.cpp",
+      "path": "Source/UI/EditorOnboarding.cpp",
+      "span": [
+        13146,
+        18224
+      ],
+      "function": "editorOnOnboardingError",
+      "address": "0x180225850",
+      "original_sha256": "a8b3b8eaaec644df84e2dd73f39040863704ce64677a27c61876fce56325a06f",
+      "semantic_sha256": "7647f876820b76d7cb903efaf87c73f5ea40433284452c0a9812d8b1f9f6db5e",
+      "evidence": "error callback and panel update"
+    },
+    {
+      "original_file": "Editor_OnOnboardingSurfaceChanged2.c",
+      "previous_path": "reference/duplicate_exports/reset_panel_surface_callbacks.cpp",
+      "path": "Reference/DuplicateExports/ResetPanelSurfaceCallbacks.cpp",
+      "span": [
+        20,
+        2043
+      ],
+      "function": "onboardingPanelResetSurfaceCallbacks",
+      "address": "0x1806D01D0",
+      "original_sha256": "01a7ada4567f8424df96e1995ece9e92cfd18351302631715fd2d70df6ab0182",
+      "semantic_sha256": "4af2cc361471f7fe5162e195325119e4a437e1f5ef5e967a0c69d4c4489ab4c7",
+      "evidence": "same address as OnboardingPanel_NotifyOwner"
+    },
+    {
+      "original_file": "Editor_ScheduleOnboardingExit.c",
+      "previous_path": "ui/editor/schedule_onboarding_exit.cpp",
+      "path": "Source/UI/EditorOnboarding.cpp",
+      "span": [
+        18225,
+        21538
+      ],
+      "function": "editorScheduleOnboardingExit",
+      "address": "0x18023B960",
+      "original_sha256": "06a58c0b85f8d1c3eb26d99ba924031b950f94160d081123931abc122edabc65",
+      "semantic_sha256": "7be531f9935303327dc7c0de93328a756795a63a6e5ce0fcb03b2601c80830fe",
+      "evidence": "deferred onboarding exit callback"
+    },
+    {
+      "original_file": "Editor_ScheduleOnboardingExitThunk.c",
+      "previous_path": "ui/editor/invoke_exit_scheduler.cpp",
+      "path": "Source/UI/EditorOnboarding.cpp",
+      "span": [
+        21539,
+        22117
+      ],
+      "function": "editorInvokeExitScheduler",
+      "address": "0x18023BBC0",
+      "original_sha256": "4ebdcb542db678b85aabf39addd548b7eda3cc4206a2ff3496880e56825da671",
+      "semantic_sha256": "a2f36e8e0163a2a3eb99dfee62eeb21293004495f2e10870f8d986602dc91705",
+      "evidence": "adapter for exit scheduling"
+    },
+    {
+      "original_file": "EditorState_SetAuthVisible.c",
+      "previous_path": "platform/juce/set_component_visible.cpp",
+      "path": "Source/Platform/JuceComponent.cpp",
+      "span": [
+        20,
+        3086
+      ],
+      "function": "juceComponentSetVisible",
+      "address": "0x1801C8860",
+      "original_sha256": "f9b870c20f2b3637a8d3cbb3ce0b91ab790994781cf021082177440fada2430e",
+      "semantic_sha256": "9d07193acebc7b8216c07d4226b590dec68b4ddd40f8b9980ff216b22d808e6b",
+      "evidence": "generic Component visibility flag, peer and parent handling"
+    },
+    {
+      "original_file": "EditorState_SetAuthVisible2.c",
+      "previous_path": "platform/juce/bring_component_to_front.cpp",
+      "path": "Source/Platform/JuceComponent.cpp",
+      "span": [
+        3087,
+        6923
+      ],
+      "function": "juceComponentBringToFront",
+      "address": "0x1801C9200",
+      "original_sha256": "de39f7e2a91ab8f841aa139596e299039e4f224ce9c7ab663dc8b27fd05aa774",
+      "semantic_sha256": "dbe08246ee6b80f9f62a57e5f0fbb38a7a96d9da01aa209b43ee1b879679507d",
+      "evidence": "peer toFront call and child z-order manipulation"
+    },
+    {
+      "original_file": "EngineSignal_Wake.c",
+      "previous_path": "audio/engine/request_worker_wakeup.cpp",
+      "path": "Source/Audio/EngineSignal.cpp",
+      "span": [
+        20,
+        2325
+      ],
+      "function": "audioEngineRequestWorkerWakeup",
+      "address": "0x1803C6AB0",
+      "original_sha256": "ae9560a18dff320653e8c15808d1f40d8988014ffcb9918afe18a76944e4e527",
+      "semantic_sha256": "4274d98f2444fc007b77b9a72a0258913374b8191146ff6b044bf1077a7330b3",
+      "evidence": "changes engine worker signal flags and counters"
+    },
+    {
+      "original_file": "FadModel1AudioProcessor_ctor.c",
+      "previous_path": "audio/processor/initialize_processor.cpp",
+      "path": "Source/PluginProcessor.cpp",
+      "span": [
+        20,
+        33737
+      ],
+      "function": "audioProcessorInitialize",
+      "address": "0x1800631E0",
+      "original_sha256": "bef1ed6a6b5cb15fde540c67c366ae394084b99c788eec11f676861bdee527c7",
+      "semantic_sha256": "fee4d6b2d08913b0520c735dd64c943b19c55bba0ba8ee0cdac93e4e5e62db14",
+      "evidence": "processor initialization, audio buses and service setup"
+    },
+    {
+      "original_file": "FadModel1AudioProcessor_prepareToPlay.c",
+      "previous_path": "audio/processor/prepare_to_play.cpp",
+      "path": "Source/PluginProcessor.cpp",
+      "span": [
+        33738,
+        54519
+      ],
+      "function": "audioProcessorPrepareToPlay",
+      "address": "0x180066BC0",
+      "original_sha256": "bcc2db026096a880ab70ee8b775a1a78a78989823e84816dc44a5ea7b39f930e",
+      "semantic_sha256": "eb97b036ceab79049b26bdcb798e5415aa387ffad80569f19f1d8c0ea4bcf9d2",
+      "evidence": "prepares buffers, voices and render authorization"
+    },
+    {
+      "original_file": "FadModel1AudioProcessor_processBlock_alt.c",
+      "previous_path": "audio/processor/process_block_alternate_path.cpp",
+      "path": "Source/PluginProcessorProcessing.cpp",
+      "span": [
+        20,
+        16244
+      ],
+      "function": "audioProcessorProcessBlockAlternatePath",
+      "address": "0x18006B610",
+      "original_sha256": "3a482c7c40bce9153a91bdd243a23674a3e6a4bd7509bdecbf6670709a2bc53f",
+      "semantic_sha256": "7aebc1859d119018f6c488b6bbeab1c19e4101e00c4a0cc1abe981a063e18029",
+      "evidence": "second processBlock entry; sample-type relationship unresolved"
+    },
+    {
+      "original_file": "FadModel1AudioProcessor_processBlock_impl.c",
+      "previous_path": "audio/processor/process_block.cpp",
+      "path": "Source/PluginProcessorProcessing.cpp",
+      "span": [
+        16245,
+        34561
+      ],
+      "function": "audioProcessorProcessBlock",
+      "address": "0x1800685C0",
+      "original_sha256": "774854567311a89bee96c0685694f6eb5ea5005943f3e573889e88eec5987fff",
+      "semantic_sha256": "949b24030a409dab8762faef776fd70db37574b8fd817296c77fd9b32bb35cbd",
+      "evidence": "main processBlock entry and authorization-gated rendering"
+    },
+    {
+      "original_file": "Hook_caller_A.c",
+      "previous_path": "platform/juce/initialize_window_peer_services.cpp",
+      "path": "Source/Platform/JuceWindowPeer.cpp",
+      "span": [
+        20,
+        6797
+      ],
+      "function": "juceWindowPeerInitializeServices",
+      "address": "0x1801D1C30",
+      "original_sha256": "e70f241759b888e9223be3a57e6f3b1e6b21f4f2bfe66406f45ebc0881d5faa6",
+      "semantic_sha256": "915e74344f0fe637772340f07e03abc58506805479ba2f45b12fedd34a5bda47",
+      "evidence": "window hook, dark-mode APIs and peer service construction"
+    },
+    {
+      "original_file": "Hook_caller_B.c",
+      "previous_path": "platform/juce/acquire_modal_dismiss_hook.cpp",
+      "path": "Source/Platform/JuceWindowPeer.cpp",
+      "span": [
+        6798,
+        11429
+      ],
+      "function": "juceWindowPeerAcquireModalDismissHook",
+      "address": "0x1801E8A80",
+      "original_sha256": "911b0e4ac45ed5a40154ad69fe310863e19963220b391f7625b8dd130c498c06",
+      "semantic_sha256": "0369c98253f387a6636aac4537f5a42ce47a227992068bc1586fac38fe4eb487",
+      "evidence": "TopLevelModalDismissBroadcaster vtable and WH_CALLWNDPROC"
+    },
+    {
+      "original_file": "Hook_caller_C.c",
+      "previous_path": "platform/juce/install_thread_message_hook.cpp",
+      "path": "Source/Platform/JuceMessageLoop.cpp",
+      "span": [
+        20,
+        708
+      ],
+      "function": "juceMessageLoopInstallGetMessageHook",
+      "address": "0x1801F3330",
+      "original_sha256": "c75a1c689f4161d09d95d6f1a2de657c8f28e2c6e98bac2496ac505f44caa0e2",
+      "semantic_sha256": "2b90872e4f5f1ed3e616981a6c89b30f1bee2c0bc883e6ee63a1b11c273a10e5",
+      "evidence": "SetWindowsHookExW with WH_GETMESSAGE on current thread"
+    },
+    {
+      "original_file": "MainWebViewModel_BuildAuthorizationStatus.c",
+      "previous_path": "ui/webview/build_instrument_view_model.cpp",
+      "path": "Source/UI/InstrumentViewModel.cpp",
+      "span": [
+        20,
+        51025
+      ],
+      "function": "webViewBuildInstrumentViewModel",
+      "address": "0x18071F2B0",
+      "original_sha256": "b23874a787711a85bc8b7e34f833e9cb5668544dd1828d7ff42647566a0002d8",
+      "semantic_sha256": "e7f582bd565215cb7b2827034076279fa254b752ad9d1abd2c5a0e0cfb13d1c2",
+      "evidence": "workspace, controls, preview and auth view-model properties"
+    },
+    {
+      "original_file": "MuteDrain_AllNotesOff.c",
+      "previous_path": "auth/network/register_device.cpp",
+      "path": "Source/Authentication/DeviceRegistration.cpp",
+      "span": [
+        20,
+        269310
+      ],
+      "function": "authNetworkRegisterDevice",
+      "address": "0x180367760",
+      "original_sha256": "4685db4822f747f698d05e9aa0d4c0d2417b25faabaae75bdb2aa019659ed8e9",
+      "semantic_sha256": "ab77ff78d0de5014896b83fae064c4b6c75eb8f9d1d516078f55be40219577f2",
+      "evidence": "POST /device/register and activation/reset/refresh response handling"
+    },
+    {
+      "original_file": "MuteDrain_AllNotesOff_real.c",
+      "previous_path": "audio/midi/drain_pending_notes.cpp",
+      "path": "Source/Audio/MidiNoteDrain.cpp",
+      "span": [
+        20,
+        4531
+      ],
+      "function": "audioMidiDrainPendingNotes",
+      "address": "0x180067DE0",
+      "original_sha256": "09ac1b4a7548780f26e97f8a4a7c5b63f58eafc5b8a7beaef334d5f0df5b817f",
+      "semantic_sha256": "46c125e16c2849ecdc294b85a2e4c9d6317e8206f0319a1d0f6da62534998ed6",
+      "evidence": "MIDI ring drain and all-notes-off handling"
+    },
+    {
+      "original_file": "MuteFade_OutputToSilence64.c",
+      "previous_path": "audio/gating/fade_out_over_64_samples.cpp",
+      "path": "Source/Audio/OutputFade.cpp",
+      "span": [
+        20,
+        7360
+      ],
+      "function": "audioGateFadeOutOver64Samples",
+      "address": "0x180068FF0",
+      "original_sha256": "1c5812fa8ba21d9539f796108ccdcda759c952cbc9b3d42302806bf4d403381d",
+      "semantic_sha256": "8310ecfc6dfdfe30f4d663bae0d49cf229374baf6b13a22baaffb0234b899382",
+      "evidence": "float audio ramp with 1/64 gain decrement"
+    },
+    {
+      "original_file": "Onboarding_AcceptCommitThunk.c",
+      "previous_path": "reference/duplicate_exports/persist_acceptance_callback.cpp",
+      "path": "Reference/DuplicateExports/PersistAcceptanceCallback.cpp",
+      "span": [
+        20,
+        1002
+      ],
+      "function": "onboardingPersistAcceptanceCallback",
+      "address": "0x1806D0A00",
+      "original_sha256": "3ccdaefa5b9f0c71f745252efe5783592be2fdbb5bcd9f439b395544832e0ac1",
+      "semantic_sha256": "25b823af42eaedab06febbb54cfc422cfaf79d6f1ea45c5eca5f47817d9d8d9f",
+      "evidence": "same address as Onboarding_AcceptPersistTask"
+    },
+    {
+      "original_file": "Onboarding_AcceptPersistTask.c",
+      "previous_path": "ui/onboarding/persist_acceptance_callback.cpp",
+      "path": "Source/UI/OnboardingAcceptance.cpp",
+      "span": [
+        20,
+        1002
+      ],
+      "function": "onboardingPersistAcceptanceCallback",
+      "address": "0x1806D0A00",
+      "original_sha256": "5fd1869648eb3e470d59c98aa1324c8f713e4e4e4e4f04cf1a91a5164e9e0ad0",
+      "semantic_sha256": "1ce26bf81a49f70f34b44453ac2cc921fd463eda9d79e34de5dbb0ccedfdb821",
+      "evidence": "deferred persistence callback"
+    },
+    {
+      "original_file": "Onboarding_CommitAccept.c",
+      "previous_path": "ui/onboarding/commit_acceptance.cpp",
+      "path": "Source/UI/OnboardingAcceptance.cpp",
+      "span": [
+        1003,
+        13777
+      ],
+      "function": "onboardingCommitAcceptance",
+      "address": "0x1806CBE30",
+      "original_sha256": "db5cedf2b160569948818b3beba5c385d47dc63a8ab908b516f1757ad7506db0",
+      "semantic_sha256": "c3470344a37a0fb3f41be4af71a7641f1519434093dd9c85e80630ac95daa5c3",
+      "evidence": "a2 gates persistence success; a3 selects bridge/navigation logging"
+    },
+    {
+      "original_file": "Onboarding_DispatchDeepLink.c",
+      "previous_path": "ui/onboarding/dispatch_deep_link.cpp",
+      "path": "Source/UI/OnboardingNavigation.cpp",
+      "span": [
+        20192,
+        34374
+      ],
+      "function": "onboardingDispatchDeepLink",
+      "address": "0x1806CB590",
+      "original_sha256": "477099bb65cd5e600ad3a124749baf4daf428ce44fd4a3ab852f6530a83c9c3a",
+      "semantic_sha256": "0a4db2779b05949360883a75b2ae81c09725cb44e6e2264e471adbb38544918c",
+      "evidence": "fadlab auth/account/store/legal command routes"
+    },
+    {
+      "original_file": "Onboarding_HandleAccept.c",
+      "previous_path": "ui/onboarding/handle_acceptance_request.cpp",
+      "path": "Source/UI/OnboardingAcceptance.cpp",
+      "span": [
+        13778,
+        32194
+      ],
+      "function": "onboardingHandleAcceptanceRequest",
+      "address": "0x1806CADA0",
+      "original_sha256": "c004c0c5e5f3b9ded7ad16c1d4e07bec658b656ab4ba7242c6f1de97cf85db3c",
+      "semantic_sha256": "b614a828725a3b0f4c7eef381f1ae2f36efa61d2d3ecb505887e68d902fda65d",
+      "evidence": "nonce verification and acceptance dispatch"
+    },
+    {
+      "original_file": "Onboarding_HandleUrl_A.c",
+      "previous_path": "ui/onboarding/filter_browser_navigation.cpp",
+      "path": "Source/UI/OnboardingNavigation.cpp",
+      "span": [
+        34375,
+        37418
+      ],
+      "function": "onboardingFilterBrowserNavigation",
+      "address": "0x1806C9DB0",
+      "original_sha256": "a6dbe1a2afec7257be45c5298bd6a7ced456a12f8a52131e0a4ed5dde643245c",
+      "semantic_sha256": "90020a537c646e6216a34b6f62c17ed6e14c255cff1c4624ef757a50693f52ca",
+      "evidence": "accepts internal routes and logs blocked external navigation"
+    },
+    {
+      "original_file": "Onboarding_HandleUrl_B.c",
+      "previous_path": "ui/onboarding/handle_native_command.cpp",
+      "path": "Source/UI/OnboardingNavigation.cpp",
+      "span": [
+        37419,
+        42198
+      ],
+      "function": "onboardingHandleNativeCommand",
+      "address": "0x1806CAB50",
+      "original_sha256": "0fff40c6aa1a8dd8c31ba4f65b4dab81b19f33da72f664a1e896cf0083bfe1ac",
+      "semantic_sha256": "44d0edf23d84bc7a7987ca9e3f830e313ef50d4c1565ab75f650e47bc728bcba",
+      "evidence": "native accept/deep-link dispatch and rejection diagnostics"
+    },
+    {
+      "original_file": "Onboarding_RenderRecoverySurface.c",
+      "previous_path": "ui/onboarding/paint_recovery_surface.cpp",
+      "path": "Source/UI/OnboardingRecovery.cpp",
+      "span": [
+        20,
+        14134
+      ],
+      "function": "onboardingPanelPaintRecoverySurface",
+      "address": "0x1806C9FE0",
+      "original_sha256": "b05ee1e54eee9bfd25e9fb17b305b9563aca7714fa2a51ecb2b485681506d3b6",
+      "semantic_sha256": "f04d668f09ddc168ef419af61d2621fe032a9404975dbaf57f1725c4c969c44d",
+      "evidence": "native Graphics fill/color/text drawing, not HTML generation"
+    },
+    {
+      "original_file": "Onboarding_ShowError.c",
+      "previous_path": "ui/onboarding/show_setup_error.cpp",
+      "path": "Source/UI/OnboardingRecovery.cpp",
+      "span": [
+        14135,
+        15020
+      ],
+      "function": "onboardingShowSetupError",
+      "address": "0x1806CA9B0",
+      "original_sha256": "ffc3af15e144672cc677178f23251fbf5b4b079af17c12cd6bf6bdb193a68cab",
+      "semantic_sha256": "1fde897ef873ca248fd62245e7f800b25289746dea2201762f456905918edb61",
+      "evidence": "Setup error message dialog"
+    },
+    {
+      "original_file": "Onboarding_ShowNativeFallback.c",
+      "previous_path": "ui/onboarding/show_native_recovery_surface.cpp",
+      "path": "Source/UI/OnboardingRecovery.cpp",
+      "span": [
+        15021,
+        17237
+      ],
+      "function": "onboardingShowNativeRecoverySurface",
+      "address": "0x1806CAA40",
+      "original_sha256": "1c5bd11c15ffdf710861506a513cb5dfc209fd4f128d40ba33bf6daa2f55504e",
+      "semantic_sha256": "85edab234358092737fde54211dec3e0ed5f191527b5413dad1ba6ba53f98418",
+      "evidence": "fallback surface and Setup error path"
+    },
+    {
+      "original_file": "Onboarding_StartupCheck.c",
+      "previous_path": "ui/onboarding/check_startup_requirements.cpp",
+      "path": "Source/UI/OnboardingStartup.cpp",
+      "span": [
+        20,
+        24742
+      ],
+      "function": "onboardingCheckStartupRequirements",
+      "address": "0x180227700",
+      "original_sha256": "f7926c1d078f1a19d6dcacbf15a12a2abfb466df58dd71699874f979e9eab8ff",
+      "semantic_sha256": "ce34425fd9c920704120609b5165486388453a21380c457af08c92e0a75261e5",
+      "evidence": "startup completion/version/activation checks"
+    },
+    {
+      "original_file": "Onboarding_StartupInner.c",
+      "previous_path": "reference/duplicate_exports/startup_check_inner_export.cpp",
+      "path": "Reference/DuplicateExports/StartupCheckInnerExport.cpp",
+      "span": [
+        20,
+        24742
+      ],
+      "function": "onboardingCheckStartupRequirements",
+      "address": "0x180227700",
+      "original_sha256": "a6b1f3a0ff088c996397c8c6e129afc6eb9575648069d3d4089687ced78f50f8",
+      "semantic_sha256": "d2c16a70bd06f44edc26445ae2abda70414dc8a05b69e239c8dae03415b68ca7",
+      "evidence": "same address and body as Onboarding_StartupCheck"
+    },
+    {
+      "original_file": "Onboarding_Unused.c",
+      "previous_path": "reference/duplicate_exports/startup_check_unused_label.cpp",
+      "path": "Reference/DuplicateExports/StartupCheckUnusedLabel.cpp",
+      "span": [
+        20,
+        24736
+      ],
+      "function": "onboardingCheckStartupRequirements",
+      "address": "0x180227700",
+      "original_sha256": "8c1aff0a373f8611b0f7bb8d74d1704e7814041bd1ff6a4d7293e9b4ef4bf57d",
+      "semantic_sha256": "63684ebfd42f0f42cd771508ab0238e676c8e0a4312592c70a51517e646da088",
+      "evidence": "same address/body; original unused label is not evidence of dead code"
+    },
+    {
+      "original_file": "Onboarding_UpdateVisibility.c",
+      "previous_path": "ui/editor/synchronize_onboarding_visibility.cpp",
+      "path": "Source/UI/EditorAuthState.cpp",
+      "span": [
+        3418,
+        7480
+      ],
+      "function": "editorSynchronizeOnboardingVisibility",
+      "address": "0x1802274C0",
+      "original_sha256": "2204b7f7d1d4194dc6dadf36799e9bd7559fd98d4c643263976c5bc961d3f07a",
+      "semantic_sha256": "f585d64a2fd69dcaeb8c61255bf97442935eeb92875ff62ce48e29fd2a782aba",
+      "evidence": "auth-state dependent panel visibility"
+    },
+    {
+      "original_file": "Onboarding_ValidateHtml.c",
+      "previous_path": "ui/onboarding/is_bundled_html_compatible.cpp",
+      "path": "Source/UI/OnboardingPanel.cpp",
+      "span": [
+        20,
+        2872
+      ],
+      "function": "onboardingIsBundledHtmlCompatible",
+      "address": "0x1806C7940",
+      "original_sha256": "1b94e5564b0bec4fda26bd9eae3b9e106f4ce433eb148a3a074e61048f63c6ef",
+      "semantic_sha256": "6ed479bcec29413ef8fda87541b5eb72545de2acfc1a7ec99e97bfc3e0893ff4",
+      "evidence": "checks bundled HTML version and required bridge markers"
+    },
+    {
+      "original_file": "Onboarding_ValidateNonce.c",
+      "previous_path": "ui/onboarding/validate_acceptance_nonce.cpp",
+      "path": "Source/UI/OnboardingAcceptance.cpp",
+      "span": [
+        32195,
+        36718
+      ],
+      "function": "onboardingValidateAcceptanceNonce",
+      "address": "0x1806C5AE0",
+      "original_sha256": "65e24d445f467650aeffdf952674d9242ab57b1913eef5bd2e198b6cac6974ae",
+      "semantic_sha256": "29ad4803c35eb06d7a48630fafee35103cfa9f2420a1757166ad95df202df61a",
+      "evidence": "returns structured nonce validation status, not a plain boolean"
+    },
+    {
+      "original_file": "OnboardingPanel_Init.c",
+      "previous_path": "ui/onboarding/load_bundled_html.cpp",
+      "path": "Source/UI/OnboardingPanel.cpp",
+      "span": [
+        2873,
+        15121
+      ],
+      "function": "onboardingPanelLoadBundledHtml",
+      "address": "0x1806CF120",
+      "original_sha256": "313d90d78efec71af9551ee34a8d4307cfe497e0ee01bd9e03ba3e932e7af3b4",
+      "semantic_sha256": "1f6f177aab2c48cf31964b66b43e6822b8f7cb1062eedbf92c2fab0161aa6cca",
+      "evidence": "HTML compatibility checks and JS bridge substitution"
+    },
+    {
+      "original_file": "OnboardingPanel_NotifyOwner.c",
+      "previous_path": "ui/onboarding/reset_surface_callbacks.cpp",
+      "path": "Source/UI/OnboardingPanel.cpp",
+      "span": [
+        15122,
+        17138
+      ],
+      "function": "onboardingPanelResetSurfaceCallbacks",
+      "address": "0x1806D01D0",
+      "original_sha256": "8d3df05609581819fb2aba795dc54100cd344c356e313c7a67b6426a5fdb6938",
+      "semantic_sha256": "1b9c0a793b07c146c1ec98faf6cf0cdb3b8198146c1546f7c20145c43cd305b4",
+      "evidence": "clears surface callbacks and recomputes visibility/loading"
+    },
+    {
+      "original_file": "OnboardingPanel_ResetState.c",
+      "previous_path": "ui/onboarding/reset_for_review.cpp",
+      "path": "Source/UI/OnboardingPanel.cpp",
+      "span": [
+        17139,
+        22429
+      ],
+      "function": "onboardingPanelResetForReview",
+      "address": "0x1806CE7D0",
+      "original_sha256": "90a9696bdfcbeae415f35468397018d01a7964fc864dde71ec215ec2f63c078f",
+      "semantic_sha256": "c6d20fa19246ff89827e792fdfabedac55ff7fc79ae01323b367b338a3abf115",
+      "evidence": "FAD-ONB-REOPEN-REVIEW log and state reset"
+    },
+    {
+      "original_file": "OnboardingPanel_Show_Decide.c",
+      "previous_path": "ui/onboarding/ensure_surface_loaded.cpp",
+      "path": "Source/UI/OnboardingPanel.cpp",
+      "span": [
+        22430,
+        37428
+      ],
+      "function": "onboardingPanelEnsureSurfaceLoaded",
+      "address": "0x1806CEAB0",
+      "original_sha256": "fcf1a015411cab94d859883bd6e99d3c6d3a441b881c9fc964fb9cf538dad62f",
+      "semantic_sha256": "bd26ffc46bf8a0651f5790054fea207d8c5ceb5254cab739abb05ca059e06c84",
+      "evidence": "LOAD-DEFERRED, LOAD-START and LOAD-SKIP decisions"
+    },
+    {
+      "original_file": "OnboardingPanel_ShowSurface.c",
+      "previous_path": "ui/onboarding/initialize_panel_surface.cpp",
+      "path": "Source/UI/OnboardingPanel.cpp",
+      "span": [
+        37429,
+        40724
+      ],
+      "function": "onboardingPanelInitializeSurface",
+      "address": "0x1806CA6C0",
+      "original_sha256": "63d57949d6bd614c1d50568d54a3f3f2af9300ffb9b2d7c44c4c8b0b09a84f49",
+      "semantic_sha256": "126ef9e281828452e7fc0aa927456bbf67368e5141809d894d0b0a08872afb9d",
+      "evidence": "creates Onboarding surface and callbacks"
+    },
+    {
+      "original_file": "OpenProcess_caller.c",
+      "previous_path": "platform/windows/read_process_creation_time.cpp",
+      "path": "Source/Platform/WindowsProcess.cpp",
+      "span": [
+        16583,
+        19036
+      ],
+      "function": "winProcessReadCreationTimeString",
+      "address": "0x1803A1AB0",
+      "original_sha256": "cc82a57ac23bcd7ab78d5f164ca107d32747f6a5af57152fc801212ac8eb6e84",
+      "semantic_sha256": "1dd5a856c52de4c47604773d157dcc2bf9e3808794fc3cac86fc135b144f372d",
+      "evidence": "GetProcessTimes creation FILETIME formatted in decimal"
+    },
+    {
+      "original_file": "OpenProcessToken_caller.c",
+      "previous_path": "platform/windows/create_daw_ipc_transport.cpp",
+      "path": "Source/Platform/WindowsIpc.cpp",
+      "span": [
+        20,
+        31491
+      ],
+      "function": "winIpcCreateDawTransport",
+      "address": "0x1803A26E0",
+      "original_sha256": "18808af388c10a64c50ebbdd122c1c372c4c37dd25477109e956569ae4dfadf0",
+      "semantic_sha256": "e3739ab793e7882efc1780eccabfd2a596a9f344555af9bb4f7551de8c25088d",
+      "evidence": "SID ACLs, fadsynth-daw named pipe and scratch directory"
+    },
+    {
+      "original_file": "OpenProcessToken_caller_A.c",
+      "previous_path": "platform/windows/can_write_file.cpp",
+      "path": "Source/Platform/WindowsSecurity.cpp",
+      "span": [
+        20,
+        2783
+      ],
+      "function": "winSecurityCanWriteFile",
+      "address": "0x1800937E0",
+      "original_sha256": "4235c38922f8dd075b61360039e0010d5e37273c9cf2e26e887379d4c51e9dd2",
+      "semantic_sha256": "6a84d38f3e5f2b2f82db771407766593ab02cb723cb644f494073cfabce4754e",
+      "evidence": "token duplication and AccessCheck for file permissions"
+    },
+    {
+      "original_file": "Processor_OnAuthStateChanged.c",
+      "previous_path": "audio/gating/on_auth_state_changed.cpp",
+      "path": "Source/Audio/RenderGate.cpp",
+      "span": [
+        20,
+        4193
+      ],
+      "function": "audioGateOnAuthStateChanged",
+      "address": "0x180064AC0",
+      "original_sha256": "cdf149400d635021f3bdc9502dd180803b051210de1c7603f038ea47845b8d97",
+      "semantic_sha256": "61a5207b8665706c65aa3f6bc12c0a82a37ab44a98d11e5fccd75f48cd7edc52",
+      "evidence": "packs entitlement snapshot and updates processor deadline"
+    },
+    {
+      "original_file": "RegGetValue_caller_A.c",
+      "previous_path": "platform/webview2/read_policy_value.cpp",
+      "path": "Source/Platform/WebView2Policy.cpp",
+      "span": [
+        20,
+        2079
+      ],
+      "function": "webView2ReadPolicyValue",
+      "address": "0x180003411",
+      "original_sha256": "c7dd836e1dec6cf7ee01b258db87fe4a785bf01177a3fa1338625a7d72702a2a",
+      "semantic_sha256": "7bbfbad512522efaa8425ba87c14cfcd114989180509f69b3b8bd81df58d4e76",
+      "evidence": "registry policy value and typed result handling"
+    },
+    {
+      "original_file": "RegOpenKey_caller_A.c",
+      "previous_path": "platform/webview2/read_runtime_location.cpp",
+      "path": "Source/Platform/WebView2Runtime.cpp",
+      "span": [
+        20,
+        2945
+      ],
+      "function": "webView2ReadRuntimeLocation",
+      "address": "0x1800022C7",
+      "original_sha256": "215538747ab199f43ae01abc43f9e093c1d885d578fced0ad21fe60332120c8d",
+      "semantic_sha256": "d0ef6ae5cd42f23789ab375db901e50833f8dfc800c3cb9cef2b6ad267952781",
+      "evidence": "reads EBWebView or location/pv registry values"
+    },
+    {
+      "original_file": "RegOpenKey_caller_B.c",
+      "previous_path": "platform/webview2/has_policy_registry_key.cpp",
+      "path": "Source/Platform/WebView2Policy.cpp",
+      "span": [
+        2080,
+        2714
+      ],
+      "function": "webView2HasPolicyRegistryKey",
+      "address": "0x1800030E5",
+      "original_sha256": "b0f5fad37fdabb2cb2805723959b7ad483fba12c9773cdffaa3d6e8901dff935",
+      "semantic_sha256": "8f52ff56abfceba23f55081eb2d2c9967dccda0484271820ec7cb6078076fccb",
+      "evidence": "opens Edge/WebView2 policy registry key"
+    },
+    {
+      "original_file": "RegOpenKey_caller_C.c",
+      "previous_path": "platform/webview2/read_application_policy.cpp",
+      "path": "Source/Platform/WebView2Policy.cpp",
+      "span": [
+        2715,
+        6289
+      ],
+      "function": "webView2ReadApplicationPolicy",
+      "address": "0x18000315A",
+      "original_sha256": "10424cd3298ef86efed3b2347128a091d057843b667f40ddc1e8791f85c68644",
+      "semantic_sha256": "de452d56cf1f8168f245c8cc386610fa39dfcb625e431579feeb4ef2018da168",
+      "evidence": "app-id, executable-name and wildcard policy lookup"
+    },
+    {
+      "original_file": "RenderGate_AudioThread_Check.c",
+      "previous_path": "audio/gating/is_render_allowed_on_audio_thread.cpp",
+      "path": "Source/Audio/RenderGate.cpp",
+      "span": [
+        4194,
+        5565
+      ],
+      "function": "audioGateIsRenderAllowedOnAudioThread",
+      "address": "0x180066180",
+      "original_sha256": "7b383a5ed3c68309eb891e2f88b2e2520b5c213b867927aecd25e4663dbd2e8e",
+      "semantic_sha256": "1db2d9d45ae6e664411cd5b3e474b5c58d2c5dad21f0d2973ff216e011d90fba",
+      "evidence": "atomic deadline and audio-thread revocation path"
+    },
+    {
+      "original_file": "RenderGate_ComputeDeadline.c",
+      "previous_path": "audio/gating/update_render_deadline.cpp",
+      "path": "Source/Audio/RenderGate.cpp",
+      "span": [
+        5566,
+        9868
+      ],
+      "function": "audioGateUpdateRenderDeadline",
+      "address": "0x1800567F0",
+      "original_sha256": "2b9f35b7fc1047de6188dfb256008f52d169722288dfc1e4a2caa1b533f5efdb",
+      "semantic_sha256": "98e6f2746ba4592cc7ffb3364b974171afe968a4dce481f4bf4e3a3f565786ac",
+      "evidence": "monotonic deadline calculation and anti-rollback floors"
+    },
+    {
+      "original_file": "RenderGate_IsAuthorized_readonly.c",
+      "previous_path": "audio/gating/is_render_authorized.cpp",
+      "path": "Source/Audio/RenderGate.cpp",
+      "span": [
+        9869,
+        10484
+      ],
+      "function": "audioGateIsRenderAuthorized",
+      "address": "0x180066130",
+      "original_sha256": "4355fd6c0f12355dc4f8b9a97cf36f22167bfe6f1f3edc01764459de7dd9c953",
+      "semantic_sha256": "91819da88d0c54aca530211f2b2ee9e2841832c05842776ab286ad7bed73ec0b",
+      "evidence": "read-only GetTickCount64 versus atomic render deadline"
+    },
+    {
+      "original_file": "ShellExecA_Caller.c",
+      "previous_path": "platform/windows/launch_existing_file.cpp",
+      "path": "Source/Platform/WindowsShell.cpp",
+      "span": [
+        20,
+        575
+      ],
+      "function": "winShellLaunchExistingFile",
+      "address": "0x18008EE40",
+      "original_sha256": "e180c6c313c4ca2bfbf7d160bb1801acf7120923e8176b255e627eb838e56102",
+      "semantic_sha256": "aa2221e9955b953b2d29f6b68c69df8c40968639419888935873ab6c0eafc3e5",
+      "evidence": "GetFileAttributesW then shell launch"
+    },
+    {
+      "original_file": "ShellExecute_caller_A.c",
+      "previous_path": "platform/windows/shell_execute.cpp",
+      "path": "Source/Platform/WindowsShell.cpp",
+      "span": [
+        576,
+        1190
+      ],
+      "function": "winShellExecute",
+      "address": "0x180094F20",
+      "original_sha256": "66b7affa59ed01949603da886d9cad89a34ae7c272f25b11765bbf9de0a22624",
+      "semantic_sha256": "66b77ce676ef3fde059bc5345e7945c092ac2240397553075520dd52c6030dc0",
+      "evidence": "UTF-16 conversion and ShellExecuteW result check"
+    },
+    {
+      "original_file": "ShellExecute_caller_B.c",
+      "previous_path": "platform/windows/open_url_or_email.cpp",
+      "path": "Source/Platform/WindowsShell.cpp",
+      "span": [
+        1191,
+        5957
+      ],
+      "function": "winShellOpenUrlOrEmail",
+      "address": "0x1800B1D00",
+      "original_sha256": "0ecddd039435cc27c95f618c5b6c6cea1ec6320783d06a97f8ae37517fd6f904",
+      "semantic_sha256": "ab88adefd92b7396f64f3a5f9a7711b98152ec427a7e2d130ed28dd168c317a9",
+      "evidence": "mailto handling and default URL opening"
+    },
+    {
+      "original_file": "ShellExecute_caller_C.c",
+      "previous_path": "reference/duplicate_exports/launch_updater.cpp",
+      "path": "Reference/DuplicateExports/LaunchUpdater.cpp",
+      "span": [
+        20,
+        7822
+      ],
+      "function": "updaterLaunch",
+      "address": "0x1809095F0",
+      "original_sha256": "dd90f018d637723739ff76ebc67598c03dda04bcb6ff0afe22aece6295d1872f",
+      "semantic_sha256": "a7e7e033927da163e8920842767048621457ec674a95c111270e8efbbf395f49",
+      "evidence": "same address and body as Updater_Launcher"
+    },
+    {
+      "original_file": "sub_1807FACF0_deadlineWriter.c",
+      "previous_path": "standalone/audio/open_audio_device.cpp",
+      "path": "Source/Standalone/AudioDevice.cpp",
+      "span": [
+        20,
+        4030
+      ],
+      "function": "standaloneAudioOpenDevice",
+      "address": "0x1807FACF0",
+      "original_sha256": "ad0b73960dd44cf7f4d2881800d890e34c2f658510e5b3e4b9ccc2254f94f6d5",
+      "semantic_sha256": "595aa30af52c1fab772e4cd507cfcc427604baf2604611e593140d0dc0ccbffe",
+      "evidence": "audio permission, entitlement and device open errors"
+    },
+    {
+      "original_file": "sub_1807FB460_deadlineWriter.c",
+      "previous_path": "standalone/audio/revalidate_audio_permission.cpp",
+      "path": "Source/Standalone/AudioDevice.cpp",
+      "span": [
+        4031,
+        5502
+      ],
+      "function": "standaloneAudioRevalidatePermission",
+      "address": "0x1807FB460",
+      "original_sha256": "99cf6c73d4b37285803efbfcdeb7a908cb8532a8766d1516925f54de2b67a43f",
+      "semantic_sha256": "318b1f120f07692faaf4e03d0971da507fdf2b151f333d10f8d9e8d1d13b3432",
+      "evidence": "permission/deadline expiry closes the audio device"
+    },
+    {
+      "original_file": "sub_1807FB840_deadlineWriter.c",
+      "previous_path": "standalone/cloud/submit_task.cpp",
+      "path": "Source/Standalone/CloudSession.cpp",
+      "span": [
+        20,
+        8124
+      ],
+      "function": "standaloneCloudSubmitTask",
+      "address": "0x1807FB840",
+      "original_sha256": "cf840cecbebbb9b1bbee600759bb848b0f7e182a6ad3ab0b0e36b7f9b2dd4e90",
+      "semantic_sha256": "e3edf7b92ae84067a7c6eb6eb535b18f19474c4b4642b2239894223c703b192f",
+      "evidence": "cloud task limit, budget and taskId handling"
+    },
+    {
+      "original_file": "sub_18081B670_deadlineWriter.c",
+      "previous_path": "standalone/cloud/require_project_session.cpp",
+      "path": "Source/Standalone/CloudSession.cpp",
+      "span": [
+        8125,
+        14852
+      ],
+      "function": "standaloneCloudRequireProjectSession",
+      "address": "0x18081B670",
+      "original_sha256": "02ec35929986fd7a31116847389794ebd8134e29a1f11bc61d2dd79538b866e2",
+      "semantic_sha256": "44da8ecf17a4aeb53f01df8926c47f1a2054066f88d4abfa67e056b899dbe64d",
+      "evidence": "project/approval/budget/shared-storage checks and lazy cloud session"
+    },
+    {
+      "original_file": "SystemDir_caller.c",
+      "previous_path": "platform/windows/query_os_version.cpp",
+      "path": "Source/Platform/WindowsVersion.cpp",
+      "span": [
+        20,
+        8463
+      ],
+      "function": "winSystemQueryOsVersion",
+      "address": "0x180044E90",
+      "original_sha256": "b048f280e7f4d16022222aa65affdbd717c29f1e36dada676c25a1e330782169",
+      "semantic_sha256": "9850b666794338bd452756b97d67f1154b46611e048c439602f7ef114a537cda",
+      "evidence": "Windows system directory and ntdll RtlGetVersion"
+    },
+    {
+      "original_file": "Updater_Launcher.c",
+      "previous_path": "platform/windows/launch_updater.cpp",
+      "path": "Source/Platform/Updater.cpp",
+      "span": [
+        20,
+        7817
+      ],
+      "function": "updaterLaunch",
+      "address": "0x1809095F0",
+      "original_sha256": "a60110d94d1c82bd630cf21fd391588823cdf06cd64ee2b71c86693536510dce",
+      "semantic_sha256": "da950d6e4301ae43aa170bd25f9c287f276087e3fd5861d763a19a52a70786b9",
+      "evidence": "resolves and launches FAD Synth Updater.exe"
+    },
+    {
+      "original_file": "WebView2_Loader.c",
+      "previous_path": "platform/webview2/load_runtime.cpp",
+      "path": "Source/Platform/WebView2Runtime.cpp",
+      "span": [
+        2946,
+        14879
+      ],
+      "function": "webView2LoadRuntime",
+      "address": "0x180001480",
+      "original_sha256": "ffd07d7261fdce044e759f5b72f08b48bb64abbd5c4cff8ecb732f19d5774cbd",
+      "semantic_sha256": "aedb3cc049fdd07afaec764b17bf77d906da72fe85da75a219b7e493140b4dab",
+      "evidence": "WebView2 runtime discovery and package dependencies"
+    },
+    {
+      "original_file": "WebView_Diagnostics_Format.c",
+      "previous_path": "ui/webview/format_backend_diagnostics.cpp",
+      "path": "Source/UI/WebViewDiagnostics.cpp",
+      "span": [
+        20,
+        10230
+      ],
+      "function": "webViewFormatBackendDiagnostics",
+      "address": "0x1808E74C0",
+      "original_sha256": "e40749473ad413e9e069528ab7e0d47f701382606b1b1bdd4ea335d4b35b817b",
+      "semantic_sha256": "d99c57818ad90df90c7896776e524fd394c0529029e0611ffc446eddc622a77f",
+      "evidence": "builds diagnostics for surfaceName, then formats fields"
+    },
+    {
+      "original_file": "WebView_PathDiagnostics.c",
+      "previous_path": "ui/webview/build_path_diagnostics.cpp",
+      "path": "Source/UI/WebViewDiagnostics.cpp",
+      "span": [
+        10231,
+        19797
+      ],
+      "function": "webViewBuildPathDiagnostics",
+      "address": "0x18021A3A0",
+      "original_sha256": "dbd85f98a7c5a3e726740aa4cbf593fe3cdc097ce0c7d8790a16dcbb3ee50932",
+      "semantic_sha256": "078b61c7b4620b5147ca3207f561d89a4df0ca4f62b7223b2ca4691cc3b8d201",
+      "evidence": "initializes diagnostic result and resolves runtime/user-data paths"
+    },
+    {
+      "original_file": "WebViewState_Build.c",
+      "previous_path": "ui/onboarding/push_auth_state_to_javascript.cpp",
+      "path": "Source/UI/OnboardingState.cpp",
+      "span": [
+        6794,
+        10981
+      ],
+      "function": "onboardingPanelPushAuthStateToJavaScript",
+      "address": "0x1806CCAD0",
+      "original_sha256": "49b230ebb78f1a273c9caf51eed7d139440cdb972b2300122dec410761f76669",
+      "semantic_sha256": "2f46aa4467154abedfc24905af7d7d97511a69af4ca3735eca5d90864d8a4696",
+      "evidence": "fadOnboardingReceiveAuthState and native accept resolution JS"
+    },
+    {
+      "original_file": "WebViewState_OwnerSync.c",
+      "previous_path": "ui/editor/synchronize_webview_auth_state.cpp",
+      "path": "Source/UI/EditorAuthState.cpp",
+      "span": [
+        7481,
+        10854
+      ],
+      "function": "editorSynchronizeWebViewAuthState",
+      "address": "0x180225150",
+      "original_sha256": "52aba59eda1b08990cbf20289208ca508ae2ac0ae0780e9c0b2ce3d4e5ed7f55",
+      "semantic_sha256": "25e40eb0adad28a9c42fcac93c62cc3781843eb2245dafff8624902c8f30a098",
+      "evidence": "panel auth serialization and pending browser handoff"
+    },
+    {
+      "original_file": "WinTrust_DynamicLoader.c",
+      "previous_path": "platform/windows/verify_publisher_signature.cpp",
+      "path": "Source/Platform/WindowsTrust.cpp",
+      "span": [
+        20,
+        8866
+      ],
+      "function": "winTrustVerifyPublisherSignature",
+      "address": "0x180909120",
+      "original_sha256": "91a465071071012ecabfc90bd18a2d80d4677b786987ba7609c2580859780ee7",
+      "semantic_sha256": "9690d5fd040f3314aee55a62930bbd2776e6965a4934ecde20284cbbe189e11d",
+      "evidence": "WinVerifyTrust, signer-chain helpers and publisher certificate digest"
+    },
+    {
+      "original_file": "Worker_Launcher.c",
+      "previous_path": "standalone/worker/resolve_worker_executable.cpp",
+      "path": "Source/Standalone/AssetWorker.cpp",
+      "span": [
+        20,
+        5393
+      ],
+      "function": "assetWorkerResolveExecutablePath",
+      "address": "0x1807F4710",
+      "original_sha256": "56424fcdbf93e301d40c0af0d5f7780ad6722a1ab9616d6b9be33c05997824a4",
+      "semantic_sha256": "7a86114786a7e1baef76b0db6289784ce1f4d50ad460f57a31c906a90ed7155f",
+      "evidence": "searches bundle Contents/Helpers for FADAssetFileWorker.exe"
+    },
+    {
+      "original_file": "Worker_Launcher_Caller.c",
+      "previous_path": "standalone/worker/run_asset_processing_job.cpp",
+      "path": "Source/Standalone/AssetWorker.cpp",
+      "span": [
+        5394,
+        79249
+      ],
+      "function": "assetWorkerRunProcessingJob",
+      "address": "0x1807F53D0",
+      "original_sha256": "4da23292fffa6c46e578a48c4d72732bd126fa8e47040bdee731c1942ec36584",
+      "semantic_sha256": "992c91dd5ac0ae5781f134eda61d2b2dbe4028bbd4df5f5378389496b2d828ef",
+      "evidence": "worker JSON request, cancellation, timeout and processing result"
+    }
+  ],
+  "output_sha256": {
+    "Source/Authentication/AuthDiagnostics.cpp": "090ea04bb1ce54dcc9a81d5525f946048f5d2e0c36a9a3df3a35c4ba34be6f68",
+    "Source/Authentication/Entitlement.cpp": "6b926d4f689938fc806a64fa939970e91212769977d2a99f13e03c5e0767c7c5",
+    "Source/Authentication/AuthManager.cpp": "4ced2aad6def735682ed29ba5a345e1451837eb3f0f2c96f197b420965590ff4",
+    "Source/Platform/WindowsProcess.cpp": "8fa96609cead8c38531f3551844282c5f620c6cae4621a5eb5568fda5095222c",
+    "Source/Authentication/AuthStateStorage.cpp": "1e2d0daa451d4fc9afb4ee89a6cd1659bfb175f92c62243f442c8727b1685222",
+    "Source/Authentication/AuthViewModel.cpp": "101935fca3ba27a002ac38b9e8dbba6133b676a5a37219b80efeced2d039e06b",
+    "Source/UI/OnboardingState.cpp": "fca70247dd6b622d1f0310550bd91f1439de4e8ee3d7a5d41983262d31772632",
+    "Source/Authentication/AuthStateWriter.cpp": "02129778531b8f712ec3ae4763c0c41dc9eb9520b30f1a577858d109f1a13b2a",
+    "Source/Authentication/AuthStateReader.cpp": "a52423066ffba039d6802282d5ae2ad1ce0f8026068fbc4355c92579955f7a4a",
+    "Source/UI/OnboardingNavigation.cpp": "a99357fc210f906c1c369da2941005524ccd29ed50072c73323288f2e393a3e6",
+    "Source/Standalone/CommandDispatcher.cpp": "aebcabb05b9faeeae28c3f51b86011bf6e1d553010c59b0c2d9213bafff602fd",
+    "Source/Standalone/PreviewRenderer.cpp": "75a9d1f3a97cad557f631cde1cc81828f11891be6b08adfac243c9a2ccab838b",
+    "Reference/DuplicateExports/VerifyPublisherSignature.cpp": "f8c0ceff5bf739eb8edadfffb9e0853e0d87fc55ae636b892f1b2b6b26eaf252",
+    "Source/UI/EditorOnboarding.cpp": "7d099a349b721977a3d66b0228c17ba0bac68d7eec96e04332fe6b80bee8e509",
+    "Source/UI/EditorCallbacks.cpp": "f9aac631845bd43190619616fa19eafd6cc782547315e61df39e0d518e7dd757",
+    "Source/UI/SharedAiSurfaces.cpp": "8aedfcf720e49deb71ff95fee34fa9996c4c84eb1c452ab806d06b2298d260b8",
+    "Source/UI/EditorAuthState.cpp": "4f3f78e6bdfa3cbfdb69fe8da739f855897c85360bdf76fc5b490234a30cfbb4",
+    "Reference/DuplicateExports/ResetPanelSurfaceCallbacks.cpp": "3e228742afbcd7b40b41d4c0acf6e239cee785c9b9a4f448d06831a5df92f1c2",
+    "Source/Platform/JuceComponent.cpp": "f3da8907ff17dd53177a920437bc3178f1c78e1acd5516448f7b3a2ea3d22366",
+    "Source/Audio/EngineSignal.cpp": "81736a1201a634447333dc9b6d13bfd4cc6d1480263623cfb8f2b58314b6e9b7",
+    "Source/PluginProcessor.cpp": "5318df5e1557093bd94123bd63878c70452076137469f7936e6f9e7a296fd6e9",
+    "Source/PluginProcessorProcessing.cpp": "f247a0f5b168eba64bde2c789ea18202ef483ac9abb870bc40bb731bf02a7b84",
+    "Source/Platform/JuceWindowPeer.cpp": "fcb4253512a1c5cd9d4688cb61633c4e6b2cd9579175112729dbd2526ab840e1",
+    "Source/Platform/JuceMessageLoop.cpp": "e3efa27208158714c4092df44f9abe6ea43bf61d41b2163ca4c782df75e431ba",
+    "Source/UI/InstrumentViewModel.cpp": "c59fe1d3a29ac8498bc2aa0f58370702200c7049898df12c0c3ab994e9533c3b",
+    "Source/Authentication/DeviceRegistration.cpp": "9e9785e15a4d11def15a00fbda8880cb5e9f1b276ba0fb341857b51c8ae59a8d",
+    "Source/Audio/MidiNoteDrain.cpp": "4aa786caa3c522485fda263294b64c7f4a1a319512d1e74fb53a54f9b2e31291",
+    "Source/Audio/OutputFade.cpp": "c532db25a129d4a11acedef3cf409721925dd7ecccb941dc3c91bd61cf7a8a64",
+    "Reference/DuplicateExports/PersistAcceptanceCallback.cpp": "7a0f312cd53b74891c2bec8ad8e900cedeb6034bfb5ce726334901ce03883fcc",
+    "Source/UI/OnboardingAcceptance.cpp": "1026e5a2dc3a521e8f77be12ec36d1ae69cc8a3d05bb2c87bbad3c95b9c699f4",
+    "Source/UI/OnboardingRecovery.cpp": "1555c4a0fbf22f2da193edd43505e0d9444dc1d0ec9324edb5788bd6b5e0cd3a",
+    "Source/UI/OnboardingStartup.cpp": "053db2f5a8151516bda6eada35f6929d0f4799fe1ed0d5c213333ed169016759",
+    "Reference/DuplicateExports/StartupCheckInnerExport.cpp": "5a1e1b43d5064bfdd39ee1304633359bdc6ec54bf8363a6c8db47b79dff86437",
+    "Reference/DuplicateExports/StartupCheckUnusedLabel.cpp": "6ad2bc31109d003d9f10aaf816e123fc8f8e6d4e2424b92ccbd3b83db8f068b4",
+    "Source/UI/OnboardingPanel.cpp": "62ede48e3a5ae5020a9dd33fc63caf03d7e7a395ae40883cce1edfcfd4efa25d",
+    "Source/Platform/WindowsIpc.cpp": "3cd94f1d47722a4c2e4d762f3de79cd7dac2a95d85c942284dc2b11fd6071b47",
+    "Source/Platform/WindowsSecurity.cpp": "42fa40ead2103d51ea34fd9a2fedb19e0e4153d62bb30c9b005c581def34eb19",
+    "Source/Audio/RenderGate.cpp": "d82ad1edd6374977676aac3cd8d8023e4404fecd322eaf96d4e0abeaece30576",
+    "Source/Platform/WebView2Policy.cpp": "0313f51808c1326cc61b6670b42cfad29dcac21e975221b879a5e6da5b24cef0",
+    "Source/Platform/WebView2Runtime.cpp": "4880f5bf592c322fd89ce4e260bfd43d3c285c422a071a96986577369b977eff",
+    "Source/Platform/WindowsShell.cpp": "128b908fcc409fd2ada9b4147defd14831f227fdeb713308ff1fe5c5ff886355",
+    "Reference/DuplicateExports/LaunchUpdater.cpp": "29b736ac506f45c3668c3ae844c1b2db41ed947bd367a16ab5693a8b326fced9",
+    "Source/Standalone/AudioDevice.cpp": "e96129cfce38a161bd64d150dff857fc5ca9d13502283439ac578799e1ddaf1c",
+    "Source/Standalone/CloudSession.cpp": "18baa8433a618b6087f2424edf8e591ac725f00203bbf42233e28aab5c82685e",
+    "Source/Platform/WindowsVersion.cpp": "ba449e466e9d53c539fd459e1b4e49d4c884596458c089e0cd4622284ddd4923",
+    "Source/Platform/Updater.cpp": "8a707f2e4312191996a0f10435927fd57c77394ff82bbd5ac705013a363f7599",
+    "Source/UI/WebViewDiagnostics.cpp": "74b4e4c322a9709fc998e28a1657745ad3e0425144d82c369330437bacdc74dc",
+    "Source/Platform/WindowsTrust.cpp": "9fc6437657fca22feaa0dca64d9138470c329b597c325ff80337db27c8ce1355",
+    "Source/Standalone/AssetWorker.cpp": "786fd3e2575897a5168fb0df2437e5c25eb55287b00f04e2bfc2a9e8fb00187d"
+  }
+}

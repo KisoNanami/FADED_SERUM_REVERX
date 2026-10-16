@@ -1,0 +1,99 @@
+original	previous	current	function	address	evidence
+AuthDiagnostics_BuildJson.c	auth/diagnostics/build_auth_diagnostics.cpp	Source/Authentication/AuthDiagnostics.cpp	authDiagnosticsBuildJson	0x180808C70	JSON keys and AUTH_NOT_READY
+AuthEntitlement_IsTimeValid.c	auth/entitlement/is_entitlement_time_valid.cpp	Source/Authentication/Entitlement.cpp	entitlementIsTimeValid	0x180359D40	expiry, grace and MAS revocation comparisons
+AuthEntitlement_StatusNonEmpty.c	auth/entitlement/is_entitlement_status_allowed.cpp	Source/Authentication/Entitlement.cpp	entitlementIsStatusAllowed	0x180351990	compares active, refund_pending, permanent and grandfathered
+AuthManager_ApplyVerifiedState.c	auth/manager/load_persistent_auth_state.cpp	Source/Authentication/AuthManager.cpp	authManagerLoadPersistentState	0x1803635D0	secure-store read, schema validation and disabled-storage deletion
+AuthManager_IsTaskBusy.c	auth/manager/is_initial_verification_complete.cpp	Source/Authentication/AuthManager.cpp	authManagerIsInitialVerificationComplete	0x180360510	reads ready byte at inner+1728 under the state lock
+AuthManager_MarkVerified.c	auth/manager/complete_initial_verification.cpp	Source/Authentication/AuthManager.cpp	authManagerCompleteInitialVerification	0x1803719F0	sets inner+1728 and notifies listeners
+AuthManager_SnapshotForUi.c	auth/manager/copy_state_snapshot.cpp	Source/Authentication/AuthManager.cpp	authManagerCopyStateSnapshot	0x180360270	locked AuthManager_SnapshotState call
+AuthManager_WaitReadyBlocking.c	auth/manager/wait_for_initial_verification.cpp	Source/Authentication/AuthManager.cpp	authManagerWaitForInitialVerification	0x180360560	15-second task wait followed by entitlement validation
+AuthMod_CreateProcess_caller.c	platform/windows/launch_child_process.cpp	Source/Platform/WindowsProcess.cpp	winProcessLaunchChildProcess	0x1807F4A00	CreateProcess, redirected handles and environment block
+AuthMod_OpenProcessToken_caller.c	auth/storage/open_credential_store.cpp	Source/Authentication/AuthStateStorage.cpp	authStorageOpenCredentialStore	0x1807EF590	cred3 credential names and named mutexes
+AuthState_SerializeForWebView.c	auth/serialization/build_webview_auth_json.cpp	Source/Authentication/AuthViewModel.cpp	authStateBuildWebViewJson	0x1806CCF20	reads panel fields at 712..792 and serializes UI JSON
+AuthState_SetUiFlags.c	ui/onboarding/update_panel_auth_state.cpp	Source/UI/OnboardingState.cpp	onboardingPanelUpdateAuthState	0x1806CCCB0	compares and swaps panel auth fields, pushes JS state
+AuthStatus_AggregateForUi.c	auth/diagnostics/build_processor_status.cpp	Source/Authentication/AuthDiagnostics.cpp	authDiagnosticsBuildProcessorStatus	0x18005CDF0	audio, auth and ALT status JSON keys
+AuthStore_ReadOnboardingCompleted.c	auth/storage/serialize_auth_state.cpp	Source/Authentication/AuthStateWriter.cpp	authStorageSerializeState	0x18035E0B0	constructs JSON properties including onboarding fields
+AuthStore_WriteOnboardingCompleted.c	auth/storage/deserialize_auth_state.cpp	Source/Authentication/AuthStateReader.cpp	authStorageDeserializeState	0x18035B130	parses JSON and assigns state fields
+AuthStore_WriteOnboardingCompletedWrapper.c	auth/storage/read_secure_auth_record.cpp	Source/Authentication/AuthStateStorage.cpp	authStorageReadSecureRecord	0x18035CEF0	initializes result and reads auth_state from secure store
+BrowserHandoff_BuildUrl.c	ui/onboarding/build_account_handoff_url.cpp	Source/UI/OnboardingNavigation.cpp	onboardingBuildAccountHandoffUrl	0x18021ED70	login, redemption and account-help URL construction
+Cli_CommandDispatcher.c	standalone/cli/dispatch_command.cpp	Source/Standalone/CommandDispatcher.cpp	cliDispatchCommand	0x180814720	command-name dispatch and command-specific JSON responses
+Cli_RenderProbe.c	standalone/cli/render_preview.cpp	Source/Standalone/PreviewRenderer.cpp	cliRenderPreview	0x1808227A0	preview rendering, host-state restore and WAV output
+DynLoad_caller_A.c	reference/duplicate_exports/verify_publisher_signature.cpp	Reference/DuplicateExports/VerifyPublisherSignature.cpp	winTrustVerifyPublisherSignature	0x180909120	same address as WinTrust_DynamicLoader
+Editor_CompleteOnboardingFromFallback.c	ui/editor/complete_onboarding_from_fallback.cpp	Source/UI/EditorOnboarding.cpp	editorCompleteOnboardingFromFallback	0x1802261C0	accept-state changes and onboarding completion calls
+Editor_CompleteOnboardingFromFallbackThunk.c	ui/editor/invoke_fallback_completion.cpp	Source/UI/EditorOnboarding.cpp	editorInvokeFallbackCompletion	0x18023BB80	callback adapter for fallback completion
+Editor_ConfigureOnboardingCallbacks.c	ui/editor/configure_onboarding_callbacks.cpp	Source/UI/EditorCallbacks.cpp	editorConfigureOnboardingCallbacks	0x180225A90	installs panel callbacks and weak editor references
+Editor_Method_A.c	ui/editor/apply_auth_state_to_shared_ai_surfaces.cpp	Source/UI/SharedAiSurfaces.cpp	editorApplyAuthStateToSharedAiSurfaces	0x180224400	casts weak editor and updates device-code/visibility state
+Editor_Method_B.c	ui/editor/configure_shared_ai_surfaces.cpp	Source/UI/SharedAiSurfaces.cpp	editorConfigureSharedAiSurfaces	0x1802264E0	configureSharedAiSurfaces appears in lambda vtable names
+Editor_Method_C.c	ui/editor/synchronize_ai_surface_auth_state.cpp	Source/UI/SharedAiSurfaces.cpp	editorSynchronizeAiSurfaceAuthState	0x1802268C0	weak editor resolution and UI/auth-state synchronization
+Editor_OnAuthStateChanged.c	ui/editor/on_auth_state_changed.cpp	Source/UI/EditorAuthState.cpp	editorOnAuthStateChanged	0x180225660	refreshes panel visibility and state
+Editor_OnboardingAcceptCallback.c	ui/editor/on_onboarding_accept_request.cpp	Source/UI/EditorOnboarding.cpp	editorOnOnboardingAcceptRequest	0x180225F70	weak editor callback receiving acceptance result
+Editor_OnboardingExitTick.c	ui/editor/invoke_onboarding_exit_tick.cpp	Source/UI/EditorOnboarding.cpp	editorInvokeOnboardingExitTick	0x18023BB70	forwards to scheduled onboarding exit
+Editor_OnOnboardingAccepted.c	ui/editor/open_account_handoff.cpp	Source/UI/EditorOnboarding.cpp	editorOpenAccountHandoff	0x180225520	opens account URL or defers until device code exists
+Editor_OnOnboardingError.c	ui/editor/on_onboarding_error.cpp	Source/UI/EditorOnboarding.cpp	editorOnOnboardingError	0x180225850	error callback and panel update
+Editor_OnOnboardingSurfaceChanged2.c	reference/duplicate_exports/reset_panel_surface_callbacks.cpp	Reference/DuplicateExports/ResetPanelSurfaceCallbacks.cpp	onboardingPanelResetSurfaceCallbacks	0x1806D01D0	same address as OnboardingPanel_NotifyOwner
+Editor_ScheduleOnboardingExit.c	ui/editor/schedule_onboarding_exit.cpp	Source/UI/EditorOnboarding.cpp	editorScheduleOnboardingExit	0x18023B960	deferred onboarding exit callback
+Editor_ScheduleOnboardingExitThunk.c	ui/editor/invoke_exit_scheduler.cpp	Source/UI/EditorOnboarding.cpp	editorInvokeExitScheduler	0x18023BBC0	adapter for exit scheduling
+EditorState_SetAuthVisible.c	platform/juce/set_component_visible.cpp	Source/Platform/JuceComponent.cpp	juceComponentSetVisible	0x1801C8860	generic Component visibility flag, peer and parent handling
+EditorState_SetAuthVisible2.c	platform/juce/bring_component_to_front.cpp	Source/Platform/JuceComponent.cpp	juceComponentBringToFront	0x1801C9200	peer toFront call and child z-order manipulation
+EngineSignal_Wake.c	audio/engine/request_worker_wakeup.cpp	Source/Audio/EngineSignal.cpp	audioEngineRequestWorkerWakeup	0x1803C6AB0	changes engine worker signal flags and counters
+FadModel1AudioProcessor_ctor.c	audio/processor/initialize_processor.cpp	Source/PluginProcessor.cpp	audioProcessorInitialize	0x1800631E0	processor initialization, audio buses and service setup
+FadModel1AudioProcessor_prepareToPlay.c	audio/processor/prepare_to_play.cpp	Source/PluginProcessor.cpp	audioProcessorPrepareToPlay	0x180066BC0	prepares buffers, voices and render authorization
+FadModel1AudioProcessor_processBlock_alt.c	audio/processor/process_block_alternate_path.cpp	Source/PluginProcessorProcessing.cpp	audioProcessorProcessBlockAlternatePath	0x18006B610	second processBlock entry; sample-type relationship unresolved
+FadModel1AudioProcessor_processBlock_impl.c	audio/processor/process_block.cpp	Source/PluginProcessorProcessing.cpp	audioProcessorProcessBlock	0x1800685C0	main processBlock entry and authorization-gated rendering
+Hook_caller_A.c	platform/juce/initialize_window_peer_services.cpp	Source/Platform/JuceWindowPeer.cpp	juceWindowPeerInitializeServices	0x1801D1C30	window hook, dark-mode APIs and peer service construction
+Hook_caller_B.c	platform/juce/acquire_modal_dismiss_hook.cpp	Source/Platform/JuceWindowPeer.cpp	juceWindowPeerAcquireModalDismissHook	0x1801E8A80	TopLevelModalDismissBroadcaster vtable and WH_CALLWNDPROC
+Hook_caller_C.c	platform/juce/install_thread_message_hook.cpp	Source/Platform/JuceMessageLoop.cpp	juceMessageLoopInstallGetMessageHook	0x1801F3330	SetWindowsHookExW with WH_GETMESSAGE on current thread
+MainWebViewModel_BuildAuthorizationStatus.c	ui/webview/build_instrument_view_model.cpp	Source/UI/InstrumentViewModel.cpp	webViewBuildInstrumentViewModel	0x18071F2B0	workspace, controls, preview and auth view-model properties
+MuteDrain_AllNotesOff.c	auth/network/register_device.cpp	Source/Authentication/DeviceRegistration.cpp	authNetworkRegisterDevice	0x180367760	POST /device/register and activation/reset/refresh response handling
+MuteDrain_AllNotesOff_real.c	audio/midi/drain_pending_notes.cpp	Source/Audio/MidiNoteDrain.cpp	audioMidiDrainPendingNotes	0x180067DE0	MIDI ring drain and all-notes-off handling
+MuteFade_OutputToSilence64.c	audio/gating/fade_out_over_64_samples.cpp	Source/Audio/OutputFade.cpp	audioGateFadeOutOver64Samples	0x180068FF0	float audio ramp with 1/64 gain decrement
+Onboarding_AcceptCommitThunk.c	reference/duplicate_exports/persist_acceptance_callback.cpp	Reference/DuplicateExports/PersistAcceptanceCallback.cpp	onboardingPersistAcceptanceCallback	0x1806D0A00	same address as Onboarding_AcceptPersistTask
+Onboarding_AcceptPersistTask.c	ui/onboarding/persist_acceptance_callback.cpp	Source/UI/OnboardingAcceptance.cpp	onboardingPersistAcceptanceCallback	0x1806D0A00	deferred persistence callback
+Onboarding_CommitAccept.c	ui/onboarding/commit_acceptance.cpp	Source/UI/OnboardingAcceptance.cpp	onboardingCommitAcceptance	0x1806CBE30	a2 gates persistence success; a3 selects bridge/navigation logging
+Onboarding_DispatchDeepLink.c	ui/onboarding/dispatch_deep_link.cpp	Source/UI/OnboardingNavigation.cpp	onboardingDispatchDeepLink	0x1806CB590	fadlab auth/account/store/legal command routes
+Onboarding_HandleAccept.c	ui/onboarding/handle_acceptance_request.cpp	Source/UI/OnboardingAcceptance.cpp	onboardingHandleAcceptanceRequest	0x1806CADA0	nonce verification and acceptance dispatch
+Onboarding_HandleUrl_A.c	ui/onboarding/filter_browser_navigation.cpp	Source/UI/OnboardingNavigation.cpp	onboardingFilterBrowserNavigation	0x1806C9DB0	accepts internal routes and logs blocked external navigation
+Onboarding_HandleUrl_B.c	ui/onboarding/handle_native_command.cpp	Source/UI/OnboardingNavigation.cpp	onboardingHandleNativeCommand	0x1806CAB50	native accept/deep-link dispatch and rejection diagnostics
+Onboarding_RenderRecoverySurface.c	ui/onboarding/paint_recovery_surface.cpp	Source/UI/OnboardingRecovery.cpp	onboardingPanelPaintRecoverySurface	0x1806C9FE0	native Graphics fill/color/text drawing, not HTML generation
+Onboarding_ShowError.c	ui/onboarding/show_setup_error.cpp	Source/UI/OnboardingRecovery.cpp	onboardingShowSetupError	0x1806CA9B0	Setup error message dialog
+Onboarding_ShowNativeFallback.c	ui/onboarding/show_native_recovery_surface.cpp	Source/UI/OnboardingRecovery.cpp	onboardingShowNativeRecoverySurface	0x1806CAA40	fallback surface and Setup error path
+Onboarding_StartupCheck.c	ui/onboarding/check_startup_requirements.cpp	Source/UI/OnboardingStartup.cpp	onboardingCheckStartupRequirements	0x180227700	startup completion/version/activation checks
+Onboarding_StartupInner.c	reference/duplicate_exports/startup_check_inner_export.cpp	Reference/DuplicateExports/StartupCheckInnerExport.cpp	onboardingCheckStartupRequirements	0x180227700	same address and body as Onboarding_StartupCheck
+Onboarding_Unused.c	reference/duplicate_exports/startup_check_unused_label.cpp	Reference/DuplicateExports/StartupCheckUnusedLabel.cpp	onboardingCheckStartupRequirements	0x180227700	same address/body; original unused label is not evidence of dead code
+Onboarding_UpdateVisibility.c	ui/editor/synchronize_onboarding_visibility.cpp	Source/UI/EditorAuthState.cpp	editorSynchronizeOnboardingVisibility	0x1802274C0	auth-state dependent panel visibility
+Onboarding_ValidateHtml.c	ui/onboarding/is_bundled_html_compatible.cpp	Source/UI/OnboardingPanel.cpp	onboardingIsBundledHtmlCompatible	0x1806C7940	checks bundled HTML version and required bridge markers
+Onboarding_ValidateNonce.c	ui/onboarding/validate_acceptance_nonce.cpp	Source/UI/OnboardingAcceptance.cpp	onboardingValidateAcceptanceNonce	0x1806C5AE0	returns structured nonce validation status, not a plain boolean
+OnboardingPanel_Init.c	ui/onboarding/load_bundled_html.cpp	Source/UI/OnboardingPanel.cpp	onboardingPanelLoadBundledHtml	0x1806CF120	HTML compatibility checks and JS bridge substitution
+OnboardingPanel_NotifyOwner.c	ui/onboarding/reset_surface_callbacks.cpp	Source/UI/OnboardingPanel.cpp	onboardingPanelResetSurfaceCallbacks	0x1806D01D0	clears surface callbacks and recomputes visibility/loading
+OnboardingPanel_ResetState.c	ui/onboarding/reset_for_review.cpp	Source/UI/OnboardingPanel.cpp	onboardingPanelResetForReview	0x1806CE7D0	FAD-ONB-REOPEN-REVIEW log and state reset
+OnboardingPanel_Show_Decide.c	ui/onboarding/ensure_surface_loaded.cpp	Source/UI/OnboardingPanel.cpp	onboardingPanelEnsureSurfaceLoaded	0x1806CEAB0	LOAD-DEFERRED, LOAD-START and LOAD-SKIP decisions
+OnboardingPanel_ShowSurface.c	ui/onboarding/initialize_panel_surface.cpp	Source/UI/OnboardingPanel.cpp	onboardingPanelInitializeSurface	0x1806CA6C0	creates Onboarding surface and callbacks
+OpenProcess_caller.c	platform/windows/read_process_creation_time.cpp	Source/Platform/WindowsProcess.cpp	winProcessReadCreationTimeString	0x1803A1AB0	GetProcessTimes creation FILETIME formatted in decimal
+OpenProcessToken_caller.c	platform/windows/create_daw_ipc_transport.cpp	Source/Platform/WindowsIpc.cpp	winIpcCreateDawTransport	0x1803A26E0	SID ACLs, fadsynth-daw named pipe and scratch directory
+OpenProcessToken_caller_A.c	platform/windows/can_write_file.cpp	Source/Platform/WindowsSecurity.cpp	winSecurityCanWriteFile	0x1800937E0	token duplication and AccessCheck for file permissions
+Processor_OnAuthStateChanged.c	audio/gating/on_auth_state_changed.cpp	Source/Audio/RenderGate.cpp	audioGateOnAuthStateChanged	0x180064AC0	packs entitlement snapshot and updates processor deadline
+RegGetValue_caller_A.c	platform/webview2/read_policy_value.cpp	Source/Platform/WebView2Policy.cpp	webView2ReadPolicyValue	0x180003411	registry policy value and typed result handling
+RegOpenKey_caller_A.c	platform/webview2/read_runtime_location.cpp	Source/Platform/WebView2Runtime.cpp	webView2ReadRuntimeLocation	0x1800022C7	reads EBWebView or location/pv registry values
+RegOpenKey_caller_B.c	platform/webview2/has_policy_registry_key.cpp	Source/Platform/WebView2Policy.cpp	webView2HasPolicyRegistryKey	0x1800030E5	opens Edge/WebView2 policy registry key
+RegOpenKey_caller_C.c	platform/webview2/read_application_policy.cpp	Source/Platform/WebView2Policy.cpp	webView2ReadApplicationPolicy	0x18000315A	app-id, executable-name and wildcard policy lookup
+RenderGate_AudioThread_Check.c	audio/gating/is_render_allowed_on_audio_thread.cpp	Source/Audio/RenderGate.cpp	audioGateIsRenderAllowedOnAudioThread	0x180066180	atomic deadline and audio-thread revocation path
+RenderGate_ComputeDeadline.c	audio/gating/update_render_deadline.cpp	Source/Audio/RenderGate.cpp	audioGateUpdateRenderDeadline	0x1800567F0	monotonic deadline calculation and anti-rollback floors
+RenderGate_IsAuthorized_readonly.c	audio/gating/is_render_authorized.cpp	Source/Audio/RenderGate.cpp	audioGateIsRenderAuthorized	0x180066130	read-only GetTickCount64 versus atomic render deadline
+ShellExecA_Caller.c	platform/windows/launch_existing_file.cpp	Source/Platform/WindowsShell.cpp	winShellLaunchExistingFile	0x18008EE40	GetFileAttributesW then shell launch
+ShellExecute_caller_A.c	platform/windows/shell_execute.cpp	Source/Platform/WindowsShell.cpp	winShellExecute	0x180094F20	UTF-16 conversion and ShellExecuteW result check
+ShellExecute_caller_B.c	platform/windows/open_url_or_email.cpp	Source/Platform/WindowsShell.cpp	winShellOpenUrlOrEmail	0x1800B1D00	mailto handling and default URL opening
+ShellExecute_caller_C.c	reference/duplicate_exports/launch_updater.cpp	Reference/DuplicateExports/LaunchUpdater.cpp	updaterLaunch	0x1809095F0	same address and body as Updater_Launcher
+sub_1807FACF0_deadlineWriter.c	standalone/audio/open_audio_device.cpp	Source/Standalone/AudioDevice.cpp	standaloneAudioOpenDevice	0x1807FACF0	audio permission, entitlement and device open errors
+sub_1807FB460_deadlineWriter.c	standalone/audio/revalidate_audio_permission.cpp	Source/Standalone/AudioDevice.cpp	standaloneAudioRevalidatePermission	0x1807FB460	permission/deadline expiry closes the audio device
+sub_1807FB840_deadlineWriter.c	standalone/cloud/submit_task.cpp	Source/Standalone/CloudSession.cpp	standaloneCloudSubmitTask	0x1807FB840	cloud task limit, budget and taskId handling
+sub_18081B670_deadlineWriter.c	standalone/cloud/require_project_session.cpp	Source/Standalone/CloudSession.cpp	standaloneCloudRequireProjectSession	0x18081B670	project/approval/budget/shared-storage checks and lazy cloud session
+SystemDir_caller.c	platform/windows/query_os_version.cpp	Source/Platform/WindowsVersion.cpp	winSystemQueryOsVersion	0x180044E90	Windows system directory and ntdll RtlGetVersion
+Updater_Launcher.c	platform/windows/launch_updater.cpp	Source/Platform/Updater.cpp	updaterLaunch	0x1809095F0	resolves and launches FAD Synth Updater.exe
+WebView2_Loader.c	platform/webview2/load_runtime.cpp	Source/Platform/WebView2Runtime.cpp	webView2LoadRuntime	0x180001480	WebView2 runtime discovery and package dependencies
+WebView_Diagnostics_Format.c	ui/webview/format_backend_diagnostics.cpp	Source/UI/WebViewDiagnostics.cpp	webViewFormatBackendDiagnostics	0x1808E74C0	builds diagnostics for surfaceName, then formats fields
+WebView_PathDiagnostics.c	ui/webview/build_path_diagnostics.cpp	Source/UI/WebViewDiagnostics.cpp	webViewBuildPathDiagnostics	0x18021A3A0	initializes diagnostic result and resolves runtime/user-data paths
+WebViewState_Build.c	ui/onboarding/push_auth_state_to_javascript.cpp	Source/UI/OnboardingState.cpp	onboardingPanelPushAuthStateToJavaScript	0x1806CCAD0	fadOnboardingReceiveAuthState and native accept resolution JS
+WebViewState_OwnerSync.c	ui/editor/synchronize_webview_auth_state.cpp	Source/UI/EditorAuthState.cpp	editorSynchronizeWebViewAuthState	0x180225150	panel auth serialization and pending browser handoff
+WinTrust_DynamicLoader.c	platform/windows/verify_publisher_signature.cpp	Source/Platform/WindowsTrust.cpp	winTrustVerifyPublisherSignature	0x180909120	WinVerifyTrust, signer-chain helpers and publisher certificate digest
+Worker_Launcher.c	standalone/worker/resolve_worker_executable.cpp	Source/Standalone/AssetWorker.cpp	assetWorkerResolveExecutablePath	0x1807F4710	searches bundle Contents/Helpers for FADAssetFileWorker.exe
+Worker_Launcher_Caller.c	standalone/worker/run_asset_processing_job.cpp	Source/Standalone/AssetWorker.cpp	assetWorkerRunProcessingJob	0x1807F53D0	worker JSON request, cancellation, timeout and processing result

@@ -1,0 +1,1995 @@
+// ===== Worker_Launcher @ 0x1807f4710 size=751 =====
+
+_QWORD *__fastcall sub_1807F4710(_QWORD *a1)
+{
+  _QWORD *v2; // rcx
+  void *v3; // rcx
+  _QWORD *v4; // rax
+  int v5; // edi
+  void *v6; // rcx
+  _QWORD *v7; // rax
+  _QWORD *v8; // rdx
+  _QWORD *v9; // rcx
+  __int64 v10; // rax
+  _QWORD *v11; // rcx
+  _QWORD *v12; // rcx
+  _QWORD *v13; // rcx
+  _QWORD *v14; // rcx
+  _QWORD *v15; // rcx
+  __int64 v16; // rax
+  _QWORD *v18; // [rsp+20h] [rbp-E0h] BYREF
+  _QWORD *v19; // [rsp+28h] [rbp-D8h] BYREF
+  _QWORD *v20; // [rsp+30h] [rbp-D0h] BYREF
+  __int64 v21; // [rsp+38h] [rbp-C8h] BYREF
+  HMODULE phModule; // [rsp+40h] [rbp-C0h] BYREF
+  WCHAR Filename[32768]; // [rsp+50h] [rbp-B0h] BYREF
+
+  v19 = a1;
+  phModule = nullptr;
+  sub_1809E92C0(Filename, 0, 0x10000);
+  if ( GetModuleHandleExW(6u, (LPCWSTR)sub_1807F4710, &phModule)
+    && GetModuleFileNameW(phModule, Filename, 0x8000u) - 1 <= 0x7FFE )
+  {
+    sub_1800B3120(&v21, Filename);
+    sub_18008C740(&v18, &v21);
+    sub_18008D020(&v18, &v20);
+    v2 = v18 - 2;
+    if ( v18 - 2 != (_QWORD *)&unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v2) == -1 )
+      sub_1809A0E80(v2);
+    v3 = (void *)(v21 - 16);
+    if ( (_UNKNOWN *)(v21 - 16) != &unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v3) == -1 )
+      sub_1809A0E80(v3);
+    v18 = v20;
+    if ( v20 - 2 != (_QWORD *)&unk_1814934A8 )
+      _InterlockedIncrement((volatile signed __int32 *)v20 - 4);
+    while ( 1 )
+    {
+      v4 = (_QWORD *)sub_18008D020(&v18, &v21);
+      if ( v18 == (_QWORD *)*v4 )
+        v5 = 0;
+      else
+        v5 = sub_180088F60(&v18, *v4);
+      v6 = (void *)(v21 - 16);
+      if ( (_UNKNOWN *)(v21 - 16) != &unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v6) == -1 )
+        sub_1809A0E80(v6);
+      if ( v5 == 0 )
+        break;
+      if ( (unsigned __int8)sub_18008E9C0(&v18, "app;vst3;component;appex;mxo") != 0 )
+      {
+        v10 = sub_18008D3A0(&v18, &v19, "Contents/Helpers");
+        sub_18008D3A0(v10, a1, "FADAssetFileWorker.exe");
+        v11 = v19 - 2;
+        if ( v19 - 2 != (_QWORD *)&unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v11) == -1 )
+          sub_1809A0E80(v11);
+        v12 = v18;
+        goto LABEL_26;
+      }
+      v7 = (_QWORD *)sub_18008D020(&v18, &v19);
+      v8 = v18;
+      v18 = (_QWORD *)*v7;
+      *v7 = v8;
+      v9 = v19 - 2;
+      if ( v19 - 2 != (_QWORD *)&unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v9) == -1 )
+        sub_1809A0E80(v9);
+    }
+    v15 = v18 - 2;
+    if ( v18 - 2 != (_QWORD *)&unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v15) == -1 )
+      sub_1809A0E80(v15);
+    v16 = sub_18008D3A0(&v20, &v19, "Helpers");
+    sub_18008D3A0(v16, a1, "FADAssetFileWorker.exe");
+    v12 = v19;
+LABEL_26:
+    v13 = v12 - 2;
+    if ( v13 != (_QWORD *)&unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v13) == -1 )
+      sub_1809A0E80(v13);
+    v14 = v20 - 2;
+    if ( v20 - 2 != (_QWORD *)&unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v14) == -1 )
+      sub_1809A0E80(v14);
+  }
+  else
+  {
+    *a1 = &byte_1814934B8;
+  }
+  return a1;
+}
+
+
+// ===== Worker_Launcher_Caller @ 0x1807f53d0 size=9174 =====
+
+LPVOID *__fastcall sub_1807F53D0(LPVOID *a1, void *a2, __int64 a3, _QWORD *a4, __int64 a5, _QWORD *a6)
+{
+  __int64 v8; // rcx
+  volatile signed __int32 *v9; // rsi
+  double v10; // xmm0_8
+  double v11; // xmm1_8
+  __int64 v12; // r13
+  __int64 v13; // rcx
+  __int64 v14; // rbx
+  void (__fastcall *v15)(__int64, _QWORD *, __int128 *); // rbx
+  void *v16; // rcx
+  __int64 (__fastcall *v17)(); // rdx
+  __int64 v18; // rbx
+  void (__fastcall *v19)(__int64, _QWORD *, __int128 *); // rbx
+  void *v20; // rcx
+  __int64 (__fastcall *v21)(); // rdx
+  __int64 v22; // rbx
+  void (__fastcall *v23)(__int64, _QWORD *, __int128 *); // rbx
+  void *v24; // rcx
+  __int64 v25; // rcx
+  __int64 v26; // rax
+  __int64 v27; // r14
+  struct _RTL_CRITICAL_SECTION *v28; // rbx
+  void (__fastcall *v29)(__int64, _QWORD *, __int128 *); // rbx
+  void *v30; // rcx
+  __int64 (__fastcall *v31)(); // rdx
+  __int64 v32; // rbx
+  void (__fastcall *v33)(__int64, _QWORD *, __int128 *); // rbx
+  void *v34; // rcx
+  __int64 (__fastcall *v35)(); // rdx
+  __int64 v36; // rbx
+  struct _RTL_CRITICAL_SECTION *v37; // r14
+  int v38; // ebx
+  void *v39; // rcx
+  __int64 (__fastcall *v40)(); // rdx
+  _BYTE *v41; // rax
+  volatile signed __int32 *v42; // rax
+  __int64 v43; // rbx
+  struct _RTL_CRITICAL_SECTION *v44; // r14
+  void *v45; // rcx
+  void (__fastcall *v46)(__int64 *); // rdx
+  __int64 v47; // rax
+  __int64 v48; // rbx
+  LPVOID *v49; // rbx
+  char *v50; // rcx
+  char *v51; // rcx
+  HANDLE v52; // rcx
+  void *v53; // rcx
+  void *v54; // rcx
+  char v55; // r14
+  __int64 v56; // rcx
+  __int64 v57; // rcx
+  DWORD v58; // r8d
+  unsigned __int64 v59; // r8
+  unsigned __int64 v60; // rdx
+  char *v61; // rcx
+  char *v62; // rcx
+  void *v63; // rcx
+  HANDLE v64; // rcx
+  char *v65; // rcx
+  char *v66; // rcx
+  void *v67; // rcx
+  char *v68; // rcx
+  char *v69; // rcx
+  void *v70; // rcx
+  void *v71; // rcx
+  void *v72; // rcx
+  void *v73; // rax
+  __int64 v74; // rdx
+  DWORD v75; // r14d
+  char *v76; // rcx
+  __int64 v77; // rax
+  __int64 v78; // rax
+  DWORD v79; // r14d
+  char *v80; // rcx
+  char *v81; // rcx
+  __int64 v82; // rax
+  int v83; // eax
+  char *v84; // rcx
+  char *v85; // rcx
+  void *v86; // rcx
+  HANDLE v87; // rcx
+  void *v88; // rcx
+  void *v89; // rcx
+  _DWORD *v90; // r14
+  __int64 v91; // rax
+  __int64 v92; // rax
+  __int64 v93; // rax
+  __int64 v94; // rax
+  __int64 v95; // rax
+  __int64 v96; // rax
+  __int64 v97; // rdi
+  double v98; // xmm1_8
+  int v99; // eax
+  _BYTE *v100; // rcx
+  _BYTE *v101; // rcx
+  void *v102; // rcx
+  _BYTE *v103; // rcx
+  _BYTE *v104; // rcx
+  void *v105; // rcx
+  LPVOID *v106; // rax
+  LPVOID v107; // rdx
+  void *v108; // rcx
+  char *v109; // rcx
+  char *v110; // rcx
+  void *v111; // rcx
+  char *v112; // rcx
+  char *v113; // rcx
+  void *v114; // rcx
+  char *v115; // rcx
+  char *v116; // rcx
+  void *v117; // rcx
+  _QWORD *v118; // rax
+  bool v119; // cc
+  char v120; // al
+  const char *v121; // rdx
+  char *v122; // rcx
+  char *v123; // rcx
+  void *v124; // rcx
+  void *v125; // rcx
+  void *v126; // rcx
+  volatile signed __int32 *v127; // rcx
+  char *v128; // rcx
+  char *v129; // rcx
+  _QWORD *v130; // rax
+  bool v131; // cc
+  char v132; // al
+  const char *v133; // rdx
+  char *v134; // rcx
+  char *v135; // rcx
+  DWORD v137; // [rsp+30h] [rbp-D0h] BYREF
+  char v138; // [rsp+34h] [rbp-CCh]
+  DWORD v139; // [rsp+38h] [rbp-C8h] BYREF
+  char v140; // [rsp+3Ch] [rbp-C4h]
+  HANDLE hHandle[2]; // [rsp+40h] [rbp-C0h]
+  HANDLE hJob; // [rsp+50h] [rbp-B0h]
+  DWORD ExitCode; // [rsp+58h] [rbp-A8h] BYREF
+  DWORD v144; // [rsp+5Ch] [rbp-A4h] BYREF
+  _QWORD v145[2]; // [rsp+60h] [rbp-A0h] BYREF
+  __int128 v146; // [rsp+70h] [rbp-90h] BYREF
+  char v147; // [rsp+80h] [rbp-80h]
+  LPVOID v148[2]; // [rsp+90h] [rbp-70h] BYREF
+  __int128 v149; // [rsp+A0h] [rbp-60h] BYREF
+  __int64 v150; // [rsp+B0h] [rbp-50h]
+  unsigned __int64 v151; // [rsp+B8h] [rbp-48h] BYREF
+  __int64 v152; // [rsp+C0h] [rbp-40h] BYREF
+  LPVOID *v153; // [rsp+C8h] [rbp-38h]
+  char *v154; // [rsp+D0h] [rbp-30h] BYREF
+  LPVOID v155; // [rsp+D8h] [rbp-28h] BYREF
+  __int64 v156; // [rsp+E0h] [rbp-20h]
+  DWORD TotalBytesAvail; // [rsp+E8h] [rbp-18h] BYREF
+  DWORD NumberOfBytesRead[2]; // [rsp+F0h] [rbp-10h] BYREF
+  LPVOID lpMem; // [rsp+F8h] [rbp-8h]
+  LPVOID *v160; // [rsp+100h] [rbp+0h]
+  volatile signed __int32 *v161; // [rsp+110h] [rbp+10h]
+  __int64 v162; // [rsp+118h] [rbp+18h]
+  _QWORD v163[9]; // [rsp+120h] [rbp+20h] BYREF
+  char v164; // [rsp+168h] [rbp+68h] BYREF
+  LPVOID v165; // [rsp+170h] [rbp+70h] BYREF
+  __int64 v166; // [rsp+178h] [rbp+78h] BYREF
+  __int64 v167; // [rsp+180h] [rbp+80h] BYREF
+  char v168[8]; // [rsp+188h] [rbp+88h] BYREF
+  _BYTE Buffer[65536]; // [rsp+190h] [rbp+90h] BYREF
+
+  v148[0] = a4;
+  v156 = a3;
+  v155 = a2;
+  v153 = a1;
+  v160 = a1;
+  *a1 = &byte_1814934B8;
+  a1[1] = nullptr;
+  a1[2] = nullptr;
+  *((_DWORD *)a1 + 6) = 0;
+  a1[4] = nullptr;
+  a1[5] = nullptr;
+  a1[6] = nullptr;
+  *((_BYTE *)a1 + 56) = 1;
+  ExitCode = 1;
+  v8 = a4[7];
+  if ( v8 != 0 && (*(unsigned __int8 (__fastcall **)(__int64))(*(_QWORD *)v8 + 16LL))(v8) != 0
+    || *(_QWORD *)sub_18002C410(&v146) >= a5 )
+  {
+    v130 = (_QWORD *)sub_18002C410(&v165);
+    v131 = *v130 < a5;
+    if ( *v130 == a5 )
+    {
+      v132 = 0;
+    }
+    else
+    {
+      v132 = -1;
+      if ( !v131 )
+        v132 = 1;
+    }
+    v133 = "cancelled";
+    if ( v132 >= 0 )
+      v133 = "processingTimeout";
+    sub_1800B2E50(v148, v133);
+    v134 = (char *)*a1;
+    *a1 = v148[0];
+    v135 = v134 - 16;
+    if ( v135 != (char *)&unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v135) == -1 )
+      sub_1809A0E80(v135);
+    return v153;
+  }
+  v9 = *(volatile signed __int32 **)(a3 + 8);
+  v161 = v9;
+  lpMem = (LPVOID)(v9 - 4);
+  if ( v9 - 4 != (volatile signed __int32 *)&unk_1814934A8 )
+    _InterlockedIncrement(v9 - 4);
+  if ( *(_BYTE *)v9 == 0
+    || (unsigned __int64)sub_1800B3750(v9) > 0x2000
+    || (v10 = *(double *)(a3 + 16), ((*(_QWORD *)&v10 >> 52) & 0x7FF) == 2047)
+    || (v11 = *(double *)(a3 + 24), ((*(_QWORD *)&v11 >> 52) & 0x7FF) == 2047)
+    || v10 < 0.0
+    || v10 > 2.401919801264264e13
+    || v11 < 0.0
+    || v11 > 30.0
+    || *(_DWORD *)(a3 + 32) > 2u )
+  {
+    sub_1800B2E50(v148, "invalid");
+    v49 = v153;
+    v128 = (char *)*v153;
+    *v153 = v148[0];
+    v129 = v128 - 16;
+    if ( v129 != (char *)&unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v129) == -1 )
+      sub_1809A0E80(v129);
+    goto LABEL_459;
+  }
+  v12 = sub_1809A12C0(32);
+  *(_QWORD *)&v146 = v12;
+  *(_DWORD *)(v12 + 8) = 0;
+  *(_QWORD *)v12 = &juce::DynamicObject::`vftable';
+  *(_QWORD *)(v12 + 16) = 0;
+  *(_QWORD *)(v12 + 24) = 0;
+  v162 = v12;
+  _InterlockedIncrement((volatile signed __int32 *)(v12 + 8));
+  v165 = &unk_180F51450;
+  v166 = 1;
+  v14 = sub_18009EA20(v13);
+  v151 = v14 + 16;
+  EnterCriticalSection((LPCRITICAL_SECTION)(v14 + 16));
+  sub_18009E8C0(v14);
+  *(_QWORD *)&v146 = "version";
+  sub_1800B4BF0(v145, v14, &v146);
+  ExitCode = 5;
+  LeaveCriticalSection((LPCRITICAL_SECTION)(v14 + 16));
+  sub_18008A110(v12 + 16, v145, &v165);
+  v15 = *(void (__fastcall **)(__int64, _QWORD *, __int128 *))(*(_QWORD *)v12 + 24LL);
+  v146 = (unsigned __int64)v165;
+  (*((void (__fastcall **)(char *, __int64 *))v165 + 12))((char *)&v146 + 8, &v166);
+  v147 = 1;
+  v15(v12, v145, &v146);
+  if ( v147 != 0 )
+    (*(void (__fastcall **)(char *))(v146 + 88))((char *)&v146 + 8);
+  v16 = (void *)(v145[0] - 16LL);
+  if ( (_UNKNOWN *)(v145[0] - 16LL) != &unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v16) == -1 )
+    sub_1809A0E80(v16);
+  v17 = *((__int64 (__fastcall **)())v165 + 11);
+  if ( v17 != guard_check_icall_nop )
+    ((void (__fastcall *)(__int64 *))v17)(&v166);
+  v165 = &unk_180F51450;
+  v166 = 0;
+  LODWORD(v166) = *(_DWORD *)v156;
+  v18 = sub_18009EA20(v16);
+  v151 = v18 + 16;
+  EnterCriticalSection((LPCRITICAL_SECTION)(v18 + 16));
+  sub_18009E8C0(v18);
+  *(_QWORD *)&v146 = "operation";
+  sub_1800B4BF0(v145, v18, &v146);
+  ExitCode = 13;
+  LeaveCriticalSection((LPCRITICAL_SECTION)(v18 + 16));
+  sub_18008A110(v12 + 16, v145, &v165);
+  v19 = *(void (__fastcall **)(__int64, _QWORD *, __int128 *))(*(_QWORD *)v12 + 24LL);
+  v146 = (unsigned __int64)v165;
+  (*((void (__fastcall **)(char *, __int64 *))v165 + 12))((char *)&v146 + 8, &v166);
+  v147 = 1;
+  v19(v12, v145, &v146);
+  if ( v147 != 0 )
+    (*(void (__fastcall **)(char *))(v146 + 88))((char *)&v146 + 8);
+  v20 = (void *)(v145[0] - 16LL);
+  if ( (_UNKNOWN *)(v145[0] - 16LL) != &unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v20) == -1 )
+    sub_1809A0E80(v20);
+  v21 = *((__int64 (__fastcall **)())v165 + 11);
+  if ( v21 != guard_check_icall_nop )
+    ((void (__fastcall *)(__int64 *))v21)(&v166);
+  v165 = &unk_180F512B0;
+  v166 = (__int64)v9;
+  if ( v9 - 4 != (volatile signed __int32 *)&unk_1814934A8 )
+    _InterlockedIncrement(v9 - 4);
+  v22 = sub_18009EA20(v20);
+  v151 = v22 + 16;
+  EnterCriticalSection((LPCRITICAL_SECTION)(v22 + 16));
+  sub_18009E8C0(v22);
+  *(_QWORD *)&v146 = "path";
+  sub_1800B4BF0(v145, v22, &v146);
+  ExitCode = 77;
+  LeaveCriticalSection((LPCRITICAL_SECTION)(v22 + 16));
+  sub_18008A110(v12 + 16, v145, &v165);
+  v23 = *(void (__fastcall **)(__int64, _QWORD *, __int128 *))(*(_QWORD *)v12 + 24LL);
+  v146 = (unsigned __int64)v165;
+  (*((void (__fastcall **)(char *, __int64 *))v165 + 12))((char *)&v146 + 8, &v166);
+  v147 = 1;
+  v23(v12, v145, &v146);
+  if ( v147 != 0 )
+    (*(void (__fastcall **)(char *))(v146 + 88))((char *)&v146 + 8);
+  v24 = (void *)(v145[0] - 16LL);
+  if ( (_UNKNOWN *)(v145[0] - 16LL) != &unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v24) == -1 )
+    sub_1809A0E80(v24);
+  (*((void (__fastcall **)(__int64 *))v165 + 11))(&v166);
+  v165 = &unk_180F514D0;
+  v166 = *(_QWORD *)(v156 + 16);
+  v26 = sub_18009EA20(v25);
+  v27 = v26;
+  if ( aStart[0] != 0 )
+  {
+    v28 = (struct _RTL_CRITICAL_SECTION *)(v26 + 16);
+    v151 = v26 + 16;
+    EnterCriticalSection((LPCRITICAL_SECTION)(v26 + 16));
+    sub_18009E8C0(v27);
+    *(_QWORD *)&v146 = "start";
+    sub_1800B4BF0(v145, v27, &v146);
+    ExitCode = 109;
+    LeaveCriticalSection(v28);
+  }
+  else
+  {
+    v145[0] = &byte_1814934B8;
+    ExitCode = 109;
+  }
+  sub_18008A110(v12 + 16, v145, &v165);
+  v29 = *(void (__fastcall **)(__int64, _QWORD *, __int128 *))(*(_QWORD *)v12 + 24LL);
+  v146 = (unsigned __int64)v165;
+  (*((void (__fastcall **)(char *, __int64 *))v165 + 12))((char *)&v146 + 8, &v166);
+  v147 = 1;
+  v29(v12, v145, &v146);
+  if ( v147 != 0 )
+    (*(void (__fastcall **)(char *))(v146 + 88))((char *)&v146 + 8);
+  v30 = (void *)(v145[0] - 16LL);
+  if ( (_UNKNOWN *)(v145[0] - 16LL) != &unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v30) == -1 )
+    sub_1809A0E80(v30);
+  v31 = *((__int64 (__fastcall **)())v165 + 11);
+  if ( v31 != guard_check_icall_nop )
+    ((void (__fastcall *)(__int64 *))v31)(&v166);
+  v165 = &unk_180F514D0;
+  v166 = *(_QWORD *)(v156 + 24);
+  v32 = sub_18009EA20(v30);
+  v151 = v32 + 16;
+  EnterCriticalSection((LPCRITICAL_SECTION)(v32 + 16));
+  sub_18009E8C0(v32);
+  *(_QWORD *)&v146 = "length";
+  sub_1800B4BF0(v145, v32, &v146);
+  ExitCode = 237;
+  LeaveCriticalSection((LPCRITICAL_SECTION)(v32 + 16));
+  sub_18008A110(v12 + 16, v145, &v165);
+  v33 = *(void (__fastcall **)(__int64, _QWORD *, __int128 *))(*(_QWORD *)v12 + 24LL);
+  v146 = (unsigned __int64)v165;
+  (*((void (__fastcall **)(char *, __int64 *))v165 + 12))((char *)&v146 + 8, &v166);
+  v147 = 1;
+  v33(v12, v145, &v146);
+  if ( v147 != 0 )
+    (*(void (__fastcall **)(char *))(v146 + 88))((char *)&v146 + 8);
+  v34 = (void *)(v145[0] - 16LL);
+  if ( (_UNKNOWN *)(v145[0] - 16LL) != &unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v34) == -1 )
+    sub_1809A0E80(v34);
+  v35 = *((__int64 (__fastcall **)())v165 + 11);
+  if ( v35 != guard_check_icall_nop )
+    ((void (__fastcall *)(__int64 *))v35)(&v166);
+  v165 = &unk_180F51450;
+  v166 = 0;
+  LODWORD(v166) = *(_DWORD *)(v156 + 32);
+  v36 = sub_18009EA20(v34);
+  v37 = (struct _RTL_CRITICAL_SECTION *)(v36 + 16);
+  v154 = (char *)(v36 + 16);
+  EnterCriticalSection((LPCRITICAL_SECTION)(v36 + 16));
+  sub_18009E8C0(v36);
+  *(_QWORD *)&v146 = "channel";
+  sub_1800B4BF0(&v151, v36, &v146);
+  v38 = 493;
+  ExitCode = 493;
+  LeaveCriticalSection(v37);
+  sub_1800A6D50(v12, &v151, &v165);
+  v39 = (void *)(v151 - 16);
+  if ( (_UNKNOWN *)(v151 - 16) != &unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v39) == -1 )
+    sub_1809A0E80(v39);
+  v40 = *((__int64 (__fastcall **)())v165 + 11);
+  if ( v40 != guard_check_icall_nop )
+    ((void (__fastcall *)(__int64 *))v40)(&v166);
+  v41 = (_BYTE *)*a6;
+  if ( *(_BYTE *)*a6 != 0 )
+  {
+    v165 = &unk_180F512B0;
+    v166 = (__int64)v41;
+    v42 = (volatile signed __int32 *)(v41 - 16);
+    if ( v42 != (volatile signed __int32 *)&unk_1814934A8 )
+      _InterlockedIncrement(v42);
+    v43 = sub_18009EA20(&unk_180F512B0);
+    v44 = (struct _RTL_CRITICAL_SECTION *)(v43 + 16);
+    v154 = (char *)(v43 + 16);
+    EnterCriticalSection((LPCRITICAL_SECTION)(v43 + 16));
+    sub_18009E8C0(v43);
+    *(_QWORD *)&v146 = "testBehaviour";
+    sub_1800B4BF0(&v151, v43, &v146);
+    v38 = 1005;
+    ExitCode = 1005;
+    LeaveCriticalSection(v44);
+    sub_1800A6D50(v12, &v151, &v165);
+    v45 = (void *)(v151 - 16);
+    if ( (_UNKNOWN *)(v151 - 16) != &unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v45) == -1 )
+      sub_1809A0E80(v45);
+    v46 = *((void (__fastcall **)(__int64 *))v165 + 11);
+    if ( (char *)v46 == (char *)sub_18000B8D0 )
+      sub_180023C60(&v166, v46);
+    else
+      v46(&v166);
+  }
+  v165 = &unk_180F513D0;
+  v166 = v12;
+  _InterlockedIncrement((volatile signed __int32 *)(v12 + 8));
+  *(_QWORD *)&v146 = 1;
+  *((_QWORD *)&v146 + 1) = 15;
+  sub_1800A64C0(&v152, &v165, &v146);
+  v137 = v38 | 0x10;
+  ExitCode = v38 | 0x10;
+  (*((void (__fastcall **)(__int64 *))v165 + 11))(&v166);
+  v47 = sub_1800B3750(v152);
+  sub_18009EBF0(v145, v152, v47);
+  v139 = 1;
+  v140 = 0;
+  *(_OWORD *)hHandle = 0;
+  v48 = 0;
+  hJob = nullptr;
+  if ( (unsigned __int8)sub_1807F4A00((__int64)&v139, (__int64)v155, (__int64)v145) == 0 )
+  {
+    sub_1800B2E50(&v146, "workerUnavailable");
+    v49 = v153;
+    v50 = (char *)*v153;
+    *v153 = (LPVOID)v146;
+    v51 = v50 - 16;
+    if ( v51 != (char *)&unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v51) == -1 )
+      sub_1809A0E80(v51);
+    v52 = hHandle[1];
+    if ( v140 == 0 )
+    {
+      if ( hHandle[1] == nullptr )
+        goto LABEL_80;
+      if ( WaitForSingleObject(hHandle[1], 0) != 0 )
+      {
+        if ( hJob != nullptr )
+        {
+          TerminateJobObject(hJob, 1u);
+        }
+        else
+        {
+          v52 = hHandle[1];
+          if ( hHandle[1] == nullptr )
+            goto LABEL_80;
+          TerminateProcess(hHandle[1], 1u);
+        }
+      }
+      else
+      {
+        ExitCode = 1;
+        GetExitCodeProcess(hHandle[1], &ExitCode);
+        v139 = ExitCode;
+        v140 = 1;
+      }
+      while ( 1 )
+      {
+        v52 = hHandle[1];
+LABEL_80:
+        if ( v140 != 0 || v52 == nullptr )
+          break;
+        if ( WaitForSingleObject(v52, 0) == 0 )
+        {
+          ExitCode = 1;
+          GetExitCodeProcess(hHandle[1], &ExitCode);
+          v139 = ExitCode;
+          v140 = 1;
+          v52 = hHandle[1];
+          break;
+        }
+        *(_QWORD *)&v146 = 5;
+        sub_180078590(&v146);
+      }
+    }
+    if ( hHandle[0] != nullptr )
+    {
+      CloseHandle(hHandle[0]);
+      v52 = hHandle[1];
+    }
+    if ( v52 != nullptr )
+      CloseHandle(v52);
+    if ( hJob != nullptr )
+      CloseHandle(hJob);
+    v53 = (void *)(v145[0] - 16LL);
+    if ( (_UNKNOWN *)(v145[0] - 16LL) != &unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v53) == -1 )
+      sub_1809A0E80(v53);
+    v54 = (void *)(v152 - 16);
+    if ( (_UNKNOWN *)(v152 - 16) != &unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v54) == -1 )
+      sub_1809A0E80(v54);
+    if ( _InterlockedExchangeAdd((volatile signed __int32 *)(v12 + 8), 0xFFFFFFFF) == 1 )
+LABEL_213:
+      (**(void (__fastcall ***)(__int64, __int64))v12)(v12, 1);
+LABEL_214:
+    v73 = lpMem;
+    if ( lpMem != &unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)lpMem) == -1 )
+      sub_1809A0E80(v73);
+    return v49;
+  }
+  v149 = 0;
+  v150 = 0;
+  v154 = nullptr;
+  *(_QWORD *)&v146 = 0;
+  v151 = 0;
+  if ( *(_DWORD *)v156 == 1 )
+  {
+    v155 = (LPVOID)46080000;
+  }
+  else
+  {
+    if ( *(_DWORD *)v156 == 2 )
+      v48 = 0x100000;
+    v155 = (LPVOID)v48;
+    LODWORD(v48) = 0;
+  }
+  v55 = 0;
+  v138 = 0;
+  sub_1809E92C0(Buffer, 0, 0x10000);
+  while ( 1 )
+  {
+    v56 = *((_QWORD *)v148[0] + 7);
+    if ( v56 != 0 && (*(unsigned __int8 (__fastcall **)(__int64))(*(_QWORD *)v56 + 16LL))(v56) != 0
+      || *(_QWORD *)sub_18002C410(&v165) >= a5 )
+    {
+      v118 = (_QWORD *)sub_18002C410(&v165);
+      v119 = *v118 < a5;
+      if ( *v118 == a5 )
+      {
+        v120 = 0;
+      }
+      else
+      {
+        v120 = -1;
+        if ( !v119 )
+          v120 = 1;
+      }
+      v121 = "cancelled";
+      if ( v120 >= 0 )
+        v121 = "processingTimeout";
+      sub_1800B2E50(v148, v121);
+      v49 = v153;
+      v122 = (char *)*v153;
+      *v153 = v148[0];
+      v123 = v122 - 16;
+      if ( v123 != (char *)&unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v123) == -1 )
+        sub_1809A0E80(v123);
+      if ( v140 == 0 && hHandle[1] != nullptr )
+      {
+        if ( WaitForSingleObject(hHandle[1], 0) != 0 )
+        {
+          if ( hJob != nullptr )
+          {
+            TerminateJobObject(hJob, 1u);
+          }
+          else if ( hHandle[1] != nullptr )
+          {
+            TerminateProcess(hHandle[1], 1u);
+          }
+        }
+        else
+        {
+          v137 = 1;
+          GetExitCodeProcess(hHandle[1], &v137);
+          v139 = v137;
+          v140 = 1;
+        }
+      }
+      v124 = (void *)v149;
+      if ( (_QWORD)v149 != 0 )
+      {
+        if ( (unsigned __int64)(v150 - v149) >= 0x1000 )
+        {
+          v124 = *(void **)(v149 - 8);
+          if ( (unsigned __int64)(v149 - (_QWORD)v124 - 8) > 0x1F )
+            goto LABEL_476;
+        }
+        sub_1809A0E80(v124);
+        v149 = 0;
+        v150 = 0;
+      }
+      if ( v140 == 0 )
+      {
+        if ( hHandle[1] != nullptr )
+        {
+          if ( WaitForSingleObject(hHandle[1], 0) != 0 )
+          {
+            if ( hJob != nullptr )
+            {
+              TerminateJobObject(hJob, 1u);
+            }
+            else if ( hHandle[1] != nullptr )
+            {
+              TerminateProcess(hHandle[1], 1u);
+            }
+          }
+          else
+          {
+            v137 = 1;
+            GetExitCodeProcess(hHandle[1], &v137);
+            v139 = v137;
+            v140 = 1;
+          }
+        }
+        while ( v140 == 0 && hHandle[1] != nullptr )
+        {
+          if ( WaitForSingleObject(hHandle[1], 0) == 0 )
+          {
+            v137 = 1;
+            GetExitCodeProcess(hHandle[1], &v137);
+            v139 = v137;
+            v140 = 1;
+            break;
+          }
+          v148[0] = (LPVOID)5;
+          sub_180078590(v148);
+        }
+      }
+      if ( hHandle[0] != nullptr )
+        CloseHandle(hHandle[0]);
+      if ( hHandle[1] != nullptr )
+        CloseHandle(hHandle[1]);
+      if ( hJob != nullptr )
+        CloseHandle(hJob);
+      v125 = (void *)(v145[0] - 16LL);
+      if ( (_UNKNOWN *)(v145[0] - 16LL) != &unk_1814934A8
+        && _InterlockedDecrement((volatile signed __int32 *)v125) == -1 )
+      {
+        sub_1809A0E80(v125);
+      }
+      v126 = (void *)(v152 - 16);
+      if ( (_UNKNOWN *)(v152 - 16) != &unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v126) == -1 )
+        sub_1809A0E80(v126);
+      if ( _InterlockedExchangeAdd((volatile signed __int32 *)(v12 + 8), 0xFFFFFFFF) == 1 )
+        goto LABEL_458;
+      goto LABEL_459;
+    }
+    if ( v55 != 0 )
+    {
+      v57 = v149;
+      goto LABEL_144;
+    }
+    TotalBytesAvail = 0;
+    NumberOfBytesRead[0] = 0;
+    if ( PeekNamedPipe(hHandle[0], nullptr, 0, nullptr, &TotalBytesAvail, nullptr) )
+      break;
+    LOBYTE(v48) = GetLastError() == 109;
+    LODWORD(v48) = v48 - 2;
+LABEL_118:
+    if ( (_DWORD)v48 == -2 )
+      goto LABEL_391;
+    if ( (_DWORD)v48 != -1 )
+    {
+      if ( (int)v48 <= 0 )
+      {
+        v57 = v149;
+        goto LABEL_143;
+      }
+      if ( *((_QWORD *)&v149 + 1) + (int)v48 - (_QWORD)v149 > (unsigned __int64)v155 + 4112 )
+      {
+        sub_1800B2E50(v148, "budgetExceeded");
+        v49 = v153;
+        v68 = (char *)*v153;
+        *v153 = v148[0];
+        v69 = v68 - 16;
+        if ( v69 != (char *)&unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v69) == -1 )
+          sub_1809A0E80(v69);
+        v70 = (void *)v149;
+        if ( (_QWORD)v149 != 0 )
+        {
+          if ( (unsigned __int64)(v150 - v149) >= 0x1000 )
+          {
+            v70 = *(void **)(v149 - 8);
+            if ( (unsigned __int64)(v149 - (_QWORD)v70 - 8) > 0x1F )
+              goto LABEL_476;
+          }
+          sub_1809A0E80(v70);
+          v149 = 0;
+          v150 = 0;
+        }
+        v64 = hHandle[1];
+        if ( v140 == 0 )
+        {
+          if ( hHandle[1] == nullptr )
+            goto LABEL_195;
+          if ( WaitForSingleObject(hHandle[1], 0) != 0 )
+          {
+            if ( hJob != nullptr )
+            {
+              TerminateJobObject(hJob, 1u);
+            }
+            else
+            {
+              v64 = hHandle[1];
+              if ( hHandle[1] == nullptr )
+                goto LABEL_195;
+              TerminateProcess(hHandle[1], 1u);
+            }
+          }
+          else
+          {
+            v144 = 1;
+            GetExitCodeProcess(hHandle[1], &v144);
+            v139 = v144;
+            v140 = 1;
+          }
+          while ( 1 )
+          {
+            v64 = hHandle[1];
+LABEL_195:
+            if ( v140 != 0 || v64 == nullptr )
+              break;
+            if ( WaitForSingleObject(v64, 0) == 0 )
+            {
+LABEL_199:
+              v144 = 1;
+              GetExitCodeProcess(hHandle[1], &v144);
+              v139 = v144;
+              v140 = 1;
+              v64 = hHandle[1];
+              goto LABEL_200;
+            }
+            v148[0] = (LPVOID)5;
+            sub_180078590(v148);
+          }
+        }
+        goto LABEL_200;
+      }
+      sub_18028B140(&v149, *((_QWORD *)&v149 + 1), Buffer, (int)v48);
+      v57 = v149;
+      if ( v154 != nullptr )
+        goto LABEL_129;
+      if ( *((_QWORD *)&v149 + 1) - (_QWORD)v149 < 0x10u )
+        goto LABEL_143;
+      v59 = *(unsigned __int8 *)(v149 + 4)
+          | ((*(unsigned __int8 *)(v149 + 5) | ((unsigned __int64)*(unsigned __int16 *)(v149 + 6) << 8)) << 8);
+      *(_QWORD *)&v146 = v59;
+      v60 = *(unsigned __int8 *)(v149 + 8)
+          | ((*(unsigned __int8 *)(v149 + 9)
+            | ((*(unsigned __int8 *)(v149 + 10)
+              | ((*(unsigned __int8 *)(v149 + 11)
+                | ((*(unsigned __int8 *)(v149 + 12)
+                  | ((*(unsigned __int8 *)(v149 + 13) | ((unsigned __int64)*(unsigned __int16 *)(v149 + 14) << 8)) << 8)) << 8)) << 8)) << 8)) << 8);
+      v151 = v60;
+      if ( *(_DWORD *)v149 == 827539782 && v59 - 1 <= 0xFFF && v60 <= (unsigned __int64)v155 )
+      {
+        v154 = (char *)(v60 + v59 + 16);
+        if ( v154 != nullptr )
+        {
+LABEL_129:
+          if ( *((_QWORD *)&v149 + 1) - (_QWORD)v149 > (unsigned __int64)v154 )
+          {
+            sub_1800B2E50(v148, "invalid");
+            v49 = v153;
+            v61 = (char *)*v153;
+            *v153 = v148[0];
+            v62 = v61 - 16;
+            if ( v62 != (char *)&unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v62) == -1 )
+              sub_1809A0E80(v62);
+            v63 = (void *)v149;
+            if ( (_QWORD)v149 != 0 )
+            {
+              if ( (unsigned __int64)(v150 - v149) >= 0x1000 )
+              {
+                v63 = *(void **)(v149 - 8);
+                if ( (unsigned __int64)(v149 - (_QWORD)v63 - 8) > 0x1F )
+                  goto LABEL_477;
+              }
+              sub_1809A0E80(v63);
+              v149 = 0;
+              v150 = 0;
+            }
+            v64 = hHandle[1];
+            if ( v140 == 0 )
+            {
+              if ( hHandle[1] == nullptr )
+                goto LABEL_175;
+              if ( WaitForSingleObject(hHandle[1], 0) != 0 )
+              {
+                if ( hJob != nullptr )
+                {
+                  TerminateJobObject(hJob, 1u);
+                }
+                else
+                {
+                  v64 = hHandle[1];
+                  if ( hHandle[1] == nullptr )
+                    goto LABEL_175;
+                  TerminateProcess(hHandle[1], 1u);
+                }
+              }
+              else
+              {
+                v144 = 1;
+                GetExitCodeProcess(hHandle[1], &v144);
+                v139 = v144;
+                v140 = 1;
+              }
+              while ( 1 )
+              {
+                v64 = hHandle[1];
+LABEL_175:
+                if ( v140 != 0 || v64 == nullptr )
+                  break;
+                if ( WaitForSingleObject(v64, 0) == 0 )
+                  goto LABEL_199;
+                v148[0] = (LPVOID)5;
+                sub_180078590(v148);
+              }
+            }
+LABEL_200:
+            if ( hHandle[0] != nullptr )
+            {
+              CloseHandle(hHandle[0]);
+              v64 = hHandle[1];
+            }
+            if ( v64 != nullptr )
+              CloseHandle(v64);
+            if ( hJob != nullptr )
+              CloseHandle(hJob);
+            v71 = (void *)(v145[0] - 16LL);
+            if ( (_UNKNOWN *)(v145[0] - 16LL) != &unk_1814934A8
+              && _InterlockedDecrement((volatile signed __int32 *)v71) == -1 )
+            {
+              sub_1809A0E80(v71);
+            }
+            v72 = (void *)(v152 - 16);
+            if ( (_UNKNOWN *)(v152 - 16) != &unk_1814934A8
+              && _InterlockedDecrement((volatile signed __int32 *)v72) == -1 )
+            {
+              sub_1809A0E80(v72);
+            }
+            if ( _InterlockedExchangeAdd((volatile signed __int32 *)(v12 + 8), 0xFFFFFFFF) != 1 )
+              goto LABEL_214;
+            goto LABEL_213;
+          }
+        }
+LABEL_143:
+        v55 = v138;
+        goto LABEL_144;
+      }
+      sub_1800B2E50(v148, "budgetExceeded");
+      v49 = v153;
+      v65 = (char *)*v153;
+      *v153 = v148[0];
+      v66 = v65 - 16;
+      if ( v66 != (char *)&unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v66) == -1 )
+        sub_1809A0E80(v66);
+      v67 = (void *)v149;
+      if ( (_QWORD)v149 == 0 )
+      {
+LABEL_158:
+        v64 = hHandle[1];
+        if ( v140 == 0 )
+        {
+          if ( hHandle[1] == nullptr )
+            goto LABEL_167;
+          if ( WaitForSingleObject(hHandle[1], 0) != 0 )
+          {
+            if ( hJob != nullptr )
+            {
+              TerminateJobObject(hJob, 1u);
+            }
+            else
+            {
+              v64 = hHandle[1];
+              if ( hHandle[1] == nullptr )
+                goto LABEL_167;
+              TerminateProcess(hHandle[1], 1u);
+            }
+          }
+          else
+          {
+            v144 = 1;
+            GetExitCodeProcess(hHandle[1], &v144);
+            v139 = v144;
+            v140 = 1;
+          }
+          while ( 1 )
+          {
+            v64 = hHandle[1];
+LABEL_167:
+            if ( v140 != 0 || v64 == nullptr )
+              break;
+            if ( WaitForSingleObject(v64, 0) == 0 )
+              goto LABEL_199;
+            v148[0] = (LPVOID)5;
+            sub_180078590(v148);
+          }
+        }
+        goto LABEL_200;
+      }
+      if ( (unsigned __int64)(v150 - v149) < 0x1000
+        || (v67 = *(void **)(v149 - 8), (unsigned __int64)(v149 - (_QWORD)v67 - 8) <= 0x1F) )
+      {
+        sub_1809A0E80(v67);
+        v149 = 0;
+        v150 = 0;
+        goto LABEL_158;
+      }
+LABEL_476:
+      sub_1809AEBB8(0, 0, 0, 0, 0);
+      __debugbreak();
+    }
+    v55 = 1;
+    v138 = 1;
+    v57 = v149;
+LABEL_144:
+    if ( v140 != 0 || hHandle[1] == nullptr )
+      goto LABEL_148;
+    if ( WaitForSingleObject(hHandle[1], 0) == 0 )
+    {
+      v144 = 1;
+      GetExitCodeProcess(hHandle[1], &v144);
+      v139 = v144;
+      v140 = 1;
+      v57 = v149;
+LABEL_148:
+      if ( v55 == 0 )
+        goto LABEL_149;
+      if ( v139 != 0 || v154 == nullptr || (char *)(*((_QWORD *)&v149 + 1) - v57) != v154 )
+      {
+        sub_1800B2E50(v148, "analysisFailed");
+        v49 = v153;
+        v112 = (char *)*v153;
+        *v153 = v148[0];
+        v113 = v112 - 16;
+        if ( v113 != (char *)&unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v113) == -1 )
+          sub_1809A0E80(v113);
+        v114 = (void *)v149;
+        if ( (_QWORD)v149 != 0 )
+        {
+          if ( (unsigned __int64)(v150 - v149) >= 0x1000 )
+          {
+            v114 = *(void **)(v149 - 8);
+            if ( (unsigned __int64)(v149 - (_QWORD)v114 - 8) > 0x1F )
+              goto LABEL_477;
+          }
+          sub_1809A0E80(v114);
+          v149 = 0;
+          v150 = 0;
+        }
+        v87 = hHandle[1];
+        if ( v140 == 0 )
+        {
+          if ( hHandle[1] == nullptr )
+            goto LABEL_387;
+          if ( WaitForSingleObject(hHandle[1], 0) != 0 )
+          {
+            if ( hJob != nullptr )
+            {
+              TerminateJobObject(hJob, 1u);
+            }
+            else
+            {
+              v87 = hHandle[1];
+              if ( hHandle[1] == nullptr )
+                goto LABEL_387;
+              TerminateProcess(hHandle[1], 1u);
+            }
+          }
+          else
+          {
+            v137 = 1;
+            GetExitCodeProcess(hHandle[1], &v137);
+            v139 = v137;
+            v140 = 1;
+          }
+          while ( 1 )
+          {
+            v87 = hHandle[1];
+LABEL_387:
+            if ( v140 != 0 || v87 == nullptr )
+              break;
+            if ( WaitForSingleObject(v87, 0) == 0 )
+              goto LABEL_263;
+            v148[0] = (LPVOID)5;
+            sub_180078590(v148);
+          }
+        }
+        goto LABEL_264;
+      }
+      v74 = v57 + 16;
+      if ( v57 == -16 || (_DWORD)v146 == 0 )
+      {
+        v154 = &byte_1814934B8;
+        v75 = v137 | 0x400;
+      }
+      else
+      {
+        v75 = v137 | 0x400;
+        if ( (int)v146 >= 0 )
+          sub_180097430(&v154, v74, v74 + (int)v146);
+        else
+          sub_1800B3260(&v154, v74);
+      }
+      ExitCode = v75;
+      sub_1800A66C0(&v167, &v154);
+      v76 = v154 - 16;
+      if ( v154 - 16 != (char *)&unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v76) == -1 )
+        sub_1809A0E80(v76);
+      if ( *(_BYTE *)(v167 + 7) == 0
+        || *(_BYTE *)(*(_QWORD *)sub_1800A3E20(&v167, "version") + 2LL) == 0
+        || (v77 = sub_1800A3E20(&v167, "version"),
+            (*(unsigned int (__fastcall **)(__int64))(*(_QWORD *)v77 + 16LL))(v77 + 8) != 1)
+        || *(_BYTE *)(*(_QWORD *)sub_1800A3E20(&v167, "error") + 6LL) == 0 )
+      {
+        sub_1800B2E50(v148, "invalid");
+        v49 = v153;
+        v109 = (char *)*v153;
+        *v153 = v148[0];
+        v110 = v109 - 16;
+        if ( v110 != (char *)&unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v110) == -1 )
+          sub_1809A0E80(v110);
+        ExitCode = 0;
+        (*(void (__fastcall **)(char *))(v167 + 88))(v168);
+        v111 = (void *)v149;
+        if ( (_QWORD)v149 != 0 )
+        {
+          if ( (unsigned __int64)(v150 - v149) >= 0x1000 )
+          {
+            v111 = *(void **)(v149 - 8);
+            if ( (unsigned __int64)(v149 - (_QWORD)v111 - 8) > 0x1F )
+              goto LABEL_477;
+          }
+          sub_1809A0E80(v111);
+          v149 = 0;
+          v150 = 0;
+        }
+        v87 = hHandle[1];
+        if ( v140 == 0 )
+        {
+          if ( hHandle[1] == nullptr )
+            goto LABEL_367;
+          if ( WaitForSingleObject(hHandle[1], 0) != 0 )
+          {
+            if ( hJob != nullptr )
+            {
+              TerminateJobObject(hJob, 1u);
+            }
+            else
+            {
+              v87 = hHandle[1];
+              if ( hHandle[1] == nullptr )
+                goto LABEL_367;
+              TerminateProcess(hHandle[1], 1u);
+            }
+          }
+          else
+          {
+            v137 = 1;
+            GetExitCodeProcess(hHandle[1], &v137);
+            v139 = v137;
+            v140 = 1;
+          }
+          while ( 1 )
+          {
+            v87 = hHandle[1];
+LABEL_367:
+            if ( v140 != 0 || v87 == nullptr )
+              break;
+            if ( WaitForSingleObject(v87, 0) == 0 )
+              goto LABEL_263;
+            v148[0] = (LPVOID)5;
+            sub_180078590(v148);
+          }
+        }
+        goto LABEL_264;
+      }
+      v78 = sub_1800A3E20(&v167, "error");
+      (*(void (__fastcall **)(LPVOID *, __int64))(*(_QWORD *)v78 + 40LL))(&v155, v78 + 8);
+      v79 = v75 | 0x800;
+      ExitCode = v79;
+      v49 = v153;
+      v80 = (char *)*v153;
+      *v153 = v155;
+      v155 = v80;
+      v81 = v80 - 16;
+      if ( v81 != (char *)&unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v81) == -1 )
+        sub_1809A0E80(v81);
+      if ( *(_BYTE *)*v49 == 0 )
+      {
+        v90 = (_DWORD *)v156;
+        if ( *(_DWORD *)v156 != 2 )
+        {
+          v91 = sub_1800A3E20(&v167, "sampleRate");
+          if ( (unsigned __int8)sub_1807F5390(v91) == 0
+            || (v92 = sub_1800A3E20(&v167, "duration"), (unsigned __int8)sub_1807F5390(v92) == 0)
+            || *(_BYTE *)(*(_QWORD *)sub_1800A3E20(&v167, "channels") + 2LL) == 0
+            || *(_BYTE *)(*(_QWORD *)sub_1800A3E20(&v167, "frames") + 3LL) == 0
+            && *(_BYTE *)(*(_QWORD *)sub_1800A3E20(&v167, "frames") + 2LL) == 0 )
+          {
+            sub_1800B2E50(v148, "invalid");
+            v103 = *v49;
+            *v49 = v148[0];
+            v104 = v103 - 16;
+            if ( v104 != (_BYTE *)&unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v104) == -1 )
+              sub_1809A0E80(v104);
+            ExitCode = 0;
+            (*(void (__fastcall **)(char *))(v167 + 88))(v168);
+            v105 = (void *)v149;
+            if ( (_QWORD)v149 != 0 )
+            {
+              if ( (unsigned __int64)(v150 - v149) >= 0x1000 )
+              {
+                v105 = *(void **)(v149 - 8);
+                if ( (unsigned __int64)(v149 - (_QWORD)v105 - 8) > 0x1F )
+                  goto LABEL_477;
+              }
+              sub_1809A0E80(v105);
+              v149 = 0;
+              v150 = 0;
+            }
+            v87 = hHandle[1];
+            if ( v140 == 0 )
+            {
+              if ( hHandle[1] == nullptr )
+                goto LABEL_330;
+              if ( WaitForSingleObject(hHandle[1], 0) != 0 )
+              {
+                if ( hJob != nullptr )
+                {
+                  TerminateJobObject(hJob, 1u);
+                }
+                else
+                {
+                  v87 = hHandle[1];
+                  if ( hHandle[1] == nullptr )
+                    goto LABEL_330;
+                  TerminateProcess(hHandle[1], 1u);
+                }
+              }
+              else
+              {
+                v137 = 1;
+                GetExitCodeProcess(hHandle[1], &v137);
+                v139 = v137;
+                v140 = 1;
+              }
+              while ( 1 )
+              {
+                v87 = hHandle[1];
+LABEL_330:
+                if ( v140 != 0 || v87 == nullptr )
+                  break;
+                if ( WaitForSingleObject(v87, 0) == 0 )
+                  goto LABEL_263;
+                v148[0] = (LPVOID)5;
+                sub_180078590(v148);
+              }
+            }
+            goto LABEL_264;
+          }
+          v93 = sub_1800A3E20(&v167, "sampleRate");
+          *((double *)v49 + 1) = (*(double (__fastcall **)(__int64))(*(_QWORD *)v93 + 32LL))(v93 + 8);
+          v94 = sub_1800A3E20(&v167, "duration");
+          *((double *)v49 + 2) = (*(double (__fastcall **)(__int64))(*(_QWORD *)v94 + 32LL))(v94 + 8);
+          v95 = sub_1800A3E20(&v167, "channels");
+          *((_DWORD *)v49 + 6) = (*(__int64 (__fastcall **)(__int64))(*(_QWORD *)v95 + 16LL))(v95 + 8);
+          v96 = sub_1800A3E20(&v167, "frames");
+          v97 = (*(__int64 (__fastcall **)(__int64))(*(_QWORD *)v96 + 24LL))(v96 + 8);
+          v49[4] = (LPVOID)v97;
+          v98 = *((double *)v49 + 1);
+          if ( v98 < 8000.0
+            || v98 > 384000.0
+            || *((double *)v49 + 2) <= 0.0
+            || (v99 = *((_DWORD *)v49 + 6)) < 1
+            || v99 > 2
+            || v97 <= 0
+            || *v90 == 1 && ((unsigned __int64)v97 > 0xAFC800 || v151 != 4 * v97 || v97 != (int)sub_1809E18B0()) )
+          {
+            sub_1800B2E50(v148, "invalid");
+            v100 = *v49;
+            *v49 = v148[0];
+            v101 = v100 - 16;
+            if ( v101 != (_BYTE *)&unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v101) == -1 )
+              sub_1809A0E80(v101);
+            ExitCode = 0;
+            (*(void (__fastcall **)(char *))(v167 + 88))(v168);
+            v102 = (void *)v149;
+            if ( (_QWORD)v149 != 0 )
+            {
+              *(_QWORD *)&v146 = v150 - v149;
+              v155 = (LPVOID)v149;
+              if ( (unsigned __int64)(v150 - v149) >= 0x1000 )
+              {
+                sub_180008120(&v155, &v146);
+                v102 = v155;
+              }
+              sub_1809A0E80(v102);
+              v149 = 0;
+              v150 = 0;
+            }
+            v87 = hHandle[1];
+            if ( v140 == 0 )
+            {
+              if ( hHandle[1] == nullptr )
+                goto LABEL_310;
+              if ( WaitForSingleObject(hHandle[1], 0) != 0 )
+              {
+                if ( hJob != nullptr )
+                {
+                  TerminateJobObject(hJob, 1u);
+                }
+                else
+                {
+                  v87 = hHandle[1];
+                  if ( hHandle[1] == nullptr )
+                    goto LABEL_310;
+                  TerminateProcess(hHandle[1], 1u);
+                }
+              }
+              else
+              {
+                v137 = 1;
+                GetExitCodeProcess(hHandle[1], &v137);
+                v139 = v137;
+                v140 = 1;
+              }
+              while ( 1 )
+              {
+                v87 = hHandle[1];
+LABEL_310:
+                if ( v140 != 0 || v87 == nullptr )
+                  break;
+                if ( WaitForSingleObject(v87, 0) == 0 )
+                  goto LABEL_263;
+                v148[0] = (LPVOID)5;
+                sub_180078590(v148);
+              }
+            }
+            goto LABEL_264;
+          }
+        }
+        v106 = (LPVOID *)sub_1800921D0(&v165, v149 + 16 + v146, v151);
+        v107 = v49[5];
+        v49[5] = *v106;
+        *v106 = v107;
+        v49[6] = v106[1];
+        sub_1809BF220(v165);
+        ExitCode = 0;
+        (*(void (__fastcall **)(char *))(v167 + 88))(v168);
+        v108 = (void *)v149;
+        if ( (_QWORD)v149 != 0 )
+        {
+          if ( (unsigned __int64)(v150 - v149) >= 0x1000 )
+          {
+            v108 = *(void **)(v149 - 8);
+            if ( (unsigned __int64)(v149 - (_QWORD)v108 - 8) > 0x1F )
+              goto LABEL_477;
+          }
+          sub_1809A0E80(v108);
+          v149 = 0;
+          v150 = 0;
+        }
+        v87 = hHandle[1];
+        if ( v140 == 0 )
+        {
+          if ( hHandle[1] == nullptr )
+            goto LABEL_347;
+          if ( WaitForSingleObject(hHandle[1], 0) != 0 )
+          {
+            if ( hJob != nullptr )
+            {
+              TerminateJobObject(hJob, 1u);
+            }
+            else
+            {
+              v87 = hHandle[1];
+              if ( hHandle[1] == nullptr )
+                goto LABEL_347;
+              TerminateProcess(hHandle[1], 1u);
+            }
+          }
+          else
+          {
+            v137 = 1;
+            GetExitCodeProcess(hHandle[1], &v137);
+            v139 = v137;
+            v140 = 1;
+          }
+          while ( 1 )
+          {
+            v87 = hHandle[1];
+LABEL_347:
+            if ( v140 != 0 || v87 == nullptr )
+              break;
+            if ( WaitForSingleObject(v87, 0) == 0 )
+              goto LABEL_263;
+            v148[0] = (LPVOID)5;
+            sub_180078590(v148);
+          }
+        }
+        goto LABEL_264;
+      }
+      if ( v151 != 0 )
+        goto LABEL_239;
+      v163[0] = "budgetExceeded";
+      v163[1] = "permissionDenied";
+      v163[2] = "formatUnsupported";
+      v163[3] = "emptySelection";
+      v163[4] = "analysisFailed";
+      v163[5] = "nonFiniteInput";
+      v163[6] = "midCancellation";
+      v163[7] = "silence";
+      v163[8] = "invalid";
+      v165 = v163;
+      v166 = (__int64)&v164;
+      v82 = sub_18009CD70(v148, &v165);
+      v79 |= 2u;
+      ExitCode = v79;
+      v83 = sub_18009D280(v82, *v49, 0, 0);
+      v138 = 0;
+      if ( v83 < 0 )
+LABEL_239:
+        v138 = 1;
+      if ( (v79 & 2) != 0 )
+      {
+        ExitCode = v79 & 0xFFFFFFFD;
+        sub_180024DB0(v148);
+        sub_1809BF220(v148[0]);
+      }
+      if ( v138 != 0 )
+      {
+        sub_1800B2E50(v148, "invalid");
+        v84 = (char *)*v49;
+        *v49 = v148[0];
+        v85 = v84 - 16;
+        if ( v85 != (char *)&unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v85) == -1 )
+          sub_1809A0E80(v85);
+      }
+      ExitCode = 0;
+      (*(void (__fastcall **)(char *))(v167 + 88))(v168);
+      v86 = (void *)v149;
+      if ( (_QWORD)v149 == 0 )
+      {
+LABEL_250:
+        v87 = hHandle[1];
+        if ( v140 == 0 )
+        {
+          if ( hHandle[1] == nullptr )
+            goto LABEL_259;
+          if ( WaitForSingleObject(hHandle[1], 0) != 0 )
+          {
+            if ( hJob != nullptr )
+            {
+              TerminateJobObject(hJob, 1u);
+            }
+            else
+            {
+              v87 = hHandle[1];
+              if ( hHandle[1] == nullptr )
+                goto LABEL_259;
+              TerminateProcess(hHandle[1], 1u);
+            }
+          }
+          else
+          {
+            v137 = 1;
+            GetExitCodeProcess(hHandle[1], &v137);
+            v139 = v137;
+            v140 = 1;
+          }
+          while ( 1 )
+          {
+            v87 = hHandle[1];
+LABEL_259:
+            if ( v140 != 0 || v87 == nullptr )
+              break;
+            if ( WaitForSingleObject(v87, 0) == 0 )
+              goto LABEL_263;
+            v148[0] = (LPVOID)5;
+            sub_180078590(v148);
+          }
+        }
+        goto LABEL_264;
+      }
+      if ( (unsigned __int64)(v150 - v149) < 0x1000
+        || (v86 = *(void **)(v149 - 8), (unsigned __int64)(v149 - (_QWORD)v86 - 8) <= 0x1F) )
+      {
+        sub_1809A0E80(v86);
+        v149 = 0;
+        v150 = 0;
+        goto LABEL_250;
+      }
+LABEL_477:
+      sub_1809AEBB8(0, 0, 0, 0, 0);
+      JUMPOUT(0x1807F77A5LL);
+    }
+LABEL_149:
+    v119 = (int)v48 <= 0;
+    LODWORD(v48) = 0;
+    if ( v119 )
+    {
+      *(_QWORD *)NumberOfBytesRead = 5;
+      sub_180078590(NumberOfBytesRead);
+    }
+  }
+  if ( TotalBytesAvail == 0 )
+  {
+    v57 = v149;
+    goto LABEL_144;
+  }
+  v58 = 0x10000;
+  if ( TotalBytesAvail < 0x10000 )
+    v58 = TotalBytesAvail;
+  if ( ReadFile(hHandle[0], Buffer, v58, NumberOfBytesRead, nullptr) )
+  {
+    LODWORD(v48) = NumberOfBytesRead[0];
+    goto LABEL_118;
+  }
+LABEL_391:
+  sub_1800B2E50(v148, "analysisFailed");
+  v49 = v153;
+  v115 = (char *)*v153;
+  *v153 = v148[0];
+  v116 = v115 - 16;
+  if ( v116 != (char *)&unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v116) == -1 )
+    sub_1809A0E80(v116);
+  v117 = (void *)v149;
+  if ( (_QWORD)v149 != 0 )
+  {
+    if ( (unsigned __int64)(v150 - v149) >= 0x1000 )
+    {
+      v117 = *(void **)(v149 - 8);
+      if ( (unsigned __int64)(v149 - (_QWORD)v117 - 8) > 0x1F )
+        goto LABEL_476;
+    }
+    sub_1809A0E80(v117);
+    v149 = 0;
+    v150 = 0;
+  }
+  v87 = hHandle[1];
+  if ( v140 == 0 )
+  {
+    if ( hHandle[1] == nullptr )
+      goto LABEL_407;
+    if ( WaitForSingleObject(hHandle[1], 0) != 0 )
+    {
+      if ( hJob != nullptr )
+      {
+        TerminateJobObject(hJob, 1u);
+      }
+      else
+      {
+        v87 = hHandle[1];
+        if ( hHandle[1] == nullptr )
+          goto LABEL_407;
+        TerminateProcess(hHandle[1], 1u);
+      }
+    }
+    else
+    {
+      v137 = 1;
+      GetExitCodeProcess(hHandle[1], &v137);
+      v139 = v137;
+      v140 = 1;
+    }
+    while ( 1 )
+    {
+      v87 = hHandle[1];
+LABEL_407:
+      if ( v140 != 0 || v87 == nullptr )
+        break;
+      if ( WaitForSingleObject(v87, 0) == 0 )
+      {
+LABEL_263:
+        v137 = 1;
+        GetExitCodeProcess(hHandle[1], &v137);
+        v139 = v137;
+        v140 = 1;
+        v87 = hHandle[1];
+        break;
+      }
+      v148[0] = (LPVOID)5;
+      sub_180078590(v148);
+    }
+  }
+LABEL_264:
+  if ( hHandle[0] != nullptr )
+  {
+    CloseHandle(hHandle[0]);
+    v87 = hHandle[1];
+  }
+  if ( v87 != nullptr )
+    CloseHandle(v87);
+  if ( hJob != nullptr )
+    CloseHandle(hJob);
+  v88 = (void *)(v145[0] - 16LL);
+  if ( (_UNKNOWN *)(v145[0] - 16LL) != &unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v88) == -1 )
+    sub_1809A0E80(v88);
+  v89 = (void *)(v152 - 16);
+  if ( (_UNKNOWN *)(v152 - 16) != &unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v89) == -1 )
+    sub_1809A0E80(v89);
+  if ( _InterlockedExchangeAdd((volatile signed __int32 *)(v12 + 8), 0xFFFFFFFF) == 1 )
+LABEL_458:
+    (**(void (__fastcall ***)(__int64, __int64))v12)(v12, 1);
+LABEL_459:
+  v127 = v9 - 4;
+  if ( v9 - 4 != (volatile signed __int32 *)&unk_1814934A8 && _InterlockedDecrement(v127) == -1 )
+    sub_1809A0E80((LPVOID)v127);
+  return v49;
+}
+
+
+// ===== ShellExecA_Caller @ 0x18008ee40 size=93 =====
+
+bool __fastcall sub_18008EE40(_BYTE **a1, __int64 a2)
+{
+  LPCWSTR *v4; // rax
+  bool result; // al
+  char v6; // [rsp+30h] [rbp+8h] BYREF
+
+  result = false;
+  if ( **a1 != 0 )
+  {
+    v4 = (LPCWSTR *)sub_1800B5320(&v6, a1);
+    if ( GetFileAttributesW(*v4) != -1 && sub_180094F20((__int64)a1, a2) )
+      return true;
+  }
+  return result;
+}
+
+
+// ===== Updater_Launcher @ 0x1809095f0 size=957 =====
+
+char **__fastcall sub_1809095F0(char **a1)
+{
+  char *v2; // rcx
+  PWSTR v3; // rbx
+  char v4; // si
+  __int64 v5; // rdi
+  PWSTR v6; // rax
+  unsigned int v7; // edx
+  unsigned __int16 *v8; // r8
+  __int64 v9; // rcx
+  __int64 v10; // rcx
+  unsigned __int64 v11; // rdi
+  __int64 v12; // rax
+  char *v13; // rdi
+  char *v14; // rcx
+  char *v15; // rcx
+  void *v16; // rdx
+  char *v17; // rcx
+  __int64 v18; // rax
+  char v19; // r14
+  char *v20; // rcx
+  LPCWSTR *v21; // rax
+  char **v22; // rax
+  char *v23; // rcx
+  char v24; // si
+  void *v25; // rcx
+  char *v26; // rcx
+  char *v27; // rcx
+  char *v28; // rcx
+  char *v30; // [rsp+38h] [rbp-18h] BYREF
+  char *v31; // [rsp+40h] [rbp-10h] BYREF
+  __int64 v32; // [rsp+48h] [rbp-8h] BYREF
+  char *v33; // [rsp+98h] [rbp+48h] BYREF
+  char *v34; // [rsp+A0h] [rbp+50h] BYREF
+  PWSTR ppszPath; // [rsp+A8h] [rbp+58h] BYREF
+
+  ppszPath = nullptr;
+  if ( SHGetKnownFolderPath(&stru_180E40510, 0, nullptr, &ppszPath) != 0 )
+  {
+    sub_1800B2E50(&v34, "Updater location unavailable");
+    sub_180092BA0(a1, &v34);
+    v2 = v34 - 16;
+    if ( v34 - 16 == (char *)&unk_1814934A8 )
+      return a1;
+    goto LABEL_56;
+  }
+  v3 = ppszPath;
+  v4 = 2;
+  if ( ppszPath != nullptr && *ppszPath != 0 )
+  {
+    v5 = 0;
+    v6 = ppszPath;
+    while ( 1 )
+    {
+      v7 = *v6;
+      v8 = v6 + 1;
+      if ( v7 - 55296 > 0x3FF )
+        goto LABEL_11;
+      if ( (unsigned int)*v8 - 56320 <= 0x3FF )
+        v7 = (((v7 - 55296) << 10) | (*v8 - 56320)) + 0x10000;
+      v9 = 4;
+      if ( (unsigned int)*v8 - 56320 > 0x3FF )
+LABEL_11:
+        v9 = 2;
+      v6 = (PWSTR)((char *)v6 + v9);
+      if ( v7 == 0 )
+        break;
+      v10 = 1;
+      if ( v7 >= 0x80 )
+      {
+        v10 = 2;
+        if ( v7 >= 0x800 )
+        {
+          v10 = 3;
+          if ( v7 >= 0x10000 )
+            v10 = 4;
+        }
+      }
+      v5 += v10;
+    }
+    v11 = (v5 + 4) & 0xFFFFFFFFFFFFFFFCuLL;
+    v12 = sub_1809A1734(v11 + 23);
+    _InterlockedExchange((volatile __int32 *)v12, 0);
+    *(_QWORD *)(v12 + 8) = v11;
+    v13 = (char *)(v12 + 16);
+    v34 = (char *)(v12 + 16);
+    sub_1800B7B20(&v34, v3);
+    v34 = v13;
+  }
+  else
+  {
+    v34 = &byte_1814934B8;
+  }
+  sub_18008C740(&v30, &v34);
+  sub_18008D3A0(&v30, &v33, "FAD Synth/Updater/FAD Synth Updater.exe");
+  v14 = v30 - 16;
+  if ( v30 - 16 != (char *)&unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v14) == -1 )
+    sub_1809A0E80(v14);
+  v15 = v34 - 16;
+  if ( v34 - 16 != (char *)&unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v15) == -1 )
+    sub_1809A0E80(v15);
+  CoTaskMemFree(ppszPath);
+  if ( (unsigned __int8)sub_180909120(&v33) == 0 )
+  {
+    v16 = &unk_181333648;
+LABEL_28:
+    sub_1800B3260(&v34, v16);
+    sub_180092BA0(a1, &v34);
+    v17 = v34;
+    goto LABEL_52;
+  }
+  v18 = sub_1800943B0(&v33, &v34);
+  v19 = sub_180908F60(v18);
+  v20 = v34 - 16;
+  if ( v34 - 16 != (char *)&unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v20) == -1 )
+    sub_1809A0E80(v20);
+  if ( v19 == 0 )
+  {
+    v16 = &unk_181333710;
+    goto LABEL_28;
+  }
+  v31 = v33;
+  if ( v33 - 16 != (char *)&unk_1814934A8 )
+    _InterlockedIncrement((volatile signed __int32 *)v33 - 4);
+  v21 = (LPCWSTR *)sub_1800B5320(&v34, &v31);
+  if ( (__int64)ShellExecuteW(nullptr, L"open", *v21, nullptr, nullptr, 1) <= 32 )
+  {
+    sub_1800B2E50(&v34, "Could not open updater");
+    v22 = (char **)sub_180092BA0(&v32, &v34);
+    v4 = 12;
+    v23 = *v22;
+  }
+  else
+  {
+    v30 = &byte_1814934B8;
+    v22 = &v30;
+    v23 = &byte_1814934B8;
+  }
+  *a1 = v23;
+  *v22 = &byte_1814934B8;
+  v24 = v4 | 1;
+  if ( (v24 & 8) != 0 )
+  {
+    v24 &= ~8u;
+    v25 = (void *)(v32 - 16);
+    if ( (_UNKNOWN *)(v32 - 16) != &unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v25) == -1 )
+      sub_1809A0E80(v25);
+  }
+  if ( (v24 & 4) != 0 )
+  {
+    v24 &= ~4u;
+    v26 = v34 - 16;
+    if ( v34 - 16 != (char *)&unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v26) == -1 )
+      sub_1809A0E80(v26);
+  }
+  if ( (v24 & 2) != 0 )
+  {
+    v27 = v30 - 16;
+    if ( v30 - 16 != (char *)&unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v27) == -1 )
+      sub_1809A0E80(v27);
+  }
+  v17 = v31;
+LABEL_52:
+  v28 = v17 - 16;
+  if ( v28 != (char *)&unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v28) == -1 )
+    sub_1809A0E80(v28);
+  v2 = v33 - 16;
+  if ( v33 - 16 != (char *)&unk_1814934A8 )
+  {
+LABEL_56:
+    if ( _InterlockedDecrement((volatile signed __int32 *)v2) == -1 )
+      sub_1809A0E80(v2);
+  }
+  return a1;
+}
+
+
+// ===== WinTrust_DynamicLoader @ 0x180909120 size=1228 =====
+
+char __fastcall sub_180909120(_BYTE **a1)
+{
+  FARPROC v2; // r13
+  LPCWSTR *v3; // rax
+  LPCWSTR *v4; // rax
+  DWORD FileAttributesW; // eax
+  CHAR *v6; // rcx
+  __int64 v7; // rax
+  LPCWSTR *v8; // rax
+  HMODULE LibraryW; // rbx
+  char *v10; // rcx
+  void *v11; // rcx
+  LPCSTR v12; // rdi
+  FARPROC ProcAddress; // r14
+  CHAR *v14; // rcx
+  LPCSTR v15; // rdi
+  CHAR *v16; // rcx
+  LPCSTR v17; // rdi
+  FARPROC v18; // r12
+  CHAR *v19; // rcx
+  __int64 v20; // rcx
+  unsigned int v21; // r15d
+  bool v22; // di
+  __int64 v23; // rax
+  __int64 v24; // rax
+  __int64 v25; // rdx
+  __int64 v26; // rdx
+  char *v27; // rcx
+  char v28; // di
+  void *v29; // rcx
+  LPCSTR lpProcName; // [rsp+20h] [rbp-E0h] BYREF
+  const char *v32; // [rsp+28h] [rbp-D8h] BYREF
+  _QWORD v33[2]; // [rsp+30h] [rbp-D0h] BYREF
+  __int128 v34; // [rsp+40h] [rbp-C0h] BYREF
+  __int64 v35; // [rsp+50h] [rbp-B0h]
+  __int64 v36; // [rsp+58h] [rbp-A8h]
+  __int64 v37; // [rsp+60h] [rbp-A0h]
+  _QWORD *v38; // [rsp+68h] [rbp-98h]
+  __int128 v39; // [rsp+70h] [rbp-90h]
+  __int128 v40; // [rsp+80h] [rbp-80h]
+  __int64 v41; // [rsp+90h] [rbp-70h]
+  _QWORD v42[2]; // [rsp+A0h] [rbp-60h] BYREF
+  __int128 v43; // [rsp+B0h] [rbp-50h]
+  HMODULE v44; // [rsp+C0h] [rbp-40h]
+  _DWORD v45[4]; // [rsp+C8h] [rbp-38h] BYREF
+  _QWORD v46[4]; // [rsp+D8h] [rbp-28h] BYREF
+  WCHAR Buffer[2048]; // [rsp+100h] [rbp+0h] BYREF
+
+  v2 = nullptr;
+  if ( **a1 == 0 )
+    return 0;
+  v3 = (LPCWSTR *)sub_1800B5320(&v32, a1);
+  if ( (GetFileAttributesW(*v3) & 0x10) != 0 )
+    return 0;
+  v4 = (LPCWSTR *)sub_1800B5320(&v32, a1);
+  FileAttributesW = GetFileAttributesW(*v4);
+  if ( FileAttributesW != -1 && (FileAttributesW & 0x400) != 0 )
+    return 0;
+  Buffer[0] = 0;
+  GetSystemDirectoryW(Buffer, 0x800u);
+  sub_1800B3120(&lpProcName, Buffer);
+  sub_18008C740(v33, &lpProcName);
+  v6 = (CHAR *)(lpProcName - 16);
+  if ( lpProcName - 16 != (LPCSTR)&unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v6) == -1 )
+    sub_1809A0E80(v6);
+  v7 = sub_18008D3A0(v33, &v32, "wintrust.dll");
+  v8 = (LPCWSTR *)sub_1800B5320(&lpProcName, v7);
+  LibraryW = LoadLibraryW(*v8);
+  v44 = LibraryW;
+  v10 = (char *)(v32 - 16);
+  if ( v32 - 16 != (const char *)&unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v10) == -1 )
+    sub_1809A0E80(v10);
+  v11 = (void *)(v33[0] - 16LL);
+  if ( (_UNKNOWN *)(v33[0] - 16LL) != &unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v11) == -1 )
+    sub_1809A0E80(v11);
+  sub_1800B2E50(&lpProcName, "WinVerifyTrust");
+  v12 = lpProcName;
+  if ( LibraryW != nullptr )
+    ProcAddress = GetProcAddress(LibraryW, lpProcName);
+  else
+    ProcAddress = nullptr;
+  v14 = (CHAR *)(v12 - 16);
+  if ( v12 - 16 != (LPCSTR)&unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v14) == -1 )
+    sub_1809A0E80(v14);
+  sub_1800B2E50(&lpProcName, "WTHelperProvDataFromStateData");
+  v15 = lpProcName;
+  if ( LibraryW != nullptr )
+    v2 = GetProcAddress(LibraryW, lpProcName);
+  v16 = (CHAR *)(v15 - 16);
+  if ( v15 - 16 != (LPCSTR)&unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v16) == -1 )
+    sub_1809A0E80(v16);
+  sub_1800B2E50(&lpProcName, "WTHelperGetProvSignerFromChain");
+  v17 = lpProcName;
+  if ( LibraryW != nullptr )
+    v18 = GetProcAddress(LibraryW, lpProcName);
+  else
+    v18 = nullptr;
+  v19 = (CHAR *)(v17 - 16);
+  if ( v17 - 16 != (LPCSTR)&unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v19) == -1 )
+    sub_1809A0E80(v19);
+  if ( ProcAddress != nullptr && v2 != nullptr && v18 != nullptr )
+  {
+    v33[0] = *a1;
+    if ( (_UNKNOWN *)(v33[0] - 16LL) != &unk_1814934A8 )
+      _InterlockedIncrement((volatile signed __int32 *)(v33[0] - 16LL));
+    v20 = *(_QWORD *)sub_1800B5320(&v32, v33);
+    v42[0] = 32;
+    v43 = 0;
+    v42[1] = v20;
+    v34 = 0;
+    v35 = 0;
+    v39 = 0;
+    v40 = 0;
+    v41 = 0;
+    LODWORD(v34) = 88;
+    v36 = 0x100000002LL;
+    v37 = 1;
+    v38 = v42;
+    LODWORD(v39) = 1;
+    DWORD2(v40) = 4224;
+    v45[0] = 11191659;
+    v45[1] = 298896708;
+    v45[2] = -1073692020;
+    v45[3] = -292175281;
+    v21 = ((__int64 (__fastcall *)(_QWORD, _DWORD *, __int128 *))ProcAddress)(0, v45, &v34);
+    v22 = false;
+    if ( v21 != 0 )
+      goto LABEL_50;
+    v23 = ((__int64 (__fastcall *)(_QWORD))v2)(*((_QWORD *)&v39 + 1));
+    if ( v23 == 0 )
+    {
+      LODWORD(v39) = 2;
+      ((void (__fastcall *)(_QWORD, _DWORD *, __int128 *))ProcAddress)(0, v45, &v34);
+      goto LABEL_46;
+    }
+    v24 = ((__int64 (__fastcall *)(__int64, _QWORD, _QWORD, _QWORD))v18)(v23, 0, 0, 0);
+    if ( v24 == 0 )
+      goto LABEL_50;
+    if ( *(_DWORD *)(v24 + 12) > v21
+      && (v25 = *(_QWORD *)(v24 + 16)) != 0
+      && (v26 = *(_QWORD *)(v25 + 8)) != 0
+      && (memset(v46, 0, sizeof(v46)),
+          sub_180471180(v46, *(_QWORD *)(v26 + 8), *(unsigned int *)(v26 + 16)),
+          sub_18009B4C0(&v32, v46, 32),
+          v22 = strcmp(v32, "932c66ac5bdf605a3b08c1e573c60cadccf2e74b0099edea6a7c3bccc018b2ab") == 0,
+          v27 = (char *)(v32 - 16),
+          v32 - 16 != (const char *)&unk_1814934A8)
+      && _InterlockedDecrement((volatile signed __int32 *)v27) == -1 )
+    {
+      sub_1809A0E80(v27);
+      LODWORD(v39) = 2;
+      ((void (__fastcall *)(_QWORD, _DWORD *, __int128 *))ProcAddress)(0, v45, &v34);
+    }
+    else
+    {
+LABEL_50:
+      LODWORD(v39) = 2;
+      ((void (__fastcall *)(_QWORD, _DWORD *, __int128 *))ProcAddress)(0, v45, &v34);
+      if ( v21 != 0 )
+        goto LABEL_46;
+    }
+    if ( v22 )
+    {
+      v28 = 1;
+      goto LABEL_47;
+    }
+LABEL_46:
+    v28 = 0;
+LABEL_47:
+    v29 = (void *)(v33[0] - 16LL);
+    if ( (_UNKNOWN *)(v33[0] - 16LL) != &unk_1814934A8 && _InterlockedDecrement((volatile signed __int32 *)v29) == -1 )
+      sub_1809A0E80(v29);
+    goto LABEL_54;
+  }
+  v28 = 0;
+LABEL_54:
+  if ( LibraryW != nullptr )
+    FreeLibrary(LibraryW);
+  return v28;
+}
+
+

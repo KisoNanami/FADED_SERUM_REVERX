@@ -1,0 +1,22 @@
+  .glide-control { min-width:0;position:relative; }
+  .glide-control .control { margin:0; }
+  .glide-time .control-head { display:block; }
+  .glide-time .control-body { display:grid;grid-template-columns:minmax(0,1fr) minmax(72px,max-content);gap:6px;align-items:center; }
+  .glide-label { min-width:0;width:100%;padding:0;border:0;background:transparent;box-shadow:none;text-align:left;font:var(--fs-px) "FAD Pixel","FAD Mono",monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap; }
+  .glide-time input[type="range"] { width:100%;min-width:0;accent-color:var(--indigo); }
+  .glide-control .glide-value { width:100%;min-width:0;cursor:text;font:var(--fs-mono-s) "FAD Mono", "FAD Pixel",monospace; }
+  .glide-advanced > summary { min-height:22px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer;font:var(--fs-px) "FAD Pixel","FAD Mono",monospace;color:var(--ink-soft); }
+  .glide-advanced.is-unavailable > summary { color:var(--ink-faint); }
+  .glide-advanced-body { position:fixed;z-index:82;width:260px;max-width:calc(100vw - 24px);padding:10px;display:grid;gap:8px;overflow:auto;background:var(--paper-lift);color:var(--ink);border:1px solid var(--ink);box-shadow:2px 2px 0 var(--ink);font-size:var(--fs-px); }
+  .glide-advanced:not([open]) > .glide-advanced-body { display:none; }
+  .glide-switch { display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;min-height:28px;font:var(--fs-px) "FAD Pixel","FAD Mono",monospace; }
+  .glide-switch[aria-checked="true"] { background:var(--state-selected,var(--indigo));color:var(--state-selected-ink,var(--paper-lift));border-color:var(--indigo); }
+  .glide-switch > span:last-child { font:var(--fs-mono-s) "FAD Mono", "FAD Pixel",monospace; }
+  .glide-curve { display:grid;grid-template-columns:minmax(0,1fr) minmax(64px,auto);gap:4px 8px;align-items:center;min-width:0; }
+  .glide-curve .glide-label { grid-column:1/-1; }
+  .glide-curve input { width:100%;min-width:0;accent-color:var(--indigo); }
+  .glide-model-limit,.glide-status { margin:0;color:var(--ink-soft);font:var(--fs-mono-s)/1.3 "FAD Mono", "FAD Pixel",monospace;overflow-wrap:anywhere; }
+  .glide-status { color:var(--state-error,var(--rust)); }
+  .glide-status[hidden],.glide-model-limit[hidden] { display:none; }
+  .glide-control :disabled { opacity:.4;cursor:not-allowed; }
+  @media(pointer:coarse) { .glide-label,.glide-switch,.glide-value,.glide-advanced > summary,.glide-time input,.glide-curve input { min-height:44px; } }

@@ -1,0 +1,107 @@
+  .os-center .nav-button { padding-inline:2px; }
+  .master-output .control-head { font:var(--fs-mono-s)/1 "FAD Mono",monospace; }
+  @media(max-width:1050px) {
+    :root { --chrome-brand-width:48px; }
+    .osbar .brand-copy { display:none; }
+  }
+  /* Row sizes follow complete controls; the workspace owns overflow. */
+  body[data-workspace="sound"] .workspace .sound-rack { height:auto;min-height:100%;grid-template-rows:max-content max-content;align-content:start; }
+  body.sound-paged[data-workspace="sound"] .workspace .sound-rack { grid-template-rows:max-content;grid-auto-rows:max-content; }
+  body[data-workspace="sound"] .rack-cell { align-self:stretch; }
+  body[data-workspace="sound"] .rack-cell > .module-band { height:auto;min-height:100%;overflow:visible; }
+  body[data-workspace="sound"] .rack-cell .module-scroll { flex:0 0 auto;min-height:0;overflow:visible; }
+  body[data-workspace="sound"] :is(.rack-osc-a,.rack-osc-b,.rack-filter) .instrument-display { height:clamp(96px,14vw,180px);min-height:96px;flex:0 0 auto; }
+  body[data-workspace="sound"] :is(.rack-amp-env,.rack-filter-env) .envelope-display { height:96px;min-height:96px;flex:0 0 auto; }
+  body[data-workspace="sound"] .rack-cell .knob-bank { flex:none;align-content:start; }
+  body[data-workspace="sound"] .rack-utility.rack-cell > .utility-remade { height:auto;min-height:max-content; }
+  body[data-workspace="sound"] .rack-utility .utility-remade > .utility-sections { height:auto;min-height:max-content;flex:0 0 auto; }
+  body[data-workspace="sound"] .rack-utility .utility-remade :is(.utility-sub,.noise-sample-panel,.noise-layout) { height:auto;min-height:max-content; }
+
+  body[data-workspace="sound"] .compact-parameter .compact-label { display:inline; }
+  body[data-workspace="sound"] .compact-parameter .compact-glyph { display:none; }
+  body[data-workspace="sound"] .knob-label { white-space:normal;overflow:visible;line-height:1.25;min-height:2.5em; }
+  body[data-workspace="sound"] .rack-cell .knob-control,
+  body.sound-paged[data-workspace="sound"] .rack-cell .knob-control { grid-template-rows:minmax(2.5em,max-content) calc(var(--knob-size) + 24px) max(20px,calc(var(--fs-mono-m) + 4px)) max-content;height:auto; }
+  body[data-workspace="sound"] .rack-cell .knob-label { grid-row:1; }
+  body[data-workspace="sound"] .rack-cell .knob-shell { grid-row:2; }
+  body[data-workspace="sound"] .rack-cell .knob-readout { grid-row:3; }
+  body[data-workspace="sound"] .rack-cell .mod-foot { grid-row:4; }
+
+  .mod-source-token,.mod-source-token[data-mod-strip-source^="macro"] { flex:0 0 auto; }
+  .mod-source-env-full { display:inline; }
+  .mod-source-env-compact { display:none; }
+  .mod-source-macro-name { max-width:14em; }
+  .mod-source-tokens { overscroll-behavior-x:contain; }
+  .filter-routes { grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;padding-inline:5px; }
+  .filter-routes label { display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;gap:0; }
+  .meter-row { grid-template-columns:10px minmax(32px,1fr) max(36px,5.6ch);gap:4px;min-height:13px; }
+  .meter-row::after,.meter-row[data-meter-state="clip"]::after { content:none; }
+  .meter-track { height:9px; }
+  .meter-db { text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums; }
+  .meter-row[data-meter-state="clip"] .meter-db { color:var(--meter-clip); }
+  .meter-row[data-meter-state="warning"] .meter-db { color:var(--meter-warning); }
+  @media(max-width:760px) {
+    body.sound-paged[data-workspace="sound"] .workspace .sound-rack { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    body.sound-paged[data-workspace="sound"] .sound-rack > .rack-osc-a,body.sound-paged[data-workspace="sound"] .sound-rack > .rack-amp-env { grid-column:1;grid-row:1; }
+    body.sound-paged[data-workspace="sound"] .sound-rack > .rack-osc-b,body.sound-paged[data-workspace="sound"] .sound-rack > .rack-filter-env { grid-column:2;grid-row:1; }
+    body.sound-paged[data-workspace="sound"] .sound-rack > .rack-filter,body.sound-paged[data-workspace="sound"] .sound-rack > .rack-utility { grid-column:1 / -1;grid-row:2; }
+    body.sound-paged[data-workspace="sound"] .sound-rack > .rack-mod-editor { grid-column:1 / -1;grid-row:1; }
+  }
+
+  body[data-workspace="sound"] .workspace,
+  body[data-workspace="modulation"] .workspace { overflow:auto;overscroll-behavior:contain; }
+  .rack-cell .envelope-stage-bank { grid-template-columns:repeat(5,minmax(0,1fr));gap:2px; }
+  .rack-cell .envelope-stage { grid-template-rows:auto;min-height:0; }
+  .rack-cell .envelope-stage-bank .envelope-stat { grid-template-columns:1fr;text-align:center;gap:1px; }
+  .envelope-handle:is(:hover,:focus-visible,.is-dragging)::after { content:attr(data-envelope-key) " " attr(data-envelope-value);white-space:nowrap;background:var(--screen);z-index:3; }
+  .envelope-handle[data-envelope-key="R"]::after { left:auto;right:0;transform:none; }
+  .mod-workspace-layout.is-detail { height:auto;min-height:0;grid-template-rows:auto auto;align-content:start; }
+  .mod-workspace-layout.is-detail > .mod-editor { min-height:0;height:auto;overflow:visible; }
+  .mod-workspace-layout.is-detail .mod-editor-body { flex:none;grid-template-columns:minmax(0,1fr) 180px;align-items:start; }
+  .mod-workspace-layout.is-detail .mod-editor-visual .instrument-display { flex:none;height:clamp(150px,24vh,240px);min-height:150px; }
+  .mod-workspace-layout.is-detail .mod-editor-controls { justify-content:flex-start; }
+  .mod-workspace-layout.is-detail .mod-editor-envelope { flex:none; }
+  .mod-workspace-layout.is-detail .mod-editor-envelope .instrument-display { flex:none;height:200px; }
+  .mod-source-manager { margin:6px 8px;border-top:1px solid var(--line); }
+  .mod-source-manager > summary { cursor:pointer;padding:7px 0; }
+  .mod-source-manager-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:4px;padding-bottom:8px; }
+  .mod-source-manager-grid > div { display:flex;min-width:0; }
+  .mod-source-manager-grid button { min-height:30px; }
+  .mod-source-manager-grid button:first-child { flex:1; }
+  .osbar { grid-template-columns:var(--chrome-brand-width) minmax(0,1fr) 88px; }
+  .os-tools { grid-template-columns:1fr; }
+  .os-tools .os-product-button { justify-self:end;width:88px;border-left:1px solid var(--line); }
+  .engine-cell { grid-template-columns:56px 28px minmax(var(--master-min-width),1fr) minmax(64px,.65fr);gap:5px; }
+  .panic-button { flex:0 0 28px;width:28px;padding:0; }
+  .preset-generation { padding:8px 10px;border-top:1px solid var(--line-soft);min-width:0; }
+  .preset-generation time { display:block;font:var(--fs-mono-s)/1.6 var(--font-mono,monospace);user-select:text; }
+  .preset-generation summary { cursor:pointer;min-height:26px; }
+  .preset-prompt { margin-top:8px; }
+  .preset-prompt p { white-space:pre-wrap;overflow-wrap:anywhere;user-select:text;margin:5px 0;line-height:1.5; }
+  .cid-sound-card .preset-generation { flex-basis:100%; }
+  .cid-sound-card { flex-wrap:wrap; }
+  @media(pointer:coarse) { .panic-button,.mod-source-manager-grid button { min-width:44px;min-height:44px; } }
+  .entitlement-banner { position:fixed;left:10px;bottom:44px;z-index:78;width:min(520px,calc(100vw - 20px));display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:8px 12px;padding:10px 12px;border:1.5px solid var(--ink);border-left:4px solid var(--brass);background:var(--paper-lift);box-shadow:4px 4px 0 rgba(28,27,20,.18);font:var(--fs-px)/1.4 "FAD Pixel","FAD Mono",monospace; }
+  .entitlement-banner[data-tone="error"] { border-left-color:var(--rust); }
+  .entitlement-banner strong,.cid-access-notice strong { display:block;margin-bottom:3px;font-weight:700; }
+  .entitlement-banner span,.cid-access-notice span { display:block;line-height:1.4;color:var(--ink-soft);overflow-wrap:anywhere; }
+  .entitlement-banner .access-actions,.cid-access-notice .access-actions { display:flex;flex-wrap:wrap;gap:5px; }
+  .entitlement-banner button,.cid-access-notice button { min-height:30px;padding:3px 8px;border:1px solid var(--ink);background:var(--paper);white-space:normal; }
+  .entitlement-banner button.primary,.cid-access-notice button.primary { border-color:#e02020;background:#e02020;color:#fff; }
+  @media(hover:hover) { .entitlement-banner button.primary:hover:not(:disabled),.cid-access-notice button.primary:hover:not(:disabled) { border-color:#bf171d;background:#bf171d;color:#fff; } }
+  .entitlement-banner[data-collapsed="true"] { width:auto;max-width:calc(100vw - 20px);grid-template-columns:minmax(0,1fr) auto;padding:3px 6px; }
+  .entitlement-banner[data-collapsed="true"] #entitlement-copy,.entitlement-banner[data-collapsed="true"] .access-actions { display:none; }
+  .entitlement-banner[data-collapsed="true"] strong { margin:0; }
+  .cid-access-notice { margin:8px;padding:9px 10px;border:1px solid var(--line);border-left:3px solid var(--brass);background:var(--paper-lift);font:var(--fs-px)/1.4 "FAD Pixel","FAD Mono",monospace; }
+  .cid-access-notice[data-tone="error"] { border-left-color:var(--rust); }
+  .cid-access-notice .access-actions { margin-top:8px; }
+  .entitlement-banner[hidden],.cid-access-notice[hidden],body[data-cid-surface="quick"] .entitlement-banner,body[data-cid-surface="full"] .entitlement-banner { display:none!important; }
+  .software-update-notice { flex:0 0 auto;border-color:var(--brass);color:var(--brass); }
+  .cid-update-notice { display:flex;align-items:center;gap:8px;padding:6px 9px;min-width:0;border-bottom:1px solid var(--line);border-left:3px solid var(--brass);background:var(--paper-lift);font:var(--fs-px)/1.4 "FAD Pixel","FAD Mono",monospace; }
+  .cid-update-notice span { flex:1;min-width:0;overflow-wrap:anywhere; }
+  .cid-update-notice button { flex:0 0 auto; }
+  .cid-update-notice[hidden],.software-update-notice[hidden] { display:none!important; }
+  body[data-software-update="true"] .cid-workspace { grid-template-rows:31px auto minmax(0,1fr); }
+  @media(pointer:coarse) { body[data-software-update="true"] .cid-workspace { grid-template-rows:44px auto minmax(0,1fr); }.cid-update-notice button { min-height:44px; } }
+  @media(max-width:600px) { .entitlement-banner { left:8px;right:8px;bottom:8px;width:auto;grid-template-columns:1fr; } }
+  @media(pointer:coarse) { .entitlement-banner button,.cid-access-notice button { min-height:44px; } }

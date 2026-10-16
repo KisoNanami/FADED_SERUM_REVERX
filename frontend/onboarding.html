@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' data:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="fadlab-onboarding-version" content="6">
+<meta name="fad-ui-design-constitution" content="1">
+<title data-i18n="common.fad_synth_first_run"></title>
+<style>
+@font-face {
+  font-family: "FAD Mono";
+  src: url(/fonts/onboarding-mono.ttf) format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "FAD Pixel";
+  src: url(/fonts/onboarding-pixel-latin.woff2) format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "FAD Pixel";
+  src: url(/fonts/onboarding-pixel-zh.woff2) format("woff2");
+  unicode-range: U+2E80-303F, U+31C0-9FFF, U+F900-FAFF, U+FE30-FE4F, U+FF00-FFEF;
+  font-display: swap;
+}
+:root {
+  --paper: #e8e5db;
+  --paper-lift: #f6f4ec;
+  --paper-deep: #d7d3c5;
+  --plate: #eeece4;
+  --ink: #1c1b14;
+  --ink-soft: #4c4a40;
+  --ink-faint: #8b8779;
+  --indigo: #3d4a78;
+  --indigo-mid: #596aa6;
+  --indigo-light: #7a9cff;
+  --pine: #50604e;
+  --brass: #63558d;
+  --rust: #ac4b2c;
+  --screen: #1c1b14;
+  --screen-ink: #e4e1d4;
+  --bar-height: 34px;
+  --rail-height: 58px;
+  --rail-prev-width: calc(82px * var(--fad-font-scale, 1.15));
+  --rail-next-width: calc(132px * var(--fad-font-scale, 1.15));
+  --rule: 1.5px solid var(--ink);
+  --move: 240ms cubic-bezier(0.77, 0, 0.175, 1);
+  --font-ui: "FAD Pixel", "PingFang SC", "Microsoft YaHei UI", monospace;
+  --font-mono: "FAD Mono", "SFMono-Regular", Consolas, monospace;
+  --font-doc: "Iowan Old Style", Charter, "Songti SC", Georgia, serif;
+  --space-doc-1: 8px;
+  --space-doc-2: 12px;
+  --space-doc-3: 16px;
+  --space-doc-4: 24px;
+  --space-doc-5: 36px;
+  /* Standard layout tier. Compact and Expanded replace these discretely. */
+  --type-display: calc(60px * var(--fad-font-scale, 1.15));
+  --type-heading: calc(36px * var(--fad-font-scale, 1.15));
+  --type-lede: calc(18px * var(--fad-font-scale, 1.15));
+  --type-hero-title: calc(26px * var(--fad-font-scale, 1.15));
+  --slide-padding-block: var(--space-doc-5);
+  --slide-padding-inline: calc(var(--space-doc-4) + var(--space-doc-4));
+  --hero-column-gap: calc(var(--space-doc-5) + var(--space-doc-5));
+}
+* { box-sizing: border-box; }
+html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; }
+body {
+  min-width: 760px;
+  min-height: 620px;
+  color: var(--ink);
+  background-color: var(--paper);
+  font: calc(14px * var(--fad-font-scale, 1.15))/1.5 var(--font-doc);
+  -webkit-font-smoothing: antialiased;
+  -webkit-user-select: none;
+  user-select: none;
+}
+button, input { font-family: var(--font-ui); }
+button { color: inherit; }
+button:focus-visible, input:focus-visible { outline: 2px solid var(--indigo-light); outline-offset: 2px; }
+.mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.os-bar {
+  position: fixed;
+  z-index: 30;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--bar-height);
+  display: grid;
+  grid-template-columns: 88px 228px minmax(0, 1fr) 88px 224px;
+  align-items: stretch;
+  border-bottom: var(--rule);
+  background: var(--paper-lift);
+  font: calc(11px * var(--fad-font-scale, 1.15))/1 var(--font-ui);
+}
+.os-cell { min-width: 0; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center; padding: 0 13px; border-right: var(--rule); white-space: nowrap; }
+.os-brand { font-weight: 800; }
+.os-route { color: var(--paper-lift); background: var(--ink); }
+.os-spacer { flex: 1; }
+.os-state { gap: 7px; border-right: 0; border-left: var(--rule); }
+.status-lamp { width: 7px; height: 7px; border: 1px solid var(--ink); border-radius: 50%; background: var(--pine); }
+.version-readout { border-right: 0; border-left: var(--rule); color: var(--ink-soft); font-family: var(--font-mono); }
+#slider {
+  position: fixed;
+  inset: var(--bar-height) 0 var(--rail-height);
+  overflow: hidden;
+}
+.slide {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: var(--slide-padding-block) var(--slide-padding-inline);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(var(--space-doc-4));
+  transition: opacity 140ms ease, transform 180ms ease, visibility 0s linear 180ms;
+}
+.slide.active {
+  z-index: 2;
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: 0s;
+}
+.slide:focus { outline: none; }
+.slide:focus-visible { outline: 2px solid var(--indigo-light); outline-offset: -2px; }
+.sheet { width: min(1100px, 100%); margin-block: auto; }
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-doc-1);
+  margin: 0 0 var(--space-doc-2);
+  color: var(--indigo);
+  font: 700 calc(11px * var(--fad-font-scale, 1.15))/1.2 var(--font-ui);
+}
+.eyebrow::before { content: ""; width: 18px; height: 7px; background: var(--indigo); }
+h1, h2, h3, p { margin-top: 0; }
+h1, h2, h3, .hero-title-line { font-family: var(--font-ui); }
+h1 { margin-bottom: var(--space-doc-2); font-size: var(--type-display); line-height: .96; letter-spacing: 0; }
+h2 { margin-bottom: var(--space-doc-2); font-size: var(--type-heading); line-height: 1.08; letter-spacing: 0; }
+h3 { margin-bottom: var(--space-doc-1); font-size: calc(17px * var(--fad-font-scale, 1.15)); line-height: 1.25; letter-spacing: 0; }
+.lede { max-width: 780px; margin-bottom: var(--space-doc-4); color: var(--ink-soft); font-size: var(--type-lede); line-height: 1.55; }
+.micro { color: var(--ink-faint); font: calc(11px * var(--fad-font-scale, 1.15))/1.55 var(--font-mono); }
+.brand-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: auto;
+  height: auto;
+  overflow: hidden;
+  pointer-events: none;
+  transform: none;
+  opacity: 1;
+  transition: none;
+}
+.brand-layer canvas { display: block; width: 100%; height: 100%; }
+.brand-source { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+body[data-dither-state="exit"] .brand-layer { transition: none; }
+.hero-sheet { display: grid; grid-template-columns: minmax(250px, .82fr) minmax(420px, 1.18fr); align-items: center; gap: var(--hero-column-gap); }
+.hero-mark-space { min-height: 300px; }
+.origin-line { width: fit-content; margin-top: var(--space-doc-4); padding-top: var(--space-doc-2); border-top: 3px solid var(--rust); color: var(--ink-soft); font: calc(11px * var(--fad-font-scale, 1.15))/1.45 "FAD Mono", "SFMono-Regular", monospace; }
+.hero-kicker { margin-bottom: var(--space-doc-2); color: var(--rust); font: 700 calc(12px * var(--fad-font-scale, 1.15))/1.2 var(--font-ui); }
+.hero-title-line { max-width: 630px; margin-bottom: var(--space-doc-2); font-size: var(--type-hero-title); line-height: 1.25; font-weight: 700; }
+.hero-detail { max-width: 680px; margin-bottom: 0; color: var(--ink-soft); font-size: calc(15px * var(--fad-font-scale, 1.15)); line-height: 1.65; }
+.blueprint {
+  margin-top: var(--space-doc-4);
+  border: var(--rule);
+  background: var(--screen);
+  color: var(--screen-ink);
+  box-shadow: 5px 5px 0 rgba(28,27,20,.18);
+}
+.blueprint-head { display: flex; justify-content: space-between; gap: var(--space-doc-3); padding: var(--space-doc-1) var(--space-doc-2); border-bottom: 1px solid #57554d; color: var(--indigo-light); font: calc(11px * var(--fad-font-scale, 1.15))/1.2 var(--font-ui); }
+.machine-path { display: grid; grid-template-columns: minmax(0, 1fr) 34px minmax(0, 1fr) 34px minmax(0, 1fr); align-items: stretch; padding: var(--space-doc-4) var(--space-doc-3); }
+.machine-stage { min-height: 132px; padding: var(--space-doc-2); border: 1px solid #817e73; }
+.machine-stage h3 { margin-bottom: var(--space-doc-1); color: var(--indigo-light); }
+.machine-index { display: block; margin-bottom: var(--space-doc-1); color: #9c988a; font: calc(10px * var(--fad-font-scale, 1.15))/1 "FAD Mono", monospace; }
+.machine-stage p { margin: 0; color: #d3d0c4; }
+.machine-stage strong { color: var(--screen-ink); }
+.machine-arrow { display: grid; place-items: center; color: #817e73; font: 700 18px/1 "FAD Mono", monospace; }
+.blueprint-foot { padding: var(--space-doc-2) var(--space-doc-3); border-top: 1px solid #57554d; color: #b8b4a6; }
+.workflow-list { margin-top: var(--space-doc-4); border-top: var(--rule); }
+.workflow-row { display: grid; grid-template-columns: 62px minmax(190px, .62fr) minmax(0, 1.38fr); border-bottom: var(--rule); background: rgba(246,244,236,.68); }
+.workflow-num { display: grid; place-items: center; border-right: var(--rule); color: var(--paper-lift); background: var(--ink); font: 700 calc(13px * var(--fad-font-scale, 1.15))/1 "FAD Mono", monospace; }
+.workflow-name { padding: var(--space-doc-3); border-right: var(--rule); }
+.workflow-name small { display: block; margin-top: var(--space-doc-1); color: var(--ink-faint); font: calc(10px * var(--fad-font-scale, 1.15))/1.4 "FAD Mono", monospace; }
+.workflow-copy { padding: var(--space-doc-3); color: var(--ink-soft); }
+.confirmation-rule { margin-top: var(--space-doc-3); padding: var(--space-doc-2) var(--space-doc-3); border-left: 5px solid var(--rust); background: var(--paper-deep); font-weight: 700; }
+.lab-layout { display: grid; grid-template-columns: minmax(260px, .65fr) minmax(420px, 1.35fr); gap: var(--space-doc-4); align-items: stretch; margin-top: var(--space-doc-4); }
+.lab-copy { display: flex; flex-direction: column; justify-content: space-between; padding: var(--space-doc-3); border: var(--rule); background: var(--paper-lift); box-shadow: 4px 4px 0 rgba(28,27,20,.16); }
+.lab-copy p { color: var(--ink-soft); }
+.terminal { min-height: 330px; border: var(--rule); background: var(--screen); color: var(--screen-ink); box-shadow: 5px 5px 0 rgba(28,27,20,.18); font: calc(12px * var(--fad-font-scale, 1.15))/1.55 "FAD Mono", monospace; }
+.terminal-bar { display: flex; justify-content: space-between; padding: var(--space-doc-1) var(--space-doc-2); border-bottom: 1px solid #57554d; color: var(--indigo-light); }
+.terminal-body { padding: var(--space-doc-3); }
+.prompt-label { margin-bottom: var(--space-doc-1); color: #9c988a; }
+.prompt-box { padding: var(--space-doc-2); border: 1px solid #67645b; color: var(--screen-ink); background: #26251f; }
+.lab-stages { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-doc-1); margin-top: var(--space-doc-3); }
+.lab-step { min-height: 88px; padding: var(--space-doc-2); border: 1px solid #67645b; opacity: 1; }
+.slide.active .lab-step { animation: terminal-stage 180ms both; animation-delay: calc(var(--stage) * 60ms); }
+.lab-step b { display: block; margin-bottom: var(--space-doc-1); color: var(--indigo-light); }
+.terminal-actions { display: flex; gap: var(--space-doc-1); margin-top: var(--space-doc-3); }
+.terminal-key { flex: 1; padding: var(--space-doc-1) var(--space-doc-2); border: 1px solid #67645b; color: #aaa697; }
+.terminal-key.commit { border-color: var(--indigo-light); color: var(--indigo-light); }
+.terminal-note { margin-top: var(--space-doc-2); color: var(--indigo-light); font-weight: 700; }
+@keyframes terminal-stage { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
+.account-grid { display: grid; grid-template-columns: minmax(300px, .78fr) minmax(420px, 1.22fr); gap: var(--space-doc-4); margin-top: var(--space-doc-4); }
+.device-panel, .license-panel { border: var(--rule); background: var(--paper-lift); box-shadow: 4px 4px 0 rgba(28,27,20,.16); }
+.panel-head { display: flex; justify-content: space-between; align-items: center; min-height: 36px; padding: var(--space-doc-1) var(--space-doc-2); border-bottom: var(--rule); font: 700 calc(11px * var(--fad-font-scale, 1.15))/1.2 var(--font-ui); }
+.panel-head > span:first-child { flex-shrink: 0; }
+.panel-head > span:last-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.panel-body { padding: var(--space-doc-3); }
+.device-code-row { display:flex;align-items:stretch;gap:6px;margin:var(--space-doc-1) 0 var(--space-doc-2); }
+.device-code { flex:1;min-width:0;margin:0;padding:var(--space-doc-2);border:var(--rule);background:var(--paper-deep);font:700 calc(19px * var(--fad-font-scale, 1.15))/1.2 "FAD Mono",monospace;overflow-wrap:anywhere;-webkit-user-select:text;user-select:text;cursor:text; }
+.device-code-row .command { flex:none;width:auto;min-width:44px;margin:0;padding-inline:10px; }
+.auth-state { display: flex; height: 44px; overflow-y: auto; align-items: center; gap: var(--space-doc-1); color: var(--rust); font: calc(11px * var(--fad-font-scale, 1.15))/1.4 "FAD Mono", monospace; }
+.auth-state::before { content: ""; width: 8px; height: 8px; border: 1px solid var(--ink); background: var(--rust); }
+body[data-authorized="true"] .auth-state { color: var(--pine); }
+body[data-authorized="true"] .auth-state::before { background: var(--pine); }
+[hidden] { display: none !important; }
+.account-actions { display: grid; gap: var(--space-doc-1); }
+.command {
+  min-height: 40px;
+  padding: var(--space-doc-1) var(--space-doc-2);
+  border: var(--rule);
+  border-radius: 0;
+  background: var(--paper-lift);
+  box-shadow: 3px 3px 0 rgba(28,27,20,.20);
+  text-align: left;
+  font: 700 calc(11px * var(--fad-font-scale, 1.15))/1.2 var(--font-ui);
+  cursor: pointer;
+}
+.command:hover { background: var(--ink); color: var(--paper-lift); }
+.command:active { transform: translate(2px,2px); box-shadow: 1px 1px 0 rgba(28,27,20,.2); }
+.command.primary { background: var(--indigo); color: var(--paper-lift); }
+.command.primary:hover { background: var(--ink); }
+.command.refresh { color: var(--indigo); }
+.account-help { min-height: 28px; padding: 0; border: 0; background: transparent; color: var(--indigo); text-align: left; font: calc(11px * var(--fad-font-scale, 1.15))/1.4 var(--font-ui); cursor: pointer; text-decoration: underline; }
+.account-help:hover { color: var(--ink); }
+.authorization-recovery { visibility: hidden; }
+.authorization-recovery.available { visibility: visible; color: var(--rust); }
+.handoff-note { height: 48px; overflow-y: auto; margin-top: var(--space-doc-2); padding: var(--space-doc-1) var(--space-doc-2); border-left: 4px solid var(--indigo); color: var(--ink-soft); font: calc(11px * var(--fad-font-scale, 1.15))/1.45 var(--font-mono); }
+.auth-error {
+  min-height: 48px;
+  max-height: 48px;
+  margin-top: var(--space-doc-2);
+  padding-right: 4px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  overflow-wrap: anywhere;
+  color: var(--rust);
+  font: calc(11px * var(--fad-font-scale, 1.15))/1.45 var(--font-mono);
+}
+.agreement { display: grid; grid-template-columns: 22px 1fr; gap: var(--space-doc-2); align-items: start; margin-top: var(--space-doc-3); padding: var(--space-doc-2); border: var(--rule); background: var(--paper-deep); }
+.agreement input { width: 18px; height: 18px; margin: 1px 0 0; accent-color: var(--indigo); }
+.agreement-copy label { cursor: pointer; }
+.legal-links { display: inline; }
+.legal-link { display: inline; min-height: 24px; padding: 0 2px; border: 0; border-bottom: 1px solid currentColor; border-radius: 0; color: var(--indigo); background: transparent; font: inherit; font-family: var(--font-ui); cursor: pointer; }
+.legal-link:hover { color: var(--paper-lift); background: var(--ink); }
+.privacy { margin-top: var(--space-doc-2); padding: var(--space-doc-2); border-left: 5px solid var(--indigo); color: var(--ink-soft); font-size: calc(12px * var(--fad-font-scale, 1.15)); line-height: 1.6; }
+.privacy a { color: var(--indigo); text-decoration: underline; }
+.legal-dialog-layer { position: fixed; z-index: 90; inset: 0; display: grid; place-items: center; padding: var(--space-doc-4); background: rgba(28,27,20,.58); }
+.legal-dialog { width: min(680px, 100%); max-height: min(560px, calc(100vh - 48px)); overflow: auto; border: var(--rule); background: var(--paper-lift); box-shadow: 8px 8px 0 rgba(28,27,20,.35); user-select: text; }
+.legal-dialog:focus { outline: none; }
+.legal-dialog:focus-visible { outline: 2px solid var(--indigo-light); outline-offset: -2px; }
+.legal-dialog-head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-doc-3); min-height: 44px; padding: var(--space-doc-1) var(--space-doc-2); border-bottom: var(--rule); background: var(--paper-deep); }
+.legal-dialog-head h3 { margin: 0; }
+.legal-dialog-close { min-width: 64px; min-height: 44px; border: var(--rule); border-radius: 0; background: var(--paper-lift); font: 700 calc(11px * var(--fad-font-scale, 1.15))/1.2 var(--font-ui); cursor: pointer; }
+.legal-dialog-close:hover { color: var(--paper-lift); background: var(--ink); }
+.legal-dialog-body { padding: var(--space-doc-4); color: var(--ink-soft); font-size: calc(15px * var(--fad-font-scale, 1.15)); line-height: 1.7; }
+.legal-dialog-body p:last-child { margin-bottom: 0; }
+.bottom-rail {
+  position: fixed;
+  z-index: 40;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--rail-height);
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr) max(290px, calc(var(--rail-prev-width) + var(--rail-next-width) + 20px));
+  align-items: center;
+  border-top: var(--rule);
+  background: var(--paper-lift);
+}
+.step-readout { padding-left: 16px; color: var(--ink-soft); font: calc(11px * var(--fad-font-scale, 1.15))/1 var(--font-mono); }
+.segments { display: flex; justify-content: center; gap: 7px; }
+.segment {
+  position: relative;
+  width: 38px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.segment::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 9px;
+  border: 1px solid var(--ink);
+  background: var(--paper-deep);
+  transform: translateY(-50%);
+}
+.segment.active::before { background: var(--indigo); }
+.rail-actions { display: grid; grid-template-columns: var(--rail-prev-width) var(--rail-next-width); justify-content: end; align-items: center; gap: var(--space-doc-1); padding-right: var(--space-doc-2); }
+.rail-actions .nav-button { width: 100%; min-width: 0; }
+#btn-prev { grid-column: 1; grid-row: 1; }
+#btn-next, #btn-enter { grid-column: 2; grid-row: 1; }
+.nav-button.slot-parked { visibility: hidden; }
+.nav-button {
+  min-width: 82px;
+  min-height: 34px;
+  padding: var(--space-doc-1) var(--space-doc-2);
+  border: var(--rule);
+  border-radius: 0;
+  background: var(--paper-lift);
+  box-shadow: 2px 2px 0 rgba(28,27,20,.2);
+  font: 700 calc(11px * var(--fad-font-scale, 1.15))/1 var(--font-ui);
+  cursor: pointer;
+}
+.nav-button:hover:not(:disabled) { background: var(--ink); color: var(--paper-lift); }
+.nav-button:active:not(:disabled) { transform: translate(1px,1px); box-shadow: 1px 1px 0 rgba(28,27,20,.2); }
+.nav-button.enter { min-width: 132px; border-color: var(--indigo); background: var(--indigo); color: var(--paper-lift); }
+.nav-button:disabled { color: var(--ink-faint); border-color: var(--ink-faint); background: var(--paper-deep); box-shadow: none; cursor: not-allowed; }
+.hidden { display: none !important; }
+.accept-error { position: fixed; z-index: 50; right: var(--space-doc-2); bottom: calc(var(--rail-height) + var(--space-doc-2)); max-width: 390px; padding: var(--space-doc-1) var(--space-doc-2); border: 1px solid var(--rust); background: var(--paper-lift); color: var(--rust); font: calc(11px * var(--fad-font-scale, 1.15))/1.45 var(--font-mono); }
+/* Compact layout tier. */
+@media (max-height: 760px), (max-width: 860px) {
+  :root {
+    --type-display: calc(48px * var(--fad-font-scale, 1.15));
+    --type-heading: calc(28px * var(--fad-font-scale, 1.15));
+    --type-lede: calc(16px * var(--fad-font-scale, 1.15));
+    --type-hero-title: calc(22px * var(--fad-font-scale, 1.15));
+    --slide-padding-block: var(--space-doc-3);
+    --slide-padding-inline: calc(var(--space-doc-4) + var(--space-doc-4));
+    --hero-column-gap: calc(var(--space-doc-4) + var(--space-doc-4));
+  }
+}
+/* Expanded layout tier. */
+@media (min-width: 1280px) and (min-height: 900px) {
+  :root {
+    --type-display: calc(72px * var(--fad-font-scale, 1.15));
+    --type-heading: calc(42px * var(--fad-font-scale, 1.15));
+    --type-lede: calc(20px * var(--fad-font-scale, 1.15));
+    --type-hero-title: calc(30px * var(--fad-font-scale, 1.15));
+    --slide-padding-block: var(--space-doc-5);
+    --slide-padding-inline: calc(var(--space-doc-5) + var(--space-doc-5));
+    --hero-column-gap: calc(var(--space-doc-5) + var(--space-doc-5));
+  }
+}
+@media (max-height: 760px) {
+  .lede { margin-bottom: var(--space-doc-3); }
+  .blueprint { margin-top: var(--space-doc-3); }
+  .machine-path { padding-top: var(--space-doc-3); padding-bottom: var(--space-doc-3); }
+  .machine-stage { min-height: 116px; padding: var(--space-doc-2); }
+  .workflow-row > * { padding-top: var(--space-doc-2); padding-bottom: var(--space-doc-2); }
+  .lab-layout, .account-grid { margin-top: var(--space-doc-3); }
+  .terminal { min-height: 280px; }
+}
+@media (max-width: 860px) {
+  body { min-width: 0; min-height: 0; }
+  .os-route, .version-readout { display: none; }
+  .slide { overflow-y: auto; padding: var(--space-doc-3) var(--space-doc-2) var(--space-doc-4); }
+  .hero-sheet, .lab-layout, .account-grid { grid-template-columns: 1fr; }
+  .hero-mark-space { min-height: 220px; }
+  .machine-path { grid-template-columns: 1fr; }
+  .machine-arrow { min-height: 26px; transform: rotate(90deg); }
+  .workflow-row { grid-template-columns: 44px 1fr; }
+  .workflow-copy { grid-column: 2; border-top: 1px solid var(--ink); }
+  .lab-stages { grid-template-columns: 1fr; }
+  .bottom-rail { grid-template-columns: 88px 1fr auto; }
+  .segments { gap: 4px; }
+  .segment { width: 24px; height: 44px; }
+  .rail-actions { padding-right: 8px; }
+  .nav-button { min-width: 58px; padding-left: 8px; padding-right: 8px; }
+  .command, .account-help, .legal-link { min-height: 44px; }
+  .legal-link { display: inline-flex; align-items: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .slide, .slide.active { transition: opacity 80ms linear; transform: none; }
+  .slide.active .lab-step { animation: none; }
+}
+.cid-early-access { margin-top: 16px; padding: 12px; border-left: 2px solid var(--brass); color: var(--ink-soft); font: calc(12px * var(--fad-font-scale, 1.15))/1.65 var(--font-mono); }
+.cid-early-access strong { color: var(--ink); }
+.cid-early-access p { margin: 8px 0 0; }
+</style>
+</head>
+<body data-dither-state="boot" data-authorized="false">
+<header class="os-bar" aria-label="" data-i18n-aria-label="common.fad_os_first_run">
+  <div class="os-cell os-brand" data-i18n="common.fad_os"></div>
+  <div class="os-cell os-route" data-i18n="common.first_run"></div>
+  <div class="os-spacer"></div>
+  <div class="os-cell os-state"><span class="status-lamp"></span>SETUP</div>
+  <div class="os-cell version-readout" data-i18n="common.fad_synth_v_fadmodel1_display_version"></div>
+</header>
+
+<div class="brand-layer" id="brand-layer" aria-hidden="true">
+  <canvas id="onboarding-dither" aria-label="" data-i18n-aria-label="common.fad_dither_logo"></canvas>
+  <img id="onboarding-logo" class="brand-source" alt="" src="data:image/png;base64,__FADOS_LOGO_BASE64__">
+</div>
+
+<main id="slider">
+  <section class="slide active" id="slide-0" role="tabpanel" tabindex="0" aria-labelledby="title-0">
+    <div class="sheet hero-sheet">
+      <div class="hero-mark-space"></div>
+      <div>
+        <div class="eyebrow" data-i18n="common.fad_os_first_run_2"></div>
+        <div class="hero-kicker"><span data-i18n="common.an_original_software_synthesizer_from_china"></span></div>
+        <h1 id="title-0" data-i18n="common.fad_synth"></h1>
+        <div class="hero-title-line" data-i18n="common.familiar_synthesis_a_sound_design_assistant_and_previewable_ai_candidates"></div>
+        <aside class="cid-early-access"><strong data-i18n="common.alt_early_access"></strong><p data-i18n="common.alt_is_in_early_access_understanding_sound_and_making_useful"></p><p><span data-i18n="common.answers_and_sound_suggestions_may_fall_short_please_listen_before"></span></p></aside>
+        <div class="origin-line" data-i18n="common.fad_records_altay_china_est_2016"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" id="slide-1" role="tabpanel" tabindex="-1" aria-labelledby="title-1">
+    <div class="sheet">
+      <div class="eyebrow"><span data-i18n="common.02_from_source_to_sound"></span></div>
+      <h2 id="title-1"><span data-i18n="common.follow_a_familiar_synthesis_workflow_to_create_sounds"></span></h2>
+      <p class="lede"><span data-i18n="common.three_steps_left_to_right_choose_a_source_add_motion"></span></p>
+      <div class="blueprint" aria-label="" data-i18n-aria-label="common.fad_synth_workflow_from_source_to_output">
+        <div class="blueprint-head"><span><span data-i18n="common.sound_design_workflow"></span></span><span><span data-i18n="common.left_to_right"></span></span></div>
+        <div class="machine-path">
+          <div class="machine-stage">
+            <span class="machine-index"><span data-i18n="common.01_sound_sources"></span></span>
+            <h3><span data-i18n="common.choose_a_sound_source"></span></h3>
+            <p><strong><span data-i18n="common.analog"></span></strong><span data-i18n="common.is_warm_and_solid"></span><strong><span data-i18n="common.wavetable"></span></strong><span data-i18n="common.offers_a_wide_range_of_movement"></span><strong data-i18n="common.fm_3"></strong><span data-i18n="common.is_bright_and_metallic"></span></p>
+          </div>
+          <div class="machine-arrow" aria-hidden="true">→</div>
+          <div class="machine-stage">
+            <span class="machine-index"><span data-i18n="common.02_motion"></span></span>
+            <h3><span data-i18n="common.add_motion"></span></h3>
+            <p><strong><span data-i18n="common.envelopes"></span></strong><span data-i18n="common.control_the_rise_and_fall"></span><strong data-i18n="common.lfo_2"></strong><span data-i18n="common.creates_repeating_motion"></span><strong data-i18n="common.macro_9"></strong><span data-i18n="common.combines_multiple_changes_in_one_knob"></span></p>
+          </div>
+          <div class="machine-arrow" aria-hidden="true">→</div>
+          <div class="machine-stage">
+            <span class="machine-index"><span data-i18n="common.03_tone"></span></span>
+            <h3><span data-i18n="common.finish_the_tone"></span></h3>
+            <p><span data-i18n="common.use_2"></span><strong><span data-i18n="common.filter"></span></strong><span data-i18n="common.to_shape_the_sound_then_chain"></span><strong><span data-i18n="common.up_to_8_effects"></span></strong><span data-i18n="common.before_sending_it_to_the_output"></span></p>
+          </div>
+        </div>
+      <div class="blueprint-foot" data-i18n="common.both_sound_engines_follow_this_path_layer_compare_or_use"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" id="slide-2" role="tabpanel" tabindex="-1" aria-labelledby="title-2">
+    <div class="sheet">
+      <div class="eyebrow"><span data-i18n="common.03_three_starting_points"></span></div>
+      <h2 id="title-2" data-i18n="common.start_with_what_you_already_have"></h2>
+      <p class="lede"><span data-i18n="common.start_from_a_preset_a_sound_you_want_to_understand"></span></p>
+      <div class="workflow-list">
+        <div class="workflow-row">
+          <div class="workflow-num">01</div>
+          <div class="workflow-name"><h3 data-i18n="common.i_have_a_serum_vital_preset"></h3><small><span data-i18n="common.existing_preset_file"></span></small></div>
+          <div class="workflow-copy"><span data-i18n="common.import_read_the_compatibility_report_preview_the_conversion_keep_it"></span></div>
+        </div>
+        <div class="workflow-row">
+          <div class="workflow-num">02</div>
+          <div class="workflow-name"><h3><span data-i18n="common.i_want_to_understand_a_sound"></span></h3><small data-i18n="common.alt_sound_assistant_early_access"></small></div>
+          <div class="workflow-copy" data-i18n="common.ask_alt_understand_why_it_sounds_that_way_decide_what"></div>
+        </div>
+        <div class="workflow-row">
+          <div class="workflow-num">03</div>
+          <div class="workflow-name"><h3><span data-i18n="common.i_have_a_sound_in_mind"></span></h3><small data-i18n="common.fad_lab_three_preview_candidates"></small></div>
+          <div class="workflow-copy" data-i18n="common.describe_it_to_fad_lab_get_three_candidates_preview_each"></div>
+        </div>
+      </div>
+      <div class="confirmation-rule" data-i18n="common.you_confirm_imports_and_ai_candidates_discard_any_you_do"></div>
+    </div>
+  </section>
+
+  <section class="slide" id="slide-3" role="tabpanel" tabindex="-1" aria-labelledby="title-3">
+    <div class="sheet">
+      <div class="eyebrow" data-i18n="common.04_fad_lab"></div>
+      <h2 id="title-3"><span data-i18n="common.describe_a_sound_hear_three_versions_then_decide"></span></h2>
+      <div class="lab-layout">
+        <div class="lab-copy">
+          <div>
+            <h3 data-i18n="common.fad_lab"></h3>
+            <p data-i18n="common.describe_the_sound_its_use_and_what_to_avoid_fad"></p>
+          </div>
+          <div class="micro"><span data-i18n="common.describe_get_three_versions_preview_keep_one_discard_all"></span></div>
+        </div>
+        <div class="terminal" aria-label="" data-i18n-aria-label="common.fad_lab_three_preview_candidates">
+          <div class="terminal-bar"><span data-i18n="common.fad_lab_three_candidates"></span><span><span data-i18n="common.current_sound_protected"></span></span></div>
+          <div class="terminal-body">
+            <div class="prompt-label"><span data-i18n="common.your_request"></span></div>
+            <div class="prompt-box" data-i18n="common.make_a_cool_digital_pad_for_the_chorus_wide_without"></div>
+            <div class="lab-stages">
+              <div class="lab-step" style="--stage:0"><b data-i18n="common.version_a"></b><span data-i18n="common.more_space_for_the_vocals_without_competing_with_the_melody"></span></div>
+              <div class="lab-step" style="--stage:1"><b data-i18n="common.version_b"></b><span data-i18n="common.wider_stereo_spread_and_more_chord_movement"></span></div>
+              <div class="lab-step" style="--stage:2"><b data-i18n="common.version_c"></b><span data-i18n="common.shorter_tails_and_cleaner_chord_transitions"></span></div>
+            </div>
+            <div class="terminal-actions"><div class="terminal-key commit"><span data-i18n="common.keep_current_version"></span></div><div class="terminal-key"><span data-i18n="common.discard_all"></span></div></div>
+            <div class="terminal-note"><span data-i18n="common.your_sound_is_unchanged_until_you_choose_keep"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" id="slide-4" role="tabpanel" tabindex="-1" aria-labelledby="title-4">
+    <div class="sheet">
+      <div class="eyebrow"><span data-i18n="common.03_connect_account"></span></div>
+      <h2 id="title-4"><span data-i18n="common.connect_account"></span></h2>
+      <p class="lede" id="account-intro"><span data-i18n="common.sign_in_or_create_an_account_connect_in_your_browser"></span></p>
+      <div class="account-grid">
+        <div class="device-panel">
+          <div class="panel-head"><span><span data-i18n="common.device_access"></span></span><span id="auth-tier"><span data-i18n="common.not_authorised"></span></span></div>
+          <div class="panel-body">
+            <p class="micro" id="license-summary"><span data-i18n="common.this_is_paid_software_sign_in_and_connect_your_existing"></span></p>
+            <div class="micro" data-i18n="common.device_code"></div>
+            <div class="device-code-row"><div class="device-code" id="device-code" tabindex="0"><span data-i18n="common.waiting_for_device_code"></span></div><button class="command" type="button" id="copy-device-code" disabled data-i18n="common.copy"></button></div>
+            <div class="auth-state" id="auth-status"><span data-i18n="common.not_connected_sign_in_and_connect_your_existing_license"></span></div>
+            <button type="button" class="command refresh" id="refresh-auth"><span data-i18n="common.check_access"></span></button>
+            <div class="handoff-note" id="handoff-note" aria-live="polite" data-i18n="common.keep_fad_synth_open_it_will_unlock_after_you_finish"></div>
+            <div class="auth-error" id="auth-error" role="status" aria-live="polite" aria-atomic="true" tabindex="-1"></div>
+          </div>
+        </div>
+        <div class="license-panel">
+          <div class="panel-head"><span data-i18n="common.fad_account"></span><span id="account-email"><span data-i18n="common.not_signed_in"></span></span></div>
+          <div class="panel-body">
+            <div class="account-actions">
+              <button type="button" class="command primary" id="connect-account"><span data-i18n="common.sign_in_or_create_account"></span></button>
+              <!-- DIRECT_ONLY_BEGIN --><button type="button" class="command" id="redeem-cdk" data-i18n="common.i_have_a_cdk"></button><!-- DIRECT_ONLY_END -->
+              <button type="button" class="command" id="store-settings" hidden><span data-i18n="common.purchase_or_restore"></span></button>
+              <div class="micro" id="store-guidance" hidden data-i18n="common.purchase_or_restore_in_system_account_in_the_standalone_app"></div>
+              <button type="button" class="account-help" id="account-help"><span data-i18n="common.account_help"></span></button>
+              <button type="button" class="account-help authorization-recovery" id="reset-auth" disabled aria-hidden="true"><span data-i18n="common.reset_device_access"></span></button>
+            </div>
+            <div class="micro"><span data-i18n="common.after_signing_in_you_return_to_the_device_connection_page"></span></div>
+            <div class="agreement">
+              <input type="checkbox" id="legal-agreement" aria-describedby="agreement-copy">
+              <div class="agreement-copy" id="agreement-copy">
+                <label for="legal-agreement"><span data-i18n="common.i_have_read_and_agree_to"></span></label>
+                <span class="legal-links" aria-label="" data-i18n-aria-label="common.legal_documents">
+                  <button type="button" class="legal-link" id="legal-license" data-legal-title="" data-i18n-data-legal-title="common.software_licence_agreement" data-legal-summary="" data-i18n-data-legal-summary="legal.eula.summary" data-legal-path="eula"><span data-i18n="common.software_licence_agreement_2"></span></button>
+                  <button type="button" class="legal-link" id="legal-terms" data-legal-title="" data-i18n-data-legal-title="common.terms_of_service" data-legal-summary="" data-i18n-data-legal-summary="legal.terms.summary" data-legal-path="terms"><span data-i18n="common.terms_of_service_2"></span></button>
+                  <button type="button" class="legal-link" id="legal-privacy" data-legal-title="" data-i18n-data-legal-title="common.privacy_notice" data-legal-summary="" data-i18n-data-legal-summary="legal.privacy.summary" data-legal-path="privacy"><span data-i18n="common.privacy_notice_2"></span></button>
+                </span>
+                <label for="legal-agreement" id="trial-agreement">。</label>
+              </div>
+            </div>
+            <div class="privacy"><span data-i18n="common.ai_features_send_prompts_current_patch_parameters_generated_results_and_2"></span><a href="mailto:fad@fadrecords.com" data-i18n="common.fad_fadrecords_com"></a><span data-i18n="common.see_the_privacy_notice_for_details"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="bottom-rail">
+  <div class="step-readout">[ <b id="counter-num">01</b> / 03 ]</div>
+  <div class="segments" role="tablist" aria-label="" data-i18n-aria-label="common.first_run_steps">
+    <button class="segment active" type="button" role="tab" id="segment-0" data-slide="0" aria-controls="slide-0" aria-selected="true" tabindex="0" aria-label="" data-i18n-aria-label="common.page_1"></button>
+    <button class="segment" type="button" role="tab" id="segment-1" data-slide="1" aria-controls="slide-1" aria-selected="false" tabindex="-1" aria-label="" data-i18n-aria-label="common.page_2"></button>
+    <button class="segment" type="button" role="tab" id="segment-2" data-slide="2" aria-controls="slide-4" aria-selected="false" tabindex="-1" aria-label="" data-i18n-aria-label="common.page_3"></button>
+  </div>
+  <div class="rail-actions">
+    <button class="nav-button" type="button" id="btn-prev" disabled><span data-i18n="common.back"></span></button>
+    <button class="nav-button" type="button" id="btn-next"><span data-i18n="common.explore_the_sound"></span></button>
+    <button class="nav-button enter slot-parked" type="button" id="btn-enter" disabled data-i18n="common.enter_fad_synth"></button>
+  </div>
+</footer>
+<div class="accept-error hidden" id="accept-error" aria-live="assertive"><span data-i18n="common.could_not_save_setup_check_access_and_try_again"></span></div>
+<div class="legal-dialog-layer hidden" id="legal-dialog-layer" aria-hidden="true">
+  <section class="legal-dialog" id="legal-dialog" role="dialog" aria-modal="true" aria-labelledby="legal-dialog-title" aria-describedby="legal-dialog-body" tabindex="-1">
+    <div class="legal-dialog-head">
+      <h3 id="legal-dialog-title"><span data-i18n="common.legal_documents"></span></h3>
+      <button type="button" class="legal-dialog-close" id="legal-dialog-close"><span data-i18n="common.close"></span></button>
+    </div>
+    <div class="legal-dialog-body" id="legal-dialog-body">
+      <p id="legal-dialog-summary"><span data-i18n="common.open_the_official_website_to_read_the_current_terms"></span></p>
+      <button type="button" class="command primary" id="legal-dialog-open"><span data-i18n="common.read_on_the_official_website"></span></button>
+    </div>
+  </section>
+</div>
+
+<script>try { __FADOS_DITHER_ENGINE__ } catch (error) {}</script>
+<script>
+(function () {
+  "use strict";
+  var currentSlide = 0;
+  var totalSlides = 3;
+  var dither = null;
+  var nativeRuntimeActive = __FAD_ONBOARDING_RUNTIME_ACTIVE__;
+  var activationStarted = false;
+  var acceptCompleted = false;
+  var acceptRecoveryTimer = null;
+  var activeResultId = null;
+  var activeCommandIsAccept = false;
+  var activeCommandIsCopy = false;
+  var commandSequence = 0;
+  var capabilitySequence = 0;
+  var juceCompletionListenerInstalled = false;
+  var authStateRevision = -1;
+  var authState = readInitialAuthState();
+  var waitingForBrowser = false;
+  // Keep the existing page/bridge IDs while folding the educational detours into page 02.
+  // The visible journey is now welcome -> sound workflow -> account handoff.
+  var compactSlides = [
+    document.getElementById("slide-0"),
+    document.getElementById("slide-1"),
+    document.getElementById("slide-4")
+  ];
+  document.getElementById("slide-2").className = "slide hidden";
+  document.getElementById("slide-3").className = "slide hidden";
+  var slides = compactSlides;
+  var segments = document.querySelectorAll(".segment");
+  var previousButton = document.getElementById("btn-prev");
+  var nextButton = document.getElementById("btn-next");
+  var enterButton = document.getElementById("btn-enter");
+  var agreement = document.getElementById("legal-agreement");
+  var legalButtons = document.querySelectorAll(".legal-link");
+  var legalDialogLayer = document.getElementById("legal-dialog-layer");
+  var legalDialog = document.getElementById("legal-dialog");
+  var legalDialogTitle = document.getElementById("legal-dialog-title");
+  var legalDialogSummary = document.getElementById("legal-dialog-summary");
+  var legalDialogOpen = document.getElementById("legal-dialog-open");
+  var legalDialogClose = document.getElementById("legal-dialog-close");
+  var legalDialogBackground = [
+    document.querySelector(".os-bar"),
+    document.getElementById("slider"),
+    document.querySelector(".bottom-rail"),
+    document.getElementById("accept-error")
+  ];
+  var legalDialogReturnFocus = null;
+  var legalDialogPath = "eula";
+
+  function setLegalDialogBackgroundInert(inert) {
+    for (var i = 0; i < legalDialogBackground.length; i++) {
+      var node = legalDialogBackground[i];
+      if (!node) continue;
+      if (inert) {
+        node.setAttribute("inert", "");
+        node.setAttribute("aria-hidden", "true");
+      } else {
+        node.removeAttribute("inert");
+        node.removeAttribute("aria-hidden");
+      }
+    }
+  }
+
+  function openLegalDocument(button) {
+    legalDialogReturnFocus = button;
+    legalDialogTitle.textContent = button.dataset.legalTitle;
+    legalDialogSummary.textContent = button.dataset.legalSummary;
+    legalDialogPath = button.dataset.legalPath || "eula";
+    legalDialogLayer.classList.remove("hidden");
+    legalDialogLayer.setAttribute("aria-hidden", "false");
+    setLegalDialogBackgroundInert(true);
+    legalDialogOpen.focus();
+  }
+
+  function closeLegalDocument() {
+    if (legalDialogLayer.classList.contains("hidden")) return;
+    legalDialogLayer.classList.add("hidden");
+    legalDialogLayer.setAttribute("aria-hidden", "true");
+    setLegalDialogBackgroundInert(false);
+    if (legalDialogReturnFocus && document.body.contains(legalDialogReturnFocus)) {
+      legalDialogReturnFocus.focus();
+    }
+  }
+
+  function normalizeAuthState(state) {
+    state = state && typeof state === "object" ? state : {};
+    return {
+      activated: state.activated === true,
+      storeManaged: state.storeManaged === true,
+      standalone: state.standalone === true,
+      deviceCode: typeof state.deviceCode === "string" ? state.deviceCode : "",
+      email: typeof state.email === "string" ? state.email : "",
+      tier: typeof state.tier === "string" ? state.tier : "",
+      isTrial: state.isTrial === true,
+      trialExpiresAt: Number(state.trialExpiresAt) || 0,
+      entitlementExpiresAt: Number(state.entitlementExpiresAt) || 0,
+      entitlementGraceUntil: Number(state.entitlementGraceUntil) || 0,
+      error: typeof state.error === "string" ? state.error : "",
+      errorCode: typeof state.errorCode === "string" ? state.errorCode : "",
+      revision: Number(state.revision)
+    };
+  }
+
+  function readInitialAuthState() {
+    try { return normalizeAuthState(__FAD_ONBOARDING_AUTH_STATE__); }
+    catch (error) { return normalizeAuthState(null); }
+  }
+
+  function nonceRoute(base) {
+    return base + "?nonce=" + encodeURIComponent("__FAD_ONBOARDING_ACCEPT_NONCE__");
+  }
+
+  function capabilityRoute(base) {
+    capabilitySequence += 1;
+    var deliveryId = String(Date.now()) + "-" + String(capabilitySequence);
+    return nonceRoute(base) + "&delivery=" + encodeURIComponent(deliveryId);
+  }
+
+  function handleJuceNativeCompletion(event) {
+    if (!event || Number(event.promiseId) !== activeResultId) return;
+    if (activeCommandIsAccept && event.result === false) showAcceptError();
+    if (activeCommandIsCopy) document.getElementById('copy-device-code').textContent = tr(event.result === true ? 'common.copied' : 'common.copy_failed');
+  }
+
+  function installNativeCompletionListener() {
+    try {
+      if (juceCompletionListenerInstalled) return true;
+      if (!window.__JUCE__ || !window.__JUCE__.backend || !window.__JUCE__.backend.addEventListener) return false;
+      window.__JUCE__.backend.addEventListener("__juce__complete", handleJuceNativeCompletion);
+      juceCompletionListenerInstalled = true;
+      return true;
+    } catch (error) {}
+    return false;
+  }
+
+  function dispatchJuceNativeCommand(url, resultId) {
+    try {
+      if (!window.__JUCE__ || !window.__JUCE__.backend || !window.__JUCE__.backend.emitEvent) return false;
+      var init = window.__JUCE__.initialisationData;
+      var functions = init && init.__juce__functions ? init.__juce__functions : [];
+      if (!functions.indexOf || functions.indexOf("fadNativeCommand") < 0) return false;
+      installNativeCompletionListener();
+      window.__JUCE__.backend.emitEvent("__juce__invoke", {
+        name: "fadNativeCommand",
+        params: [url],
+        resultId: resultId
+      });
+      return true;
+    } catch (error) {}
+    return false;
+  }
+
+  function dispatchNativeNavigation(url) {
+    try { window.location.href = url; } catch (error) {}
+    try {
+      var link = document.createElement("a");
+      link.href = url;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (error) {}
+  }
+
+  function dispatchNative(url) {
+    commandSequence += 1;
+    var resultId = Date.now() + commandSequence;
+    activeResultId = resultId;
+    activeCommandIsAccept = url.indexOf("fadlab://onboarding-accept?") === 0;
+    activeCommandIsCopy = url.indexOf("fadlab://onboarding-copy-device-code?") === 0;
+    var sentToNative = dispatchJuceNativeCommand(url, resultId);
+    setTimeout(function () { dispatchNativeNavigation(url); }, sentToNative ? 120 : 0);
+  }
+
+  function dispatchCapability(base) { dispatchNative(capabilityRoute(base)); }
+
+  function showAcceptError(message) {
+    var error = document.getElementById("accept-error");
+    error.textContent = typeof message === "string" ? message : tr("common.could_not_save_setup_check_access_and_try_again");
+    error.classList.remove("hidden");
+    enterButton.disabled = !(authState.activated && agreement.checked);
+  }
+
+  window.fadOnboardingNativeAcceptRejected = function () {
+    if (acceptRecoveryTimer) clearTimeout(acceptRecoveryTimer);
+    showAcceptError(authState.error || tr("common.authorisation_is_not_complete_check_access_then_try_entering_again"));
+  };
+
+  function updateAcceptAvailability() {
+    enterButton.disabled = !(authState.activated && agreement.checked) || acceptCompleted;
+  }
+
+  function formatAuthorizationStatus() {
+    if (waitingForBrowser) return tr("common.waiting_for_the_browser_return_to_fad_synth_when_finished");
+    if (!authState.activated) {
+      if (authState.error) return tr("common.connection_failed_see_the_message_below");
+      return authState.storeManaged ? tr("common.awaiting_access_connect_an_existing_account_or_restore_purchases") : tr("common.not_connected_sign_in_and_connect_your_existing_license");
+    }
+    if (authState.isTrial && authState.trialExpiresAt > 0) {
+      var remainingDays = Math.max(0, Math.ceil((authState.trialExpiresAt - Date.now()) / 86400000));
+      return tr("common.connected_term_license_remaining") + remainingDays + tr("common.days_2");
+    }
+    if (authState.entitlementExpiresAt > 0) {
+      var now = Date.now();
+      if (now < authState.entitlementExpiresAt) {
+        return tr("common.access_valid_until")
+          + new Date(authState.entitlementExpiresAt).toLocaleString("zh-CN");
+      }
+      if (authState.entitlementGraceUntil > now) {
+        return tr("common.access_expired_device_grace_period_until")
+          + new Date(authState.entitlementGraceUntil).toLocaleString("zh-CN")
+          + tr("common.not_a_renewal");
+      }
+    }
+    return tr("common.connected_device_access_is_valid");
+  }
+
+  function renderAuthState() {
+    document.body.dataset.authorized = authState.activated ? "true" : "false";
+    document.getElementById("store-settings").hidden = !authState.storeManaged || !authState.standalone;
+    document.getElementById("store-guidance").hidden = !authState.storeManaged || authState.standalone;
+    if (authState.storeManaged) {
+      document.getElementById("account-intro").textContent = tr("common.connect_an_existing_fad_account_or_purchase_access_through_the");
+      document.getElementById("license-summary").textContent = tr("common.existing_fad_access_continues_after_verification_purchase_and_restore_in");
+      document.getElementById("trial-agreement").textContent = tr("common.plans_and_terms_are_shown_on_the_purchase_page");
+    }
+    document.getElementById("device-code").textContent = authState.deviceCode || tr("common.waiting_for_device_code");
+    document.getElementById('copy-device-code').disabled = !authState.deviceCode;
+    var accountEmail = document.getElementById("account-email");
+    accountEmail.textContent = authState.email || (authState.activated ? tr("common.connected") : tr("common.not_signed_in"));
+    accountEmail.title = authState.email;
+    document.getElementById("auth-tier").textContent = authState.isTrial ? tr("common.term_license") : authState.tier || (authState.activated ? tr("common.authorised") : tr("common.not_authorised"));
+    var recoveryRequired = !authState.activated
+      && (authState.errorCode === "FAD-AUTH-STATE-SCHEMA"
+        || authState.errorCode === "FAD-AUTH-STATE-CORRUPT");
+    var recoveryButton = document.getElementById("reset-auth");
+    recoveryButton.disabled = !recoveryRequired;
+    recoveryButton.classList.toggle("available", recoveryRequired);
+    recoveryButton.setAttribute("aria-hidden", recoveryRequired ? "false" : "true");
+    document.getElementById("refresh-auth").disabled = recoveryRequired;
+    // DIRECT_ONLY_BEGIN
+    document.getElementById("redeem-cdk").disabled = recoveryRequired;
+    // DIRECT_ONLY_END
+    var connectAccountButton = document.getElementById("connect-account");
+    connectAccountButton.textContent = authState.activated ? tr("common.account_connected_2") : tr("common.sign_in_or_create_account");
+    connectAccountButton.disabled = authState.activated || recoveryRequired;
+    connectAccountButton.classList.toggle("primary", !authState.activated);
+    document.getElementById("auth-status").textContent = formatAuthorizationStatus();
+    document.getElementById("handoff-note").textContent = waitingForBrowser
+      ? tr("common.complete_the_steps_in_your_browser_keep_fad_synth_open")
+      : authState.activated
+        ? tr("common.device_connected_read_and_accept_the_terms_then_click_enter")
+        : authState.error
+          ? tr("common.connection_incomplete_read_the_error_below_correct_it_and_try")
+          : tr("common.keep_fad_synth_open_it_will_unlock_after_you_finish");
+    var authError = document.getElementById("auth-error");
+    authError.textContent = authState.error
+      ? ((authState.errorCode ? authState.errorCode + " · " : "") + authState.error)
+      : "";
+    authError.tabIndex = authState.error ? 0 : -1;
+    authError.scrollTop = 0;
+    updateAcceptAvailability();
+  }
+
+  window.fadOnboardingReceiveAuthState = function (state) {
+    state = normalizeAuthState(state);
+    if (state.revision <= authStateRevision) return;
+    authStateRevision = state.revision;
+    authState = state;
+    if (state.activated || state.error) waitingForBrowser = false;
+    renderAuthState();
+  };
+
+  function setDitherState(state) {
+    var previousState = document.body.dataset.ditherState || "boot";
+    document.body.dataset.ditherState = state;
+    if (!dither) return;
+    if (!nativeRuntimeActive || document.hidden) {
+      dither.setActive(false);
+      return;
+    }
+    if (state === "boot") {
+      if (previousState === "corner" && typeof dither.restoreHero === "function")
+        dither.restoreHero(0.55);
+      else
+        dither.replay();
+    } else if (state === "exit") {
+      dither.exit();
+    } else if (previousState === "boot") {
+      if (typeof dither.wakeTo === "function") dither.wakeTo("right", 0.82, 0.55);
+      else dither.setActive(true);
+    }
+  }
+
+  function notifyPage(page) {
+    dispatchNativeNavigation("fadlab://onboarding-page/" + page);
+  }
+
+  function isElementKeyboardReachable(element) {
+    if (!element || element === document.body || !document.body.contains(element)) return false;
+    if (element.disabled) return false;
+    var owningSlide = element.closest ? element.closest(".slide") : null;
+    if (owningSlide && !owningSlide.classList.contains("active")) return false;
+    var style = window.getComputedStyle(element);
+    return style.display !== "none" && style.visibility !== "hidden";
+  }
+
+  function migrateFocusAfterSlideChange(previousFocus, page) {
+    if (!previousFocus || previousFocus === document.body) return;
+    if (isElementKeyboardReachable(previousFocus)) return;
+    var successor = slides[page];
+    if (previousFocus === nextButton && isElementKeyboardReachable(enterButton)) successor = enterButton;
+    else if (previousFocus === nextButton && isElementKeyboardReachable(previousButton)) successor = previousButton;
+    else if ((previousFocus === enterButton || previousFocus === previousButton) && isElementKeyboardReachable(nextButton)) successor = nextButton;
+    if (successor && successor.focus) successor.focus();
+  }
+
+  function applyRovingFocusOrder(page) {
+    for (var i = 0; i < totalSlides; i++) {
+      segments[i].tabIndex = i === page ? 0 : -1;
+      slides[i].tabIndex = i === page ? 0 : -1;
+    }
+  }
+
+  function updateNavigationCopy(page) {
+    nextButton.textContent = page === 0 ? tr("common.explore_the_sound") : tr("common.connect_account");
+  }
+
+  function goToSlide(page, options) {
+    if (page < 0 || page >= totalSlides || page === currentSlide) return;
+    var previousFocus = document.activeElement;
+    currentSlide = page;
+    updateNavigationCopy(page);
+    for (var i = 0; i < totalSlides; i++) {
+      slides[i].classList.toggle("active", i === page);
+      segments[i].classList.toggle("active", i === page);
+      segments[i].setAttribute("aria-selected", i === page ? "true" : "false");
+    }
+    applyRovingFocusOrder(page);
+    document.getElementById("counter-num").textContent = String(page + 1).padStart(2, "0");
+    previousButton.disabled = page === 0;
+    nextButton.classList.toggle("slot-parked", page === totalSlides - 1);
+    enterButton.classList.toggle("slot-parked", page !== totalSlides - 1);
+    if (options && options.focusActiveTab) segments[page].focus();
+    else migrateFocusAfterSlideChange(previousFocus, page);
+    setDitherState(page === 0 ? "boot" : "corner");
+    notifyPage(page);
+    if (page === totalSlides - 1 && !authState.activated && !activationStarted) {
+      activationStarted = true;
+      dispatchCapability("fadlab://onboarding-auth/start");
+    }
+  }
+
+  function accept() {
+    if (acceptCompleted || !authState.activated || !agreement.checked) {
+      updateAcceptAvailability();
+      return;
+    }
+    enterButton.disabled = true;
+    document.getElementById("accept-error").classList.add("hidden");
+    dispatchNative(nonceRoute("fadlab://onboarding-accept"));
+    if (acceptRecoveryTimer) clearTimeout(acceptRecoveryTimer);
+    acceptRecoveryTimer = setTimeout(showAcceptError, 2500);
+  }
+
+  window.fadOnboardingNativeAcceptResolved = function () {
+    acceptCompleted = true;
+    if (acceptRecoveryTimer) clearTimeout(acceptRecoveryTimer);
+    enterButton.textContent = tr("common.entering_fad_synth");
+    enterButton.disabled = true;
+    setDitherState("exit");
+  };
+
+  function initDither() {
+    var source = document.getElementById("onboarding-logo");
+    source.onerror = function () {
+      if (source.dataset.fallback) return;
+      source.dataset.fallback = "1";
+      source.src = "/FAD%20Logo.png";
+    };
+    if (!window.FADDitherEngine) return;
+    dither = window.FADDitherEngine.mount(
+      document.getElementById("onboarding-dither"),
+      source,
+      {
+        active: nativeRuntimeActive && !document.hidden,
+        columns: 72,
+        maxDpr: 3,
+        scene: "hero",
+        scale: 0.88,
+        fill: 0.85,
+        braille: 0.55,
+        colors: ["#3D4A78", "#596AA6", "#7A9CFF", "#22348E"]
+      }
+    );
+  }
+
+  function syncOnboardingRuntimeActive() {
+    if (!dither) return;
+    if (!nativeRuntimeActive || document.hidden) {
+      dither.suspend();
+    } else if (currentSlide === 0) {
+      dither.replay();
+    } else if (typeof dither.wakeTo === "function") {
+      dither.wakeTo("right", 0.82, 0.55);
+    }
+  }
+
+  window.fadOnboardingSetRuntimeActive = function (active) {
+    nativeRuntimeActive = active !== false;
+    syncOnboardingRuntimeActive();
+  };
+  document.addEventListener("visibilitychange", syncOnboardingRuntimeActive);
+
+  previousButton.addEventListener("click", function () { goToSlide(currentSlide - 1); });
+  nextButton.addEventListener("click", function () { goToSlide(currentSlide + 1); });
+  enterButton.addEventListener("click", accept);
+  agreement.addEventListener("change", updateAcceptAvailability);
+  // Legacy bridge route literals kept for bundled/native compatibility; the UI exposes one account CTA.
+  // fadlab://onboarding-account/connect | fadlab://onboarding-account/login | fadlab://onboarding-account/register | fadlab://onboarding-account/help
+  // fadlab://onboarding-legal/eula | fadlab://onboarding-legal/terms | fadlab://onboarding-legal/privacy
+  document.getElementById("refresh-auth").addEventListener("click", function () {
+    waitingForBrowser = true;
+    renderAuthState();
+    dispatchCapability("fadlab://onboarding-auth/refresh");
+  });
+  document.getElementById('copy-device-code').addEventListener('click', function () {
+    if (authState.deviceCode) dispatchCapability('fadlab://onboarding-copy-device-code');
+  });
+  document.getElementById("connect-account").addEventListener("click", function () {
+    waitingForBrowser = true;
+    renderAuthState();
+    dispatchCapability("fadlab://onboarding-account/connect");
+  });
+  // DIRECT_ONLY_BEGIN
+  document.getElementById("redeem-cdk").addEventListener("click", function () {
+    waitingForBrowser = true;
+    renderAuthState();
+    dispatchCapability("fadlab://onboarding-account/cdk");
+  });
+  // DIRECT_ONLY_END
+  document.getElementById("store-settings").addEventListener("click", function () {
+    dispatchCapability("fadlab://onboarding-store/settings");
+  });
+  document.getElementById("account-help").addEventListener("click", function () {
+    dispatchCapability("fadlab://onboarding-account/help");
+  });
+  document.getElementById("reset-auth").addEventListener("click", function () {
+    dispatchCapability("fadlab://onboarding-auth/reset");
+  });
+  legalDialogClose.addEventListener("click", closeLegalDocument);
+  legalDialogOpen.addEventListener("click", function () {
+    dispatchCapability("fadlab://onboarding-legal/" + legalDialogPath);
+  });
+  for (var legalIndex = 0; legalIndex < legalButtons.length; legalIndex++) {
+    legalButtons[legalIndex].addEventListener("click", function () { openLegalDocument(this); });
+  }
+  for (var i = 0; i < segments.length; i++) {
+    segments[i].addEventListener("click", function () { goToSlide(Number(this.dataset.slide)); });
+  }
+  var segmentRail = document.querySelector(".segments");
+  segmentRail.addEventListener("keydown", function (event) {
+    var target = currentSlide;
+    if (event.key === "ArrowLeft") target = currentSlide - 1;
+    else if (event.key === "ArrowRight") target = currentSlide + 1;
+    else if (event.key === "Home") target = 0;
+    else if (event.key === "End") target = totalSlides - 1;
+    else return;
+    event.preventDefault();
+    event.stopPropagation();
+    target = Math.max(0, Math.min(totalSlides - 1, target));
+    if (target === currentSlide) segments[target].focus();
+    else goToSlide(target, { focusActiveTab: true });
+  });
+  document.addEventListener("keydown", function (event) {
+    if (!legalDialogLayer.classList.contains("hidden")) {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeLegalDocument();
+      } else if (event.key === "Tab") {
+        event.preventDefault();
+        var focusable = [legalDialogClose, legalDialogOpen];
+        var focusIndex = focusable.indexOf(document.activeElement);
+        var focusStep = event.shiftKey ? -1 : 1;
+        if (focusIndex < 0) focusIndex = event.shiftKey ? 0 : -1;
+        focusable[(focusIndex + focusStep + focusable.length) % focusable.length].focus();
+      }
+      return;
+    }
+    if (event.key === "ArrowLeft") goToSlide(currentSlide - 1);
+    if (event.key === "ArrowRight") goToSlide(currentSlide + 1);
+  });
+
+  updateNavigationCopy(currentSlide);
+  renderAuthState();
+  function refreshOnboardingLanguage(next){renderAuthState();updateNavigationCopy(currentSlide);}
+var unsubscribeLanguage=window.FADI18n.onChange(refreshOnboardingLanguage,"onboarding");
+window.addEventListener("pagehide",function(){unsubscribeLanguage();});
+window.addEventListener("pageshow",function(event){if(event.persisted)unsubscribeLanguage=window.FADI18n.onChange(refreshOnboardingLanguage,"onboarding");});
+  initDither();
+}());
+</script>
+</body>
+</html>
